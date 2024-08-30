@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
       this.getToken();
       localStorage.setItem("identidad", JSON.stringify(response.usuario))
 
-      this._router.navigate(['/categoria']);
+      this._router.navigate(['/vistarolgestor']);
       },
       (error)=>{
         console.log(<any>error);

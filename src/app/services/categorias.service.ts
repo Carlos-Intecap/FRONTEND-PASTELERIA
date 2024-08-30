@@ -17,9 +17,13 @@ export class CategoriasService {
 
   constructor(public _http: HttpClient) { }
 
-  // Ver categorias
-  obtenerCategorias(): Observable <any> {
-    return this._http.get(this.url + '/getCategorias', { headers: this.headersVariable});
+  // MODIFICADO PARA QUE SEA UNICAMENTE CON TOKEN VISIBLE
+  obtenerCategorias(token): Observable <any> {
+
+    // nuevo agregar token
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.get(this.url + '/getCategorias', { headers: headersToken});
   }
 
 

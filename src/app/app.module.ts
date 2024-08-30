@@ -10,7 +10,6 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EjemploComponent } from './components/ejemplo/ejemplo.component';
-import { CategoriaComponent } from './components/categoria/categoria.component';
 import { VistarolgestorComponent } from './components/vistarolgestor/vistarolgestor.component';
 
 
@@ -22,7 +21,6 @@ import { VistarolgestorComponent } from './components/vistarolgestor/vistarolges
     RegistroComponent,
     NavbarComponent,
     EjemploComponent,
-    CategoriaComponent,
     VistarolgestorComponent
   ],
   imports: [
