@@ -2,30 +2,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
+export class AdminUsuariosService {
 
-
-export class CategoriasService {
-
-  //1. Ruta
   public url: String = 'http://localhost:3000/api';
 
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(public _http: HttpClient) { }
 
-  // MODIFICADO PARA QUE SEA UNICAMENTE CON TOKEN VISIBLE
-  obtenerCategorias(token): Observable <any> {
-
-    // nuevo agregar token
+  /*No 1. Ver a los usuarios con rol Gestor*/
+  getUsuariosRolGestor(token):Observable<any>{
     let headersToken = this.headersVariable.set('Authorization', token);
-
-    return this._http.get(this.url + '/getCategorias', { headers: headersToken});
+    return this._http.get(this.url +'/getUsuarioRolGestor' , {headers:headersToken});
   }
-
-
+  
 
 }

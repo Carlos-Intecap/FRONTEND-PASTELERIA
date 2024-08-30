@@ -11,6 +11,10 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EjemploComponent } from './components/ejemplo/ejemplo.component';
 import { VistarolgestorComponent } from './components/vistarolgestor/vistarolgestor.component';
+import { VistaroladminComponent } from './components/vistaroladmin/vistaroladmin.component';
+import { RoladmingestoresComponent } from './components/roladmingestores/roladmingestores.component';
+import { VistarolfacturadorComponent } from './components/vistarolfacturador/vistarolfacturador.component';
+import { RoladminfacturadoresComponent } from './components/roladminfacturadores/roladminfacturadores.component';
 
 
 
@@ -21,7 +25,11 @@ import { VistarolgestorComponent } from './components/vistarolgestor/vistarolges
     RegistroComponent,
     NavbarComponent,
     EjemploComponent,
-    VistarolgestorComponent
+    VistarolgestorComponent,
+    VistaroladminComponent,
+    RoladmingestoresComponent,
+    VistarolfacturadorComponent,
+    RoladminfacturadoresComponent
   ],
   imports: [
     BrowserModule,
