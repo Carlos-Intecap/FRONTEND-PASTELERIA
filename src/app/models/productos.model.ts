@@ -5,6 +5,8 @@ export class Producto {
     public cantidad: Number,
     public vendido: Number,
     public precio: Number
+    //public precio compra: Number,
+    //public sucursal_id: String
   ) {
 
   }

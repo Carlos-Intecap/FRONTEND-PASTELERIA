@@ -9,6 +9,7 @@ import { VistaroladminComponent } from './components/vistaroladmin/vistaroladmin
 import { RoladmingestoresComponent } from './components/roladmingestores/roladmingestores.component';
 import { VistarolfacturadorComponent } from './components/vistarolfacturador/vistarolfacturador.component';
 import { RoladminfacturadoresComponent } from './components/roladminfacturadores/roladminfacturadores.component';
+import { RoladminclientesComponent } from './components/roladminclientes/roladminclientes.component';
 
 const routes: Routes = [
 
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'ejemplo', component: EjemploComponent},
 
   { path: 'roladmingestores', component: RoladmingestoresComponent},
-  { path: 'roladminfacturadores', component: RoladminfacturadoresComponent}
+  { path: 'roladminfacturadores', component: RoladminfacturadoresComponent},
+  { path: 'roladminclientes', component: RoladminclientesComponent}
 ];
 
 

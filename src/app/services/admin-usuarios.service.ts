@@ -18,6 +18,14 @@ export class AdminUsuariosService {
     let headersToken = this.headersVariable.set('Authorization', token);
     return this._http.get(this.url +'/getUsuarioRolGestor' , {headers:headersToken});
   }
-  
-
+  //Ver usuarios con el rol Facturador
+  getUsuariosRolFacturador(token):Observable<any>{
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/getUsuarioSRolFacturador', {headers:headersToken});
+  }
+  //Ver usuarios con el rol Cliente
+  getUsuariosRolCliente(token):Observable<any>{
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/getUsuariosRolCliente', {headers:headersToken});
+  }
 }

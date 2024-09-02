@@ -5,25 +5,25 @@
     <br>
     <br>
     <div class="row">
-        <div class="col-12 col-md-4" *ngFor="let facturador of UsuarioModelGet">
+        <div class="col-12 col-md-4" *ngFor="let cliente of UsuarioModelGet">
             <div class="card text-center mb-3">
                 <div class="card-header">
-                    {{facturador.nombre}}  {{ facturador.apellido}}
+                    {{cliente.nombre}}  {{ cliente.apellido}}
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">ID: {{facturador._id}}</h5>
+                    <h5 class="card-title">ID: {{cliente._id}}</h5>
                     
-                    <h5 class="card-title"> email: {{facturador.email}} </h5>
+                    <h5 class="card-title"> email: {{cliente.email}} </h5>
                     
-                    <h5 class="card-title">  rol: {{facturador.rol}}  </h5>
+                    <h5 class="card-title">  rol: {{cliente.rol}}  </h5>
                     
-                    <h5 class="card-title">  telefono: {{facturador.telefono}}  </h5>
+                    <h5 class="card-title">  telefono: {{cliente.telefono}}  </h5>
                     
-                    <h5 class="card-title">  direccion: {{facturador.direccion}}  </h5>
+                    <h5 class="card-title">  direccion: {{cliente.direccion}}  </h5>
                     
-                    <h5 class="card-title">  departamento: {{facturador.departamento}}  </h5>
+                    <h5 class="card-title">  departamento: {{cliente.departamento}}  </h5>
                     
-                    <h5 class="card-title">  municipio: {{facturador.municipio}}  </h5>
+                    <h5 class="card-title">  municipio: {{cliente.municipio}}  </h5>
                     
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                 
