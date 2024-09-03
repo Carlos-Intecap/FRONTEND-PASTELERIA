@@ -1,12 +1,13 @@
 export class Producto {
   constructor(
     public _id: String,
-    public nombre: String,
-    public cantidad: Number,
+    public nombreProducto: String,
+    public marca: String,
+    public descripcion: String,
+    public stock: Number,
+    public precio: Number,
     public vendido: Number,
-    public precio: Number
-    //public precio compra: Number,
-    //public sucursal_id: String
+    public idCategoria: String
   ) {
 
   }

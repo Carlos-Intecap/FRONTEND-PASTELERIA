@@ -2,19 +2,17 @@
 export class Factura{
     constructor(
         public _id: String,
-        public noFactura: Number,
-        public fecha: String,
+        public nit: String,
+        public fecha: Date,
         public idUsuario: String,
-        public listaProductos:[{
+        public compras:[{
+            idProducto: String,
             nombreProducto: String,
-            cantidadComprada: Number,
-            precioUnitario: Number,
+            cantidad: Number,
+            precio: Number,
             subTotal: Number
         }],
-        public totalFactura: Number,
-        public nit: Number,
-        public direccion: String,
-        public sucursalId: String
+        public total: Number
 
     ){}
 }

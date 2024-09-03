@@ -9,13 +9,6 @@ export class Usuario{
         public telefono: Number,
         public direccion: String,
         public departamento: String,
-        public municipio: String,
-        public carrito:[{
-            nombreProducto: String,
-            cantidadComprada: Number,
-            precioUnitario: Number,
-            subTotal: Number
-        }],
-        public totalCarrito: Number
+        public municipio: String
     ){}
 }

@@ -16,33 +16,7 @@
   </ng-container>
 </ul>
 -->
-<br>
-<div class="container">
-  <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
-    Agregar
-  </button>
-  <br>
-  <br>
-  <div class="row">
-    <div class="col-12 col-md-4" *ngFor="let prod of productosModelGet">
-      <div class="card text-center mb-3">
-        <div class="card-header">
-          {{ prod.nombre }}
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">ID: {{prod._id}}</h5>
-          <p class="card-text">
-            La cantidad existente es {{ prod.cantidad}} y su precio es {{ prod.precio}}
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        <div class="card-footer text-body-secondary">
-          2 days ago
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- MODAL VER DATOS EN CARDS
  With supporting text below as a natural lead-in to additional content.
  <div class="card text-center">
@@ -85,7 +59,7 @@
   </div>
 </div>
 -->
-
+<!--
 <div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
   <div class="modal-dialog">
     <div class="modal-content">
@@ -120,3 +94,4 @@
     </div>
   </div>
 </div>
+-->

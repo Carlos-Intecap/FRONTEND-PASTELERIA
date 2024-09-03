@@ -18,6 +18,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class RoladminfacturadoresComponent implements OnInit {
   public token;
   public UsuarioModelGet:Usuario;
+  public UsuarioModelPost:Usuario;
+  public UsuarioModelGetId: Usuario;
 
 
   constructor(
@@ -30,6 +32,9 @@ export class RoladminfacturadoresComponent implements OnInit {
     //token
     this.titleService.setTitle('Rol admin facturador');
     this.token=this._usuarioService.obtenerToken();
+    this.UsuarioModelPost= new Usuario("","","","","","",0,"","","");
+    this.UsuarioModelGetId = new Usuario("","","","","","",0,"","","");
+
   }
   //Crear funciones para CRUDs
   getUsuariosRolFacturador(){
@@ -42,6 +47,61 @@ export class RoladminfacturadoresComponent implements OnInit {
       }
     )
   }
+
+  deleteUsuarioRolFacturador(idUsuario){
+    this._adminUsuariosService.eliminarUsuarioRolFacturador(idUsuario,this.token).subscribe(
+      (response)=>{
+        console.log(response);
+
+        this.getUsuariosRolFacturador();
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+  }
+
+
+
+postUsuariosRolFacturador(){
+  this._adminUsuariosService.agregarUsuarioRolFacturador(this.UsuarioModelPost, this._usuarioService.obtenerToken()).subscribe(
+    (response)=>{
+      console.log(response);
+      this.getUsuariosRolFacturador();
+    },
+    (error)=>{
+      console.log(<any>error);
+    }
+  )
+}
+
+getUsuarioId(idUsuario){
+  this._adminUsuariosService.obtenerRolFacturadorId(idUsuario, this.token).subscribe(
+    (response)=>{
+      console.log(response);
+
+      this.UsuarioModelGetId = response.usuario;
+    },
+    (error)=>{
+      console.log(error)
+
+    }
+  )
+  
+}
+
+putUsuarios(){
+
+  this._adminUsuariosService.editarRolFacturador(this.UsuarioModelGetId, this.token).subscribe(
+
+    (response)=>{
+
+      console.log(response);
+
+      this.getUsuariosRolFacturador();
+    }
+  )
+}
 
   ngOnInit(): void {
     this.getUsuariosRolFacturador();

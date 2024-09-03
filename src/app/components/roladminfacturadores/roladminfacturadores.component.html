@@ -1,5 +1,5 @@
 <div class="container">
-    <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
+    <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarFacturador">
         Agregar
     </button>
     <br>
@@ -8,30 +8,163 @@
         <div class="col-12 col-md-4" *ngFor="let facturador of UsuarioModelGet">
             <div class="card text-center mb-3">
                 <div class="card-header">
-                    {{facturador.nombre}}  {{ facturador.apellido}}
+                    {{facturador.nombre}} {{ facturador.apellido}}
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">ID: {{facturador._id}}</h5>
-                    
+
                     <h5 class="card-title"> email: {{facturador.email}} </h5>
-                    
-                    <h5 class="card-title">  rol: {{facturador.rol}}  </h5>
-                    
-                    <h5 class="card-title">  telefono: {{facturador.telefono}}  </h5>
-                    
-                    <h5 class="card-title">  direccion: {{facturador.direccion}}  </h5>
-                    
-                    <h5 class="card-title">  departamento: {{facturador.departamento}}  </h5>
-                    
-                    <h5 class="card-title">  municipio: {{facturador.municipio}}  </h5>
-                    
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                
+
+                    <h5 class="card-title"> rol: {{facturador.rol}} </h5>
+
+                    <h5 class="card-title"> telefono: {{facturador.telefono}} </h5>
+
+                    <h5 class="card-title"> direccion: {{facturador.direccion}} </h5>
+
+                    <h5 class="card-title"> departamento: {{facturador.departamento}} </h5>
+
+                    <h5 class="card-title"> municipio: {{facturador.municipio}} </h5>
+
+                    <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
+                        data-bs-target="#editarFacturadoresApp" aria-controls="offcanvasExample"
+                        (click)="getUsuarioId(facturador._id)">
+                        Editar facturadores
+                    </button>
+                    <button type="button" class="btn btn-danger"
+                        (click)="deleteUsuarioRolFacturador(facturador._id)">Eliminar</button>
+
                 </div>
-                
+
                 <div class="card-footer text-body-secondary">
                     2 days ago
                 </div>
             </div>
         </div>
     </div>
+
+    <!--Agregar-->
+    <div class="modal fade" id="modalAgregarFacturador" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" #modal>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Rol Gestor</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+                                [(ngModel)]="UsuarioModelPost.nombre" autocomplete="off">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputApellido" class="form-label">Apellido:</label>
+                            <input type="text" id="inputApellido" class="form-control" autocomplete="off"
+                                placeholder="Ingrese la cantidad" name="apellido" #apellido="ngModel"
+                                [(ngModel)]="UsuarioModelPost.apellido">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Email:</label>
+                            <input type="email" id="inputEmail" class="form-control" autocomplete="off"
+                                placeholder="Ingrese el precio del producto" name="email" #email="ngModel"
+                                [(ngModel)]="UsuarioModelPost.email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPassword" class="form-label">Contraseña:</label>
+                            <input type="password" id="inputPassword" class="form-control" autocomplete="off"
+                                placeholder="Ingrese el precio del producto" name="password" #password="ngModel"
+                                [(ngModel)]="UsuarioModelPost.password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputTelefono" class="form-label">Télefono:</label>
+                            <input type="number" id="inputTelefono" class="form-control" autocomplete="off"
+                                placeholder="Ingrese el precio del producto" name="telefono" #telefono="ngModel"
+                                [(ngModel)]="UsuarioModelPost.telefono">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputDireccion" class="form-label">Dirección:</label>
+                            <input type="text" id="inputDireccion" class="form-control" autocomplete="off"
+                                placeholder="Ingrese el precio del producto" name="direccion" #direccion="ngModel"
+                                [(ngModel)]="UsuarioModelPost.direccion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputDepartamento" class="form-label">departamento:</label>
+                            <input type="text" id="inputDepartamento" class="form-control" autocomplete="off"
+                                placeholder="Ingrese el precio del producto" name="departamento" #departamento="ngModel"
+                                [(ngModel)]="UsuarioModelPost.departamento">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputMunicipio" class="form-label">Municipio:</label>
+                            <input type="text" id="inputMunicipio" class="form-control" autocomplete="off"
+                                placeholder="Ingrese el precio del producto" name="municipio" #municipio="ngModel"
+                                [(ngModel)]="UsuarioModelPost.municipio">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="postUsuariosRolFacturador()">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!--Editar-->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="editarFacturadoresApp" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Gestores</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <form>
+          
+            <div class="mb-3">
+              <label for="editarNombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="editarNombre" name="nombre" #nombre="ngModel" [(ngModel)]="UsuarioModelGetId.nombre"
+               autocomplete="off">
+  
+            </div>
+            <div class="mb-3">
+              <label for="editarApellido" class="form-label">Apellido:</label>
+              <input type="text" id="editarApellido" class="form-control" autocomplete="off"
+                placeholder="Ingrese la cantidad" name="apellido" #apellido="ngModel" [(ngModel)]="UsuarioModelGetId.apellido">
+            </div>
+            <div class="mb-3">
+              <label for="editarEmail" class="form-label">Email:</label>
+              <input type="email" id="editarEmail"class="form-control" autocomplete="off"
+                placeholder="Ingrese el precio del producto" name="email" #email="ngModel" [(ngModel)]="UsuarioModelGetId.email">
+            </div>
+            
+            <div class="mb-3">
+              <label for="editarTelefono" class="form-label">Télefono:</label>
+              <input type="number" id="editarTelefono" class="form-control" autocomplete="off"
+                placeholder="Ingrese el precio del producto" name="telefono" #telefono="ngModel" [(ngModel)]="UsuarioModelGetId.telefono">
+            </div>
+            <div class="mb-3">
+              <label for="editarDireccion" class="form-label">Dirección:</label>
+              <input type="text" id="editarDireccion"  class="form-control" autocomplete="off"
+                placeholder="Ingrese el precio del producto" name="direccion" #direccion="ngModel" [(ngModel)]="UsuarioModelGetId.direccion">
+            </div>
+            <div class="mb-3">
+              <label for="editarDepartamento" class="form-label">departamento:</label>
+              <input type="text" id="editarDepartamento"  class="form-control" autocomplete="off"
+                placeholder="Ingrese el precio del producto" name="departamento" #departamento="ngModel" [(ngModel)]="UsuarioModelGetId.departamento">
+            </div>
+            <div class="mb-3">
+              <label for="editarMunicipio" class="form-label">Municipio:</label>
+              <input type="text" id="editarMunicipio" class="form-control" autocomplete="off"
+                placeholder="Ingrese el precio del producto" name="municipio" #municipio="ngModel" [(ngModel)]="UsuarioModelGetId.municipio">
+            </div>
+                <br>
+      
+                <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putUsuarios()">Editar Facturadores</button>
+      
+          
+          </form>
+        </div>
+      </div>

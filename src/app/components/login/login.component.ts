@@ -21,16 +21,11 @@ export class LoginComponent implements OnInit {
     private _usuariosService: UsuarioService,
     private _router: Router
 
-  ) { 
+  ) {
     //Llamar a los datos del modelo
-    this.usuarioModel= new Usuario(
-      "", "", "", "", "", "", 0 , "", "", "", 
-      [{
-        nombreProducto: "",
-            cantidadComprada: 0,
-            precioUnitario: 0,
-            subTotal: 0
-      }],0
+    this.usuarioModel = new Usuario(
+      "", "", "", "", "", "", 0, "", "", "",
+
     );
 
   }
@@ -39,30 +34,60 @@ export class LoginComponent implements OnInit {
   }
 
   // Funciones imprime el link de acceso de cada usuario
-  getToken(){
+  getToken() {
     this._usuariosService.login(this.usuarioModel, "true").subscribe(
-      (response)=>{
+      (response) => {
 
         console.log(response);
-        localStorage.setItem("token",response.token);
+        localStorage.setItem("token", response.token);
       },
-      (error)=>{
+      (error) => {
         console.log(<any>error);
       }
     );
   }
-  //Función de identidad
-  login(){
-    this._usuariosService.login(this.usuarioModel).subscribe(
-      (response)=>{
 
-        console.log(response);
-      this.getToken();
-      localStorage.setItem("identidad", JSON.stringify(response.usuario))
+  getTokenPromesa(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this._usuariosService.login(this.usuarioModel, "true").subscribe(
+        (response) => {
+          // console.log(response);
+          localStorage.setItem("token", response.token)
+          resolve(response);
+        },
+        (error) => {
+          console.log(<any>error);
 
-      this._router.navigate(['/vistarolgestor']);
+        }
+      )
+    })
+  }
+
+  login() {
+    this._usuariosService.login(this.usuarioModel, "false").subscribe(
+      (response) => {
+
+        // TIRA LA RESPUESTA
+        this.getTokenPromesa().then(respuesta => {
+
+          /*if (this._usuariosService.obtenerIdentidad().rol === 'ROL_GESTOR') {
+            this._router.navigate(['/vistarolgestor']);
+
+          } else if (this._usuariosService.obtenerIdentidad().rol === 'ROL_ADMIN') {
+            this._router.navigate(['/vistaroladmin']);
+
+          } else if (this._usuariosService.obtenerIdentidad().rol === 'ROL_FACTURADOR') {
+            this._router.navigate(['/vistarolfacturador']);
+          }*/
+
+            this._router.navigate(['/vistarolgestor']);
+          localStorage.setItem("identidad", JSON.stringify(response.usuario))
+
+        })
+
       },
-      (error)=>{
+
+      (error) => {
         console.log(<any>error);
       }
     )

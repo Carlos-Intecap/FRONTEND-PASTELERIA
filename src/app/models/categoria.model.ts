@@ -1,9 +1,9 @@
 export class Categoria{
     constructor(
         public _id: String,
-        public nombre: String,
-        public descripcion: String,
-        public idAdministrador: String
+        public nombreCategoria: String,
+        public descripcionCategoria: String,
+        public idUsuario: String
 
     ){}
 }
