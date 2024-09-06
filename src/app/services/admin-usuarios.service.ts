@@ -115,4 +115,38 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
     return this._http.get(this.url + '/getUsuarioSRolCliente', { headers: headersToken });
   }
 
+  agregarUsuarioRolCliente(modeloUsuario: Usuario, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    let parametros = JSON.stringify(modeloUsuario);
+
+    return this._http.post(this.url + '/agregarRolCliente', parametros, { headers: headersToken });
+
+  }
+
+  eliminarUsuarioRolCliente(idUsuario, token) {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.delete(this.url + '/eliminarRolCliente/' + idUsuario, { headers: headersToken });
+
+  }
+
+  obtenerRolClienteId(idUsuario, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.get(this.url + '/getUsuarioRolCliente/' + idUsuario, { headers: headersToken });
+
+  }
+  
+  editarRolCliente(modeloUsuario: Usuario, token): Observable<any> {
+
+    let parametros = JSON.stringify(modeloUsuario);
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.put(this.url + '/editarRolCliente/' + modeloUsuario._id, parametros, { headers: headersToken })
+
+  }
+
 }
