@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from '../models/usuarios.model';
+import { Empresa } from '../models/empresa.model';
 
 @Injectable({
   providedIn: 'root'
@@ -148,5 +149,45 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
     return this._http.put(this.url + '/editarRolCliente/' + modeloUsuario._id, parametros, { headers: headersToken })
 
   }
+/*--------------- ADMINISTRACION DE EMPRESAS---------------------- */
+
+getEmpresasRolAdmin(token): Observable<any> {
+  let headersToken = this.headersVariable.set('Authorization', token);
+  return this._http.get(this.url + '/getEmpresaRolAdmin', { headers: headersToken });
+}
+
+agregarEmpresaRolAdmin(modeloEmpresa: Empresa, token): Observable<any> {
+
+  let headersToken = this.headersVariable.set('Authorization', token)
+
+  let parametros = JSON.stringify(modeloEmpresa);
+
+  return this._http.post(this.url + '/agregarEmpresaRolAdmin', parametros, { headers: headersToken });
+
+}
+
+eliminarEmpresaRolAdmin(idEmpresa, token) {
+  let headersToken = this.headersVariable.set('Authorization', token);
+  return this._http.delete(this.url + '/eliminarEmpresaRolAdmin/' + idEmpresa, { headers: headersToken });
+
+}
+
+obtenerEmpresaIdRolAdmin(idEmpresa, token): Observable<any> {
+
+  let headersToken = this.headersVariable.set('Authorization', token);
+
+  return this._http.get(this.url + '/getEmpresaIdRolAdmin/' + idEmpresa, { headers: headersToken });
+
+}
+
+editarEmpresaRolAdmin(modeloEmpresa: Empresa, token): Observable<any> {
+
+  let parametros = JSON.stringify(modeloEmpresa);
+
+  let headersToken = this.headersVariable.set('Authorization', token);
+
+  return this._http.put(this.url + '/editarEmpresaRolAdmin/' + modeloEmpresa._id, parametros, { headers: headersToken })
+
+}
 
 }

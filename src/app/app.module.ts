@@ -16,6 +16,7 @@ import { RoladmingestoresComponent } from './components/roladmingestores/roladmi
 import { VistarolfacturadorComponent } from './components/vistarolfacturador/vistarolfacturador.component';
 import { RoladminfacturadoresComponent } from './components/roladminfacturadores/roladminfacturadores.component';
 import { RoladminclientesComponent } from './components/roladminclientes/roladminclientes.component';
+import { RoladminempresasComponent } from './components/roladminempresas/roladminempresas.component';
 
 
 
@@ -31,7 +32,8 @@ import { RoladminclientesComponent } from './components/roladminclientes/roladmi
     RoladmingestoresComponent,
     VistarolfacturadorComponent,
     RoladminfacturadoresComponent,
-    RoladminclientesComponent
+    RoladminclientesComponent,
+    RoladminempresasComponent
   ],
   imports: [
     BrowserModule,
