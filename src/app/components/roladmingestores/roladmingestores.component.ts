@@ -3,10 +3,11 @@ import { Title } from '@angular/platform-browser';
 
 //LLamando al modelo
 import { Usuario }  from  'src/app/models/usuarios.model';
-//Llamando al servicio 
+//Llamando al servicio
 import { AdminUsuariosService} from 'src/app/services/admin-usuarios.service';
 //Llamando al token
 import { UsuarioService } from 'src/app/services/usuario.service';
+/* rol admin gestores */
 
 
 @Component({
@@ -28,12 +29,12 @@ export class RoladmingestoresComponent implements OnInit {
     private titleService: Title,
     private _adminUsuariosService:AdminUsuariosService,
     private _usuarioService:UsuarioService
-  ) 
+  )
   {
     //token
-    this.titleService.setTitle('Rol admin gestor');  
+    this.titleService.setTitle('Rol admin gestor');
     this.token=this._usuarioService.obtenerToken();
-    //AGREGAR 
+    //AGREGAR
     this.UsuarioModelPost = new Usuario("", "", "", "", "", "", 0, "", "", "");
  //VER POR ID
     this.UsuarioModelGetId=new Usuario("", "", "", "", "", "", 0, "", "", "");
@@ -63,7 +64,7 @@ export class RoladmingestoresComponent implements OnInit {
       }
     )
    }
-  
+
 
    //Eliminar Usuarios
    deleteUsuariosRolGestor(idUsuario){
@@ -83,34 +84,34 @@ export class RoladmingestoresComponent implements OnInit {
    getUsuarioId(idUsuario){
 
     this._adminUsuariosService.obtenerRolGestorId(idUsuario, this.token).subscribe(
-  
+
       (response)=>{
         console.log(response);
-  
+
         this.UsuarioModelGetId = response.usuario;
-  
+
       },
-  
+
       (error)=>{
         console.log(error)
-  
+
       }
     )
   }
-  
+
   putUsuarios(){
 
     this._adminUsuariosService.editarRolGestor(this.UsuarioModelGetId, this.token).subscribe(
-  
+
       (response)=>{
-  
+
         console.log(response);
-  
+
         this.getUsuariosRolGestor();
-  
+
       },
-  
-  
+
+
     )
   }
 
