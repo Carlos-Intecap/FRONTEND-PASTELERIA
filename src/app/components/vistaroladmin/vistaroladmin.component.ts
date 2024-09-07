@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 
 
@@ -10,10 +11,16 @@ import { Component, OnInit } from '@angular/core';
 export class VistaroladminComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(
+    private titleService: Title,
+
+  ) {
+    this.titleService.setTitle('ROL ADMIN');
+
+   }
 
   ngOnInit(): void {
   }
-  
+
 
 }

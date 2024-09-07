@@ -7,6 +7,7 @@ export class Empresa{
         public telefono: Number,
         public mision: String,
         public vision: String,
-        public historia: String
+        public historia: String,
+        public idUsuario: String
     ){}
 }

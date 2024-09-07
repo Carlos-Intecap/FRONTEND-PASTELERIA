@@ -1,153 +1,175 @@
 <div class="container">
-    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresa">
-        Agregar
-    </button>
+  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresas">
+    Agregar
+  </button>
     <br>
     <br>
     <div class="row">
-        <div class="col-12 col-md-4" *ngFor="let empresa of EmpresaModelGet">
-            <div class="card text-center mb-3">
-                <div class="card-header">
-                    {{empresa.nombreEmpresa}}
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">ID: {{empresa._id}}</h5>
+      <div class="col-12 col-md-4" *ngFor="let empresa of EmpresaModelGet">
+        <div class="card text-center mb-3">
+          <div class="card-header">
+            {{empresa.nombreEmpresa}}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">ID: {{empresa._id}}</h5>
 
-                    <h5 class="card-title"> direccion: {{empresa.direccion}} </h5>
+            <h5 class="card-title"> Direccion: {{empresa.direccion}} </h5>
 
-                    <h5 class="card-title"> telefono: {{empresa.telefono}} </h5>
+            <h5 class="card-title">  Télefono: {{empresa.telefono}}  </h5>
 
-                    <h5 class="card-title"> mision: {{empresa.mision}} </h5>
+            <h5 class="card-title">  Misión: {{empresa.mision}}  </h5>
 
-                    <h5 class="card-title"> vision: {{empresa.vision}} </h5>
+            <h5 class="card-title">  Visión: {{empresa.vision}}  </h5>
 
-                    <h5 class="card-title"> historia: {{empresa.historia}} </h5>
+            <h5 class="card-title">  Historia: {{empresa.historia}}  </h5>
 
-                    <h5 class="card-title"> idUsuario: {{empresa.idUsuario}} </h5>
+            <h5 class="card-title">  Id usuario: {{empresa.idUsuario}}  </h5>
 
-                    <button type="button" class="btn btn-danger" (click)="deleteEmpresasRolAdmin(empresa._id)">Eliminar</button>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editarEmpresasApp"
-                    aria-controls="offcanvasExample" (click)="getEmpresaIdRolAdmin(empresa._id)">
-                        Editar empresa
-                    </button>
 
-                </div>
+            <button type="button" class="btn btn-danger" (click)="deleteEmpresasRolAdmin(empresa._id)">Eliminar</button>
 
-                <div class="card-footer text-body-secondary">
-                    2 days ago
-                </div>
-            </div>
+            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editarEmpresaApp"
+            aria-controls="offcanvasExample" (click)="getEmpresaId(empresa._id)">
+              Editar
+            </button>
+
+            <br>
+            <button type="button" class="btn btn-primary" aria-controls="offcanvasExample" (click)="getEmpresaId(empresa._id)">
+              Administrar sucursales
+            </button>
+
+          </div>
+
         </div>
+      </div>
     </div>
 
-    <!--Agregar-->
-    <div class="modal fade" id="modalAgregarEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true" #modal>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Empresa</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="inputNombreEmpresa" class="form-label">Nombre de la empresa:</label>
-                            <input type="text" class="form-control" id="inputNombreEmpresa" name="nombreEmpresa" #nombreEmpresa="ngModel"
-                                [(ngModel)]="EmpresaModelPost.nombreEmpresa" autocomplete="off">
 
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputDireccion" class="form-label">Dirección:</label>
-                            <input type="text" id="inputDireccion" class="form-control" autocomplete="off"
-                                placeholder="Ingrese la cantidad" name="direccion" #direccion="ngModel"
-                                [(ngModel)]="EmpresaModelPost.direccion">
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputTelefono" class="form-label">Télefono:</label>
-                            <input type="number" id="inputTelefono" class="form-control" autocomplete="off"
-                                placeholder="Ingrese el precio del producto" name="telefono" #telefono="ngModel"
-                                [(ngModel)]="EmpresaModelPost.telefono">
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputMision" class="form-label">Misión:</label>
-                            <input type="text" id="inputMision" class="form-control" autocomplete="off"
-                                placeholder="Ingrese el precio del producto" name="mision" #mision="ngModel"
-                                [(ngModel)]="EmpresaModelPost.mision">
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputVision" class="form-label">Visión:</label>
-                            <input type="text" id="inputVision" class="form-control" autocomplete="off"
-                                placeholder="Ingrese el precio del producto" name="vision" #vision="ngModel"
-                                [(ngModel)]="EmpresaModelPost.vision">
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputHistoria" class="form-label">Historia:</label>
-                            <input type="text" id="inputHistoria" class="form-control" autocomplete="off"
-                                placeholder="Ingrese el precio del producto" name="historia" #historia="ngModel"
-                                [(ngModel)]="EmpresaModelPost.historia">
-                        </div>
-                    </form>
+    <!-- AGREGAR EMPRESAS -->
+    <div class="modal fade" id="modalAgregarEmpresas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Empresas</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                  <label for="inputNombreEmpresa" class="form-label">Nombre Empresa:</label>
+                  <input type="text" id="inpuNombreEmpresa" class="form-control" autocomplete="off"
+                    placeholder="Ingrese el nombre de la empresa" name="nombreEmpresa" #nombreEmpresa="ngModel" [(ngModel)]="EmpresaModelPost.nombreEmpresa">
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                        (click)="postEmpresaRolAdmin()">Agregar</button>
+
+                <div class="mb-3">
+                  <label for="inputDireccion" class="form-label">Dirección Empresa:</label>
+                  <input type="text" id="inputDireccion" class="form-control" autocomplete="off"
+                    placeholder="Ingrese la direción" name="direccion" #direccion="ngModel" [(ngModel)]="EmpresaModelPost.direccion">
                 </div>
-            </div>
+
+                <div class="mb-3">
+                  <label for="inputTelefono" class="form-label">Télefono Empresa:</label>
+                  <input type="number" id="inputTelefono" class="form-control" autocomplete="off"
+                    placeholder="Ingrese su télefono" name="telefono" #telefono="ngModel" [(ngModel)]="EmpresaModelPost.telefono">
+                </div>
+
+                <div class="mb-3">
+                  <label for="inputMision" class="form-label">Misión:</label>
+                  <input type="text" id="inputMision" class="form-control" autocomplete="off"
+                    placeholder="Ingrese la misión" name="mision" #mision="ngModel" [(ngModel)]="EmpresaModelPost.mision">
+                </div>
+
+                <div class="mb-3">
+                  <label for="inputVision" class="form-label">Visión:</label>
+                  <input type="text" id="inputVision" class="form-control" autocomplete="off"
+                    placeholder="Ingrese la visión" name="vision" #vision="ngModel" [(ngModel)]="EmpresaModelPost.vision">
+                </div>
+
+                <div class="mb-3">
+                  <label for="inputHistoria" class="form-label">Historia:</label>
+                  <input type="text" id="inputHistoria" class="form-control" autocomplete="off"
+                    placeholder="Ingrese la historia" name="historia" #historia="ngModel" [(ngModel)]="EmpresaModelPost.historia">
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postEmpresaRolAdmin()">Agregar</button>
+          </div>
         </div>
+      </div>
     </div>
 
-    <!--Editar-->
 
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="editarEmpresasApp" aria-labelledby="offcanvasExampleLabel">
+
+      <!--Editar-->
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="editarEmpresaApp" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar empresa</h5>
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Empresas</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <form>
-          
+
             <div class="mb-3">
-                <label for="editarNombreEmpresa" class="form-label">Nombre de la empresa:</label>
-                <input type="text" class="form-control" id="editarNombreEmpresa" name="nombreEmpresa" #nombreEmpresa="ngModel"
-                    [(ngModel)]="EmpresaModelGetId.nombreEmpresa" autocomplete="off">
+              <label for="editarNombreEmpresa" class="form-label">Nombre Empresa</label>
+              <input type="text" class="form-control" id="editarNombreEmpresa" name="nombre" #nombre="ngModel" [(ngModel)]="EmpresaModelGetId.nombreEmpresa"
+               autocomplete="off">
 
             </div>
+
             <div class="mb-3">
-                <label for="editarDireccion" class="form-label">Dirección:</label>
-                <input type="text" id="editarDireccion" class="form-control" autocomplete="off"
-                    placeholder="Ingrese la cantidad" name="direccion" #direccion="ngModel"
-                    [(ngModel)]="EmpresaModelGetId.direccion">
+              <label for="editarDireccion" class="form-label">Dirección Empresa</label>
+              <input type="text" class="form-control" id="editarDireccion" name="direccion" #direccion="ngModel" [(ngModel)]="EmpresaModelGetId.direccion"
+               autocomplete="off">
+
             </div>
+
+
             <div class="mb-3">
-                <label for="editarTelefono" class="form-label">Télefono:</label>
-                <input type="number" id="editarTelefono" class="form-control" autocomplete="off"
-                    placeholder="Ingrese el precio del producto" name="telefono" #telefono="ngModel"
-                    [(ngModel)]="EmpresaModelGetId.telefono">
+              <label for="editarTelefono" class="form-label">Télefono Empresa</label>
+              <input type="text" class="form-control" id="editarTelefono" name="telefono" #telefono="ngModel" [(ngModel)]="EmpresaModelGetId.telefono"
+               autocomplete="off">
+
             </div>
+
+
             <div class="mb-3">
-                <label for="editarMision" class="form-label">Misión:</label>
-                <input type="text" id="editarMision" class="form-control" autocomplete="off"
-                    placeholder="Ingrese el precio del producto" name="mision" #mision="ngModel"
-                    [(ngModel)]="EmpresaModelGetId.mision">
+
+
+              <label for="editarMision" class="form-label">Télefono Empresa</label>
+              <input type="text" class="form-control" id="editarMision" name="mision" #mision="ngModel" [(ngModel)]="EmpresaModelGetId.mision"
+               autocomplete="off">
+
             </div>
+
+
             <div class="mb-3">
-                <label for="editarVision" class="form-label">Visión:</label>
-                <input type="text" id="editarVision" class="form-control" autocomplete="off"
-                    placeholder="Ingrese el precio del producto" name="vision" #vision="ngModel"
-                    [(ngModel)]="EmpresaModelGetId.vision">
+
+
+              <label for="editarVision" class="form-label">Visión Empresa</label>
+              <input type="text" class="form-control" id="editarVision" name="vision" #vision="ngModel" [(ngModel)]="EmpresaModelGetId.vision"
+               autocomplete="off">
+
             </div>
+
+
+
             <div class="mb-3">
-                <label for="editarHistoria" class="form-label">Historia:</label>
-                <input type="text" id="editarHistoria" class="form-control" autocomplete="off"
-                    placeholder="Ingrese el precio del producto" name="historia" #historia="ngModel"
-                    [(ngModel)]="EmpresaModelGetId.historia">
+
+
+              <label for="editarHistoria" class="form-label">Historia Empresa</label>
+              <input type="text" class="form-control" id="editarHistoria" name="historia" #historia="ngModel" [(ngModel)]="EmpresaModelGetId.historia"
+               autocomplete="off">
+
             </div>
-            <br>
-            <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putEmpresas()">Editar Empresa</button>
-      
-          
+
+                <br>
+
+                <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putEmpresas()">Editar Empresas</button>
+
+
           </form>
         </div>
       </div>
