@@ -150,7 +150,7 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
 
   }
 
-  /* ADMINISTRACION DE EMPRESAS */
+  /* --------------- ADMINISTRACION DE EMPRESAS ----------------- */
   /*No 1. Ver a las empresas con rol admin*/
   getEmpresasRolAdmin(token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
@@ -196,6 +196,17 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
 
     return this._http.put(this.url + '/editarEmpresaRolAdmin/' + modeloEmpresa._id, parametros, { headers: headersToken });
+
+  }
+
+  /* ADMINISTRACION DE SUCURSALES */
+
+
+  obtenerSucursalEmpresaId(idEmpresa, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.get(this.url + '/verSucursalPorEmpresa/' + idEmpresa, { headers: headersToken });
 
   }
 
