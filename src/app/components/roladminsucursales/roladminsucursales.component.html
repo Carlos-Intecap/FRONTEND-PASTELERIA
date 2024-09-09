@@ -5,17 +5,17 @@
       <br>
       <br>
       <div class="row">
-        <div class="col-12 col-md-4" *ngFor="let sucursal of SucursalesModelGet">
+        <div class="col-12 col-md-4" *ngFor="let sucursal of SucursalModelGet">
           <div class="card text-center mb-3">
             <div class="card-header">
               {{sucursal.nombreSucursal}}
             </div>
             <div class="card-body">
               <h5 class="card-title">ID: {{sucursal._id}}</h5>
-  
+              <h5 class="card-title">ID Empresa: {{sucursal.idEmpresa}}</h5>
               <h5 class="card-title"> Direccion: {{sucursal.direccionSucursal}} </h5>
-
-              <h5 class="card-title"> Télefono: {{sucursal.telefonoSucursal}} </h5>
+              
+              <h5 class="card-title">Télefono: {{sucursal.telefonoSucursal}} </h5>
               <h5 class="card-title">Nombre: {{ sucursal.gestorSucursales[0].nombre }}</h5>
               <h5 class="card-title">Apellido: {{ sucursal.gestorSucursales[0].apellido }}</h5>
               <h5 class="card-title">Email: {{ sucursal.gestorSucursales[0].email }}</h5>
@@ -26,12 +26,12 @@
         </div>
       </div>
   
-  <!---
+  
       <div class="modal fade" id="modalAgregarSucursales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Sucursales</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar sucursales</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -55,21 +55,15 @@
                   </div>
   
                   <div class="mb-3">
-                    <label for="inputIdEmpresa" class="form-label">ID Empresa:</label>
-                    <input type="text" id="inputIdEmpresa" class="form-control" autocomplete="off"
-                      placeholder="Ingrese la ID de la empresa" name="idEmpresa" #idEmpresa="ngModel" [(ngModel)]="SucursalModelPost.idEmpresa">
-                  </div>
-  
-                  <div class="mb-3">
-                    <label for="inputGestorSucursales" class="form-label">Gestor de sucursales:</label>
-                    <input type="text" id="inputGestorSucursales" class="form-control" autocomplete="off"
-                      placeholder="Ingrese el gestor de sucursales" name="gestorEmpresa" #gestorEmpresa="ngModel" [(ngModel)]="SucursalModelPost.gestorSucursales">
+                    <label for="inputEmail" class="form-label">Email:</label>
+                    <input type="text" id="inputEmail" class="form-control" autocomplete="off"
+                      placeholder="Ingrese el email del gestor" name="email" #email="ngModel" [(ngModel)]="SucursalModelPost.gestorSucursales[0].email">
                   </div>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postSucursalRolAdmin()">Agregar</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postSucursalPorEmpresa()">Agregar</button>
             </div>
           </div>
         </div>
@@ -78,6 +72,7 @@
   
   
        
+      <!--
         <div class="offcanvas offcanvas-start" tabindex="-1" id="editarEmpresaApp" aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Empresas</h5>

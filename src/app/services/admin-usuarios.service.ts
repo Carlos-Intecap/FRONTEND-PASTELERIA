@@ -200,23 +200,14 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
 
   }
 
-  /* ADMINISTRACION DE SUCURSALES */
+  /* --------------- ADMINISTRACION DE SUCURSALES ----------------- */
   getSucursalesRolAdmin(token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
     return this._http.get(this.url + '/verSucursalRolAdmin', { headers: headersToken });
   }
 
 
-  /* Agregar sucursal */
-  agregarSucursalesRolAdmin(modeloSucursal: Sucursal, token): Observable<any> {
-
-    let headersToken = this.headersVariable.set('Authorization', token)
-
-    let parametros = JSON.stringify(modeloSucursal);
-
-    return this._http.post(this.url + '/agregarSucursal', parametros, { headers: headersToken });
-
-  }
+  
 
 
   /* Eliminar sucursal*/
@@ -264,4 +255,18 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
 
     return this._http.get(this.url+ '/verSucursalPorEmpresa/' + idEmpresa, { headers: headersToken})
   }
+
+  /* Agregar sucursal */
+  agregarSucursalesIdEmpresa(modeloSucursal: Sucursal, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    let parametros = JSON.stringify(modeloSucursal);
+
+    return this._http.post(this.url + '/agregarSucursal' , parametros, { headers: headersToken });
+
+  }
+
+
+
 }
