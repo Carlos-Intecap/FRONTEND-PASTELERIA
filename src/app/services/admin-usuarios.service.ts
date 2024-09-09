@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from '../models/usuarios.model';
 import { Empresa } from '../models/empresa.model';
+import { Sucursal } from '../models/sucursal.model';
 
 @Injectable({
   providedIn: 'root'
@@ -200,13 +201,58 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
   }
 
   /* ADMINISTRACION DE SUCURSALES */
+  getSucursalesRolAdmin(token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/verSucursalRolAdmin', { headers: headersToken });
+  }
 
 
-  obtenerSucursalEmpresaId(idEmpresa, token): Observable<any> {
+  /* Agregar sucursal */
+  agregarSucursalesRolAdmin(modeloSucursal: Sucursal, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    let parametros = JSON.stringify(modeloSucursal);
+
+    return this._http.post(this.url + '/agregarSucursal', parametros, { headers: headersToken });
+
+  }
+
+
+  /* Eliminar sucursal*/
+  eliminarSucursalesRolAdmin(idSucursal, token) {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.delete(this.url + '/eliminarSucursalRolAdmin/' + idSucursal, { headers: headersToken });
+
+  }
+
+
+  obtenerSucursalEmpresaId(idSucursal, token): Observable<any> {
 
     let headersToken = this.headersVariable.set('Authorization', token);
 
-    return this._http.get(this.url + '/verSucursalPorEmpresa/' + idEmpresa, { headers: headersToken });
+    return this._http.get(this.url + '/verSucursalPorEmpresa/' + idSucursal, { headers: headersToken });
+
+  }
+
+  /* ver empresas por id */
+
+  obtenerSucursalRolId(idSucursal, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.get(this.url + '/verSucursalIDRolAdmin/' + idSucursal, { headers: headersToken });
+
+  }
+
+  /* Editar sucursal */
+  editarSucursalRolAdmin(modeloSucursal: Sucursal, token): Observable<any> {
+
+    let parametros = JSON.stringify(modeloSucursal);
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.put(this.url + '/editarSucursalRolAdmin/' + modeloSucursal._id, parametros, { headers: headersToken });
 
   }
 

@@ -1,1 +1,132 @@
-<p>roladminsucursales works!</p>
+<div class="container">
+    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarSucursales">
+      Agregar
+    </button>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-12 col-md-4" *ngFor="let sucursal of SucursalModelGet">
+          <div class="card text-center mb-3">
+            <div class="card-header">
+              {{sucursal.nombreSucursal}}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">ID: {{sucursal._id}}</h5>
+  
+              <h5 class="card-title"> Direccion: {{sucursal.direccionSucursal}} </h5>
+  
+              <h5 class="card-title">  Télefono: {{sucursal.telefonoSucursal}}  </h5>
+  
+              <h5 class="card-title">  ID Empresa: {{sucursal.idEmpresa}}  </h5>
+  
+              <h5 class="card-title">  Gestor de Sucursales {{sucursal.gestorSucursales}}  </h5>
+  
+              <button type="button" class="btn btn-danger" (click)="deleteSucursalesRolAdmin(sucursal._id)">Eliminar</button>
+  
+              <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editarEmpresaApp"
+              aria-controls="offcanvasExample" (click)="getSucursalIdRolAdmin(sucursal._id)">
+                Editar
+              </button>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+      <!-- AGREGAR EMPRESAS -->
+      <div class="modal fade" id="modalAgregarSucursales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Sucursales</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                  <div class="mb-3">
+                    <label for="inputNombreSucursal" class="form-label">Nombre:</label>
+                    <input type="text" id="inputNombreSucursal" class="form-control" autocomplete="off"
+                      placeholder="Ingrese el nombre de la sucursal" name="nombreSucursal" #nombreSucursal="ngModel" [(ngModel)]="SucursalModelPost.nombreSucursal">
+                  </div>
+  
+                  <div class="mb-3">
+                    <label for="inputDireccion" class="form-label">Dirección:</label>
+                    <input type="text" id="inputDireccion" class="form-control" autocomplete="off"
+                      placeholder="Ingrese la direción" name="direccion" #direccion="ngModel" [(ngModel)]="SucursalModelPost.direccionSucursal">
+                  </div>
+  
+                  <div class="mb-3">
+                    <label for="inputTelefono" class="form-label">Télefono:</label>
+                    <input type="number" id="inputTelefono" class="form-control" autocomplete="off"
+                      placeholder="Ingrese el télefono de la sucursal" name="telefono" #telefono="ngModel" [(ngModel)]="SucursalModelPost.telefonoSucursal">
+                  </div>
+  
+                  <div class="mb-3">
+                    <label for="inputIdEmpresa" class="form-label">ID Empresa:</label>
+                    <input type="text" id="inputIdEmpresa" class="form-control" autocomplete="off"
+                      placeholder="Ingrese la ID de la empresa" name="idEmpresa" #idEmpresa="ngModel" [(ngModel)]="SucursalModelPost.idEmpresa">
+                  </div>
+  
+                  <div class="mb-3">
+                    <label for="inputGestorSucursales" class="form-label">Gestor de sucursales:</label>
+                    <input type="text" id="inputGestorSucursales" class="form-control" autocomplete="off"
+                      placeholder="Ingrese el gestor de sucursales" name="gestorEmpresa" #gestorEmpresa="ngModel" [(ngModel)]="SucursalModelPost.gestorSucursales">
+                  </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postSucursalRolAdmin()">Agregar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+  
+        <!--Editar-->
+  
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="editarEmpresaApp" aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Empresas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <form>
+  
+              <div class="mb-3">
+                <label for="editarNombreEmpresa" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="editarNombreEmpresa" name="nombreSucursal" #nombreSucursal="ngModel" [(ngModel)]="SucursalModelGetId.nombreSucursal"
+                 autocomplete="off">
+              </div>
+  
+              <div class="mb-3">
+                <label for="editarDireccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="editarDireccion" name="direccion" #direccion="ngModel" [(ngModel)]="SucursalModelGetId.direccionSucursal"
+                 autocomplete="off">
+              </div>
+  
+              <div class="mb-3">
+                <label for="editarTelefono" class="form-label">Télefono</label>
+                <input type="text" class="form-control" id="editarTelefono" name="telefono" #telefono="ngModel" [(ngModel)]="SucursalModelGetId.telefonoSucursal"
+                 autocomplete="off">
+              </div>
+  
+              <div class="mb-3">
+                <label for="editarIdEmpresa" class="form-label">ID Empresa</label>
+                <input type="text" class="form-control" id="editarIdEmpresa" name="mision" #mision="ngModel" [(ngModel)]="SucursalModelGetId.idEmpresa"
+                 autocomplete="off">
+              </div>
+
+              <div class="mb-3">
+                <label for="editarGestorSucursales" class="form-label">Gestor de sucursales</label>
+                <input type="text" class="form-control" id="editarGestorSucursales" name="vision" #vision="ngModel" [(ngModel)]="SucursalModelGetId.gestorSucursales"
+                 autocomplete="off">
+              </div>
+              <br>
+              <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putSucursales()">Editar sucursal</button>
+  
+            </form>
+          </div>
+        </div>
