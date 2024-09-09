@@ -1,3 +1,25 @@
 a {
   color: black;
 }
+
+
+#menu {
+  // background-color: #ffc7de;
+
+  background-color: #ffc7de;
+
+}
+.menu-hamburguesa{
+  color: #e40f56;
+}
+
+#menu .nav-link,
+#menu .navbar-brand {
+  color: #e40f56; /* Color de texto en hover (opcional) */
+  ;/* Color de texto blanco */
+}
+
+#menu .nav-link:hover,
+#menu .navbar-brand:hover {
+  color:  #8d002f; /* Color de texto en hover (opcional) */
+}
