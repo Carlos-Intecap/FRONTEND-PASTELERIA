@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'roladminclientes', component: RoladminclientesComponent},
   { path: 'roladminempresas', component: RoladminempresasComponent},
   /* todavia no se esta usando */
-  { path: 'roladminsucursales', component: RoladminsucursalesComponent}
+  { path: 'roladminsucursales/:idEmpresa', component: RoladminsucursalesComponent}
 
 ];
 

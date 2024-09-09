@@ -40,7 +40,7 @@ export class RoladminempresasComponent implements OnInit {
   getEmpresasRolAdmin(){
     this._adminUsuariosService.getEmpresasRolAdmin(this.token).subscribe(
       (response)=>{
-        this.EmpresaModelGet=response.Empresas;
+        this.EmpresaModelGet=response.empresas;
         console.log(this.EmpresaModelGet);
       },(error)=>{
         console.log(<any>error);
@@ -87,7 +87,7 @@ export class RoladminempresasComponent implements OnInit {
         (response)=>{
           console.log(response);
 
-          this.EmpresaModelGetId = response.Empresas;
+          this.EmpresaModelGetId = response.empresas;
 
         },
 

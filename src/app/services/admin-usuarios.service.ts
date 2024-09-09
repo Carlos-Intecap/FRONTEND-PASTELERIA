@@ -256,4 +256,12 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
 
   }
 
+//VER SUCURSALES POR ID DE LA EMPRESA
+  
+  ObtenerSucursalesIdEmpresa(idEmpresa, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token )
+
+    return this._http.get(this.url+ '/verSucursalPorEmpresa/' + idEmpresa, { headers: headersToken})
+  }
 }

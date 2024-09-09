@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 //LLamando al modelo
-import { Usuario }  from  'src/app/models/usuarios.model';
+import { Empresa }  from  'src/app/models/empresa.model';
 //Llamando al servicio
 import { AdminUsuariosService} from 'src/app/services/admin-usuarios.service';
 //Llamando al token
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Sucursal} from 'src/app/models/sucursal.model'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-roladminsucursales',
@@ -17,25 +18,37 @@ import { Sucursal} from 'src/app/models/sucursal.model'
 })
 export class RoladminsucursalesComponent implements OnInit {
 
-  public token;
 
-  public idEmpresa;
+
+
+
+  
+  public token;
+  public EmpresaModelGetId: Empresa;
+
+  public SucursalesModelGet: Sucursal;
+
+  //public idEmpresa;
   //Ver
-  public SucursalModelGet: Sucursal;
+  //public SucursalModelGet: Sucursal;
   //Agregar
-  public SucursalModelPost: Sucursal;
+  //public SucursalModelPost: Sucursal;
   //Ver por Id
-  public SucursalModelGetId: Sucursal;
+  //public SucursalModelGetId: Sucursal;
+
+
   constructor(
-    private titleService: Title,
+
+    public _activatedRoute: ActivatedRoute,
+   private titleService: Title,
     private _adminUsuariosService:AdminUsuariosService,
     private _usuarioService:UsuarioService
 
   ) {
      //token
-     this.titleService.setTitle('Rol admin gestor');
+   this.titleService.setTitle('Rol admin sucursales');
      this.token=this._usuarioService.obtenerToken();
-     this.SucursalModelGetId = new Sucursal(
+     /*this.SucursalModelGetId = new Sucursal(
       "",
       "",
       "",
@@ -48,25 +61,39 @@ export class RoladminsucursalesComponent implements OnInit {
         email: "",
         rol: ""
       }],
-    );
-    this.SucursalModelPost = new Sucursal(
-      "",
-      "",
-      "",
-      0,
-      "",
-      [{
-        idUsuario: "",
-        nombre: "",
-        apellido: "",
-        email: "",
-        rol: ""
-      }],
-    );
+    );*/
+  
 
   }
+
+  ngOnInit(): void {
+    this._activatedRoute.paramMap.subscribe((dataRuta)=>{
+      console.log(dataRuta.get('idEmpresa'));
+
+      this. getSucursalesPorEmpresa(dataRuta.get('idEmpresa'))
+
+      //this.getProductoSucursal(dataRuta.get('idSucursal'))
+      //this.getProductosSucursales();
+
+    })
+  }
+
+  getSucursalesPorEmpresa(idSucursal){
+    this._adminUsuariosService.ObtenerSucursalesIdEmpresa(idSucursal, this.token).subscribe(
+      (response)=>{
+        this.SucursalesModelGet = response.sucursales;
+        console.log(this.SucursalesModelGet)
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+  };
+   // ver empresas rol id empresa
+ 
+ 
   //Ver Sucursales
-  getSucursalesRolAdmin(){
+  /*getSucursalesRolAdmin(){
     this._adminUsuariosService.getEmpresasRolAdmin(this.token).subscribe(
       (response)=>{
         this.SucursalModelGet=response.sucursales;
@@ -75,10 +102,10 @@ export class RoladminsucursalesComponent implements OnInit {
         console.log(<any>error);
       }
     )
-  }
+  }*/
 
   //Agregar Sucursales
-  postSucursalRolAdmin(){
+ /*postSucursalRolAdmin(){
     this._adminUsuariosService.agregarSucursalesRolAdmin(this.SucursalModelPost, this._usuarioService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
@@ -88,10 +115,10 @@ export class RoladminsucursalesComponent implements OnInit {
         console.log(<any>error);
       }
     )
-   }
+   }*/
 
    // Eliminar Sucursales
-   deleteSucursalesRolAdmin(idSucursal){
+   /*deleteSucursalesRolAdmin(idSucursal){
 
     this._adminUsuariosService.eliminarSucursalesRolAdmin(idSucursal,this.token).subscribe(
       (response)=>{
@@ -103,7 +130,7 @@ export class RoladminsucursalesComponent implements OnInit {
         console.log(<any>error);
       }
     )
-   }
+   }*/
 
   /*
 getSucursalId(idEmpresa){
@@ -124,7 +151,7 @@ getSucursalId(idEmpresa){
     )
   } */
 
-    getSucursalIdRolAdmin(idSucursal){
+    /*getSucursalIdRolAdmin(idSucursal){
       this._adminUsuariosService.obtenerSucursalRolId(idSucursal, this.token).subscribe(
         (response)=>{
           console.log(response);
@@ -133,11 +160,11 @@ getSucursalId(idEmpresa){
           console.log(error)
         }
       )
-    }
+    }*/
 
     // Editar sucursales
 
-    putSucursales(){
+   /* putSucursales(){
 
       this._adminUsuariosService.editarSucursalRolAdmin(this.SucursalModelGetId, this.token).subscribe(
         (response)=>{
@@ -145,9 +172,7 @@ getSucursalId(idEmpresa){
           this.getSucursalesRolAdmin();
         }
       )
-    }
+    }*/
 
-  ngOnInit(): void {
-    this.getSucursalesRolAdmin();
-  }
+  
 }

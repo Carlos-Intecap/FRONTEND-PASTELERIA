@@ -1,11 +1,11 @@
 <div class="container">
     <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarSucursales">
-      Agregar
+      Agregar sucursal
     </button>
       <br>
       <br>
       <div class="row">
-        <div class="col-12 col-md-4" *ngFor="let sucursal of SucursalModelGet">
+        <div class="col-12 col-md-4" *ngFor="let sucursal of SucursalesModelGet">
           <div class="card text-center mb-3">
             <div class="card-header">
               {{sucursal.nombreSucursal}}
@@ -14,27 +14,19 @@
               <h5 class="card-title">ID: {{sucursal._id}}</h5>
   
               <h5 class="card-title"> Direccion: {{sucursal.direccionSucursal}} </h5>
-  
-              <h5 class="card-title">  Télefono: {{sucursal.telefonoSucursal}}  </h5>
-  
-              <h5 class="card-title">  ID Empresa: {{sucursal.idEmpresa}}  </h5>
-  
-              <h5 class="card-title">  Gestor de Sucursales {{sucursal.gestorSucursales}}  </h5>
-  
-              <button type="button" class="btn btn-danger" (click)="deleteSucursalesRolAdmin(sucursal._id)">Eliminar</button>
-  
-              <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editarEmpresaApp"
-              aria-controls="offcanvasExample" (click)="getSucursalIdRolAdmin(sucursal._id)">
-                Editar
-              </button>
-              <br>
+
+              <h5 class="card-title"> Télefono: {{sucursal.telefonoSucursal}} </h5>
+              <h5 class="card-title">Nombre: {{ sucursal.gestorSucursales[0].nombre }}</h5>
+              <h5 class="card-title">Apellido: {{ sucursal.gestorSucursales[0].apellido }}</h5>
+              <h5 class="card-title">Email: {{ sucursal.gestorSucursales[0].email }}</h5>
+              <h5 class="card-title">Rol: {{ sucursal.gestorSucursales[0].rol }}</h5>
+
             </div>
           </div>
         </div>
       </div>
   
-  
-      <!-- AGREGAR EMPRESAS -->
+  <!---
       <div class="modal fade" id="modalAgregarSucursales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
         <div class="modal-dialog">
           <div class="modal-content">
@@ -85,8 +77,7 @@
   
   
   
-        <!--Editar-->
-  
+       
         <div class="offcanvas offcanvas-start" tabindex="-1" id="editarEmpresaApp" aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Empresas</h5>
@@ -129,4 +120,4 @@
   
             </form>
           </div>
-        </div>
+        </div>-->
