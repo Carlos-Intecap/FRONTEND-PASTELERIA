@@ -1,15 +1,20 @@
 <div class="container">
-  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarGestor">
-    Agregar
+  <br>
+  <br>  
+  <button class="btn btn-outline-primary rounded-pill" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarGestor">
+    <img  src="../../../assets/img/agregarpersona.svg" class="m-2" id="imagen-usuario"  id="icono-editar">
   </button>
     <br>
     <br>
-    <div class="row">
+    <div class="row py-5">
       <div class="col-12 col-md-4" *ngFor="let gestor of UsuarioModelGet">
-        <div class="card text-center mb-3">
-          <div class="card-header">
+        <div class="card text-center mb-3 ">
+          <div class="card-header pink-header">
             {{gestor.nombre}}  {{ gestor.apellido}}
           </div>
+
+          <img  src="../../../assets/img/usuarioclick&cake.png" id="imagen-usuario">
+
           <div class="card-body">
             <h5 class="card-title">ID: {{gestor._id}}</h5>
 
@@ -28,15 +33,16 @@
 
 
 
-            <button type="button" class="btn btn-danger" (click)="deleteUsuariosRolGestor(gestor._id)">Eliminar</button>
-            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editarGestoresApp"
-            aria-controls="offcanvasExample" (click)="getUsuarioId(gestor._id)">
-              Editar gestores
+            <button type="button" class="btn btn-outline-danger w-25" (click)="deleteUsuariosRolGestor(gestor._id)" >
+             <img src="../../../assets/img/trash.svg" alt=""   id="icono-editar">
+            </button>
+            <button type="button" class="btn btn-outline-warning mx-3 my-2 w-25" data-bs-toggle="offcanvas" data-bs-target="#editarGestoresApp"
+            aria-controls="offcanvasExample" (click)="getUsuarioI0d(gestor._id)"   >
+              
+            <img src="../../../assets/img/editaricono.png" alt=""  id="icono-editar" class="">
             </button>
           </div>
-          <div class="card-footer text-body-secondary">
-            2 days ago
-          </div>
+          
         </div>
       </div>
     </div>
