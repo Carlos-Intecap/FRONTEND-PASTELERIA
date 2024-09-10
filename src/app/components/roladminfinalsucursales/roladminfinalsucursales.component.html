@@ -1,0 +1,67 @@
+<div class="container">
+    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarSucursales">
+      Agregar sucursal
+    </button>
+      <br>
+      <br>
+      <div class="row">
+        <h1> SUCURSALES VISTA </h1>
+        <div class="col-12 col-md-4" *ngFor="let sucursal of SucursalModelGet">
+          <div class="card text-center mb-3">
+            <div class="card-header">
+              {{sucursal.nombreSucursal}}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">ID: {{sucursal._id}}</h5>
+              <h5 class="card-title">ID Empresa: {{sucursal.idEmpresa}}</h5>
+              <h5 class="card-title"> Direccion: {{sucursal.direccionSucursal}} </h5>
+  
+              <h5 class="card-title">Télefono: {{sucursal.telefonoSucursal}} </h5>
+              <h5 class="card-title">Nombre: {{ sucursal.gestorSucursales[0].nombre }}</h5>
+              <h5 class="card-title">Apellido: {{ sucursal.gestorSucursales[0].apellido }}</h5>
+              <h5 class="card-title">Email: {{ sucursal.gestorSucursales[0].email }}</h5>
+              <h5 class="card-title">Rol: {{ sucursal.gestorSucursales[0].rol }}</h5>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+
+        <!--Agregar-->
+     <div class="modal fade" id="modalAgregarSucursales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Nueva Sucursal</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="inputNombreSucursal" class="form-label">Nombre Sucursal:</label>
+                  <input type="text" class="form-control" id="inputNombreSucursal" name="nombre" #nombre="ngModel" [(ngModel)]="SucursalModelPost.nombreSucursal"
+                   autocomplete="off">
+                </div>
+  
+                <div class="mb-3">
+                  <label for="inputDireccion" class="form-label">Direccion sucursal:</label>
+                  <input type="text" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel" [(ngModel)]="SucursalModelPost.direccionSucursal"
+                   autocomplete="off">
+                </div>
+                <div class="mb-3">
+                  <label for="inputTelefono" class="form-label">Télefono</label>
+                  <input type="number" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel" [(ngModel)]="SucursalModelPost.telefonoSucursal"
+                   autocomplete="off">
+                </div>
+  
+                
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postSucursal(idEmpresa, idUsuario)">Agregar</button>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -268,5 +268,23 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
   }
 
 
+  /* ----- SUCURSALES ------------ */
+  ObtenerSucursalesIdGestor(idUsuario, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token )
+
+    return this._http.get(this.url+ '/verSucursalPorGestor/' + idUsuario, { headers: headersToken})
+  }
+
+  /* agregar nueva sucursal por el id_empresa y id_usuario */
+  AgregarNuevaSucursal(modeloSucursal: Sucursal, token: string, idEmpresa: string, idUsuario: string): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    let parametros = JSON.stringify(modeloSucursal);
+
+    // Puedes agregar el idUsuario a la URL si es necesario
+    return this._http.post(this.url + '/agregarSucursalPor/' + idEmpresa + '/' + idUsuario, parametros, { headers: headersToken });
+}
+
+
 
 }
