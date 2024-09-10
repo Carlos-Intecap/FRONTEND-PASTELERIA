@@ -1,1 +1,26 @@
-<a class="nav-link" routerLink="/rolgestorcategorias" routerLinkActive="active">ADMINISTRAR CATEGORIAS</a>
+<div class="container">
+    <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
+      Agregar
+    </button>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-12 col-md-4" *ngFor="let category of categoriasModelGet">
+        <div class="card text-center mb-3">
+          <div class="card-header">
+            {{ category.nombre }}
+          </div>
+          <div class="card-body">
+            <img src="https://cdn7.kiwilimon.com/recetaimagen/16297/8238.jpg" class="card-img" alt="">
+            <h5 class="card-title">ID: {{category._id}}</h5>
+            <p class="card-text">
+              es {{ category.descripcion}} y su administrador {{ category.idAdministrador}}
+            </p>
+            <a href="#" class="btn btn-danger bg-opacity-50">Modificar</a>
+          </div>
+          <div class="card-footer text-body-secondary">
+            5 disponibles
+          </div>
+        </div>
+      </div>
+    </div>
