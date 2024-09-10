@@ -12,6 +12,7 @@ import { RoladminfacturadoresComponent } from './components/roladminfacturadores
 import { RoladminclientesComponent } from './components/roladminclientes/roladminclientes.component';
 import { RoladminsucursalesComponent } from './components/roladminsucursales/roladminsucursales.component';
 import { RoladminempresasComponent } from './components/roladminempresas/roladminempresas.component';
+import { RolgestorcategoriasComponent } from './components/rolgestorcategorias/rolgestorcategorias.component';
 
 const routes: Routes = [
 
@@ -31,7 +32,9 @@ const routes: Routes = [
   { path: 'roladminclientes', component: RoladminclientesComponent},
   { path: 'roladminempresas', component: RoladminempresasComponent},
   /* todavia no se esta usando */
-  { path: 'roladminsucursales/:idEmpresa', component: RoladminsucursalesComponent}
+  { path: 'roladminsucursales/:idEmpresa', component: RoladminsucursalesComponent},
+
+  { path: 'rolgestorcategorias', component: RolgestorcategoriasComponent},
 
 ];
 
