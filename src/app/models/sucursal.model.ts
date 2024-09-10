@@ -5,7 +5,13 @@ export class Sucursal{
     public direccionSucursal: String,
     public telefonoSucursal: Number,
 
-    public idEmpresa: String,
+    public datosEmpresa: [{
+      idEmpresa: String,
+      nombreEmpresa: String,
+      direccion: String,
+      telefono: Number
+    }],
+
     public gestorSucursales: [{
       idUsuario: String,
       nombre: String,
@@ -13,6 +19,9 @@ export class Sucursal{
       email: String,
       rol: String
     }],
+    
+
+
 
   ) {
 

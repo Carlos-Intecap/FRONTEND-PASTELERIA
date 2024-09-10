@@ -9,6 +9,7 @@ import { AdminUsuariosService} from 'src/app/services/admin-usuarios.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Sucursal } from 'src/app/models/sucursal.model'
 import { ActivatedRoute } from '@angular/router';
+import { Usuario } from 'src/app/models/usuarios.model';
 
 @Component({
   selector: 'app-roladminsucursales',
@@ -23,26 +24,41 @@ export class RoladminsucursalesComponent implements OnInit {
   public SucursalModelGet: Sucursal;
   //Agregar
   public SucursalModelPost: Sucursal;
-  //Ver por Id
-  //public SucursalModelGetId: Sucursal;
+  // Administrar usuarios
+  public UsuarioModelGet: Usuario;
+  public UsuarioModelGetId: Usuario;
+  // public idEmpresa;
+  // public idUsuario;
+
 
   constructor(
     
     public _activatedRoute: ActivatedRoute,
     private titleService: Title,
     private _adminUsuariosService:AdminUsuariosService,
-    private _usuarioService:UsuarioService
+    private _usuarioService:UsuarioService,
+
 
   ) {
     //token
     this.titleService.setTitle('Rol admin sucursales');
     this.token=this._usuarioService.obtenerToken();
+    // traerme el id del gestor
+    this.UsuarioModelGetId = new Usuario("", "", "", "", "", "", 0, "", "", "");
+
+    // cambiando el array que no se usara xd
     this.SucursalModelPost = new Sucursal(
       "",
       "",
       "",
       0,
-      "",
+      [{
+
+        idEmpresa: "",
+        nombreEmpresa: "",
+        direccion: "",
+        telefono: 0
+      }],
       [{
         idUsuario: "",
         nombre: "",
@@ -53,15 +69,20 @@ export class RoladminsucursalesComponent implements OnInit {
     );
   }
 
+  // los id se quedan guardados en el local storage y se abriran en la siguiente pagina
   ngOnInit(): void {
-    this._activatedRoute.paramMap.subscribe((dataRuta)=>{
-      console.log(dataRuta.get('idEmpresa'));
-      this.getSucursalesPorEmpresa(dataRuta.get('idEmpresa'))
+    this._activatedRoute.paramMap.subscribe((dataRuta) => {
+      const idEmpresa = dataRuta.get('idEmpresa');
 
-      //this.getProductoSucursal(dataRuta.get('idSucursal'))
-      //this.getProductosSucursales();
+      if (idEmpresa) {
+        localStorage.setItem('idEmpresa', idEmpresa);
+      }
+      
 
-    })
+      console.log(idEmpresa);
+      
+      this.getUsuariosRolGestor();
+    });
   }
 
 
@@ -77,7 +98,40 @@ export class RoladminsucursalesComponent implements OnInit {
     )
   };
 
- postSucursalPorEmpresa(){
+  // ver a los roles gestores
+  getUsuariosRolGestor() {
+    this._adminUsuariosService.getUsuariosRolGestor(this.token).subscribe(
+      (response) => {
+        this.UsuarioModelGet = response.usuario;
+        console.log(this.UsuarioModelGet);
+      }, (error) => {
+        console.log(<any>error);
+      }
+    )
+  }
+
+  // Get usuario por id
+  getUsuarioId(idUsuario) {
+
+    this._adminUsuariosService.obtenerRolGestorId(idUsuario, this.token).subscribe(
+
+      (response) => {
+        console.log(response);
+
+        this.UsuarioModelGetId = response.usuario;
+
+      },
+
+      (error) => {
+        console.log(error)
+
+      }
+    )
+  }
+
+  
+
+  /* postSucursalPorEmpresa(){
     this._adminUsuariosService.agregarSucursalesIdEmpresa(this.SucursalModelPost, this._usuarioService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
@@ -90,7 +144,7 @@ export class RoladminsucursalesComponent implements OnInit {
         console.log(<any>error);
       }
     )
-   }
+   }*/
   
 
    // Eliminar Sucursales

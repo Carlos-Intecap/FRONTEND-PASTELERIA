@@ -19,6 +19,7 @@ import { RoladminclientesComponent } from './components/roladminclientes/roladmi
 import { RoladminsucursalesComponent } from './components/roladminsucursales/roladminsucursales.component';
 import { RoladminempresasComponent } from './components/roladminempresas/roladminempresas.component';
 import { ChartsModule } from '@rinminase/ng-charts';
+import { RoladminfinalsucursalesComponent } from './components/roladminfinalsucursales/roladminfinalsucursales.component';
 
 
 
@@ -36,7 +37,8 @@ import { ChartsModule } from '@rinminase/ng-charts';
     RoladminfacturadoresComponent,
     RoladminclientesComponent,
     RoladminsucursalesComponent,
-    RoladminempresasComponent
+    RoladminempresasComponent,
+    RoladminfinalsucursalesComponent
   ],
   imports: [
     BrowserModule,
