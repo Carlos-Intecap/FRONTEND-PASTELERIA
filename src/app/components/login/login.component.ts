@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/models/usuarios.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
 
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -63,34 +64,39 @@ export class LoginComponent implements OnInit {
     })
   }
 
+
+
   login() {
     this._usuariosService.login(this.usuarioModel, "false").subscribe(
       (response) => {
-
-        // TIRA LA RESPUESTA
         this.getTokenPromesa().then(respuesta => {
+          console.log(response);
+          this._router.navigate(['/vistarolgestor']);
+          localStorage.setItem("identidad", JSON.stringify(response.usuario));
+        });
 
-          /*if (this._usuariosService.obtenerIdentidad().rol === 'ROL_GESTOR') {
-            this._router.navigate(['/vistarolgestor']);
-
-          } else if (this._usuariosService.obtenerIdentidad().rol === 'ROL_ADMIN') {
-            this._router.navigate(['/vistaroladmin']);
-
-          } else if (this._usuariosService.obtenerIdentidad().rol === 'ROL_FACTURADOR') {
-            this._router.navigate(['/vistarolfacturador']);
-          }*/
-
-            this._router.navigate(['/vistarolgestor']);
-          localStorage.setItem("identidad", JSON.stringify(response.usuario))
-
-        })
-
+        Swal.fire({
+          icon: 'success',
+          title: 'Bienvenido',
+          text: 'Logueado exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
       },
-
       (error) => {
         console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: "Contraseña o correo incorrectos",
+          footer: '*Ingrese los datos de nuevo*',
+          showConfirmButton: false,
+          timer: 2500
+        });
       }
-    )
+    );
   }
+
+
+
 
 }

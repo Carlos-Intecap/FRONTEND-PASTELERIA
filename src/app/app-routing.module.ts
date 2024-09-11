@@ -14,6 +14,10 @@ import { RoladminsucursalesComponent } from './components/roladminsucursales/rol
 import { RoladminempresasComponent } from './components/roladminempresas/roladminempresas.component';
 import { RoladminfinalsucursalesComponent } from './components/roladminfinalsucursales/roladminfinalsucursales.component';
 import { RolgestorcategoriasComponent } from './components/rolgestorcategorias/rolgestorcategorias.component';
+import { RoladminusuariosComponent } from './components/roladminusuarios/roladminusuarios.component';
+import { RoladmincategoriasyproductosComponent } from './components/roladmincategoriasyproductos/roladmincategoriasyproductos.component';
+import { RoladmincateComponent } from './components/roladmincate/roladmincate.component';
+import { RolgestorempresasComponent } from './components/rolgestorempresas/rolgestorempresas.component';
 
 const routes: Routes = [
 
@@ -37,7 +41,16 @@ const routes: Routes = [
   { path: 'roladminfinalsucursales/:idUsuario', component: RoladminfinalsucursalesComponent},
 
   //Categorias
+  { path: 'roladminusuarios', component: RoladminusuariosComponent},
+  { path: 'roladmincategoriasyproductos', component: RoladmincategoriasyproductosComponent},
+  { path: 'roladmincategorias', component: RoladmincateComponent},
+
+
+
   { path: 'rolgestorcategorias', component: RolgestorcategoriasComponent},
+
+  { path: 'rolgestorempresas', component: RolgestorempresasComponent}
+
 ];
 
 

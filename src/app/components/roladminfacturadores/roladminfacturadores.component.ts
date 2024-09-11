@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 //LLamando al modelo
@@ -7,6 +7,7 @@ import { Usuario }  from  'src/app/models/usuarios.model';
 import { AdminUsuariosService} from 'src/app/services/admin-usuarios.service';
 //Llamando al token
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -48,17 +49,42 @@ export class RoladminfacturadoresComponent implements OnInit {
     )
   }
 
-  deleteUsuarioRolFacturador(idUsuario){
-    this._adminUsuariosService.eliminarUsuarioRolFacturador(idUsuario,this.token).subscribe(
-      (response)=>{
-        console.log(response);
-
-        this.getUsuariosRolFacturador();
-      },
-      (error)=>{
-        console.log(<any>error);
+  deleteUsuarioRolFacturador(idUsuario) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario confirma, se llama al servicio para eliminar
+        this._adminUsuariosService.eliminarUsuarioRolFacturador(idUsuario, this.token).subscribe(
+          (response) => {
+            console.log(response);
+            this.getUsuariosRolFacturador(); // Actualiza la lista después de eliminar
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminado',
+              text: 'El usuario ha sido eliminado exitosamente.',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          },
+          (error) => {
+            console.log(<any>error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo eliminar el usuario.',
+              showConfirmButton: false,
+              timer: 2500
+            });
+          }
+        );
       }
-    )
+    });
   }
 
 
@@ -68,9 +94,23 @@ postUsuariosRolFacturador(){
     (response)=>{
       console.log(response);
       this.getUsuariosRolFacturador();
+      Swal.fire({
+        icon: 'success',
+        title: 'Exito!',
+        text: 'Usuario agregado exitosamente',
+        showConfirmButton: false,
+        timer: 1500
+      });
     },
-    (error)=>{
+    (error) => {
       console.log(<any>error);
+      Swal.fire({
+        icon: 'error',
+        title: "Datos incompleto o email existente",
+        footer: '*Ingrese los datos de nuevo*',
+        showConfirmButton: false,
+        timer: 2500
+      });
     }
   )
 }
@@ -99,6 +139,23 @@ putUsuarios(){
       console.log(response);
 
       this.getUsuariosRolFacturador();
+      Swal.fire({
+        icon: 'success',
+        title: 'Exito!',
+        text: 'Usuario editado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    },
+    (error) => {
+      console.log(<any>error);
+      Swal.fire({
+        icon: 'error',
+        title: "Email existente",
+        footer: '*Ingrese uno nuevo*',
+        showConfirmButton: false,
+        timer: 2500
+      });
     }
   )
 }

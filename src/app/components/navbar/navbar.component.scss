@@ -10,7 +10,7 @@ a {
 
 }
 .menu-hamburguesa{
-  color: #e40f56;
+  color: #ffc7de;
 }
 
 #menu .nav-link,
@@ -22,4 +22,12 @@ a {
 #menu .nav-link:hover,
 #menu .navbar-brand:hover {
   color:  #8d002f; /* Color de texto en hover (opcional) */
+}
+
+/* Cambiar el color del menú hamburguesa */
+
+
+/* Cambiar el color del icono del menú hamburguesa */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' fill='white'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }

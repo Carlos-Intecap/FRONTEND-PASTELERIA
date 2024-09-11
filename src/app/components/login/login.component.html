@@ -1,114 +1,194 @@
-<!-- <!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iniciar Sesion</title>
+    <link rel="stylesheet" href="login.component.scss">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Playwrite+CU:wght@100..400&family=Sevillana&display=swap"
+        rel="stylesheet">
+    <style>
+        .titulo {
+            font-family: "Josefin Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+        }
 
+        .fondo {
+            background-image: url('../../../assets/img/cupcakeClick.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            backdrop-filter: blur(5px);
+        }
 
+        .verde {
+            color: #375b06;
+            font-family: "Josefin Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 200;
+            font-size: 20px;
+            font-style: oblique;
+        }
+
+        button {
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+            text-align: center;
+            font-weight: bold;
+            padding: 0.7em 2em;
+            border: 3px solid #fb74a2;
+            border-radius: 50px;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+            color: #fb74a2;
+            text-decoration: none;
+            transition: 0.3s ease all;
+            z-index: 1;
+        }
+
+        button:before {
+            transition: 0.5s all ease;
+            border-radius: 50px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            right: 50%;
+            bottom: 0;
+            opacity: 0;
+            content: '';
+            background-color: #ffc7de;
+            z-index: -1;
+        }
+
+        button:hover,
+        button:focus {
+            color: #FF0072;
+        }
+
+        button:hover:before,
+        button:focus:before {
+            transition: 0.5s all ease;
+            left: 0;
+            right: 0;
+            opacity: 1;
+        }
+
+        button:active {
+            transform: scale(0.9);
+        }
+
+        .logo-login {
+            position: absolute;
+            left: 150px;
+            top: 100px;
+            width: 300px;
+        }
+
+        /*Vista laptop / tablet horizontal*/
+        @media (width <=1280px) {
+            .logo-login {
+                position: absolute;
+                left: 50px;
+                top: 50px;
+                width: 300px;
+            }
+        }
+
+        /* Vista Tablet vertical */
+        @media (width <=853px) {
+            .fondo {
+                background-image: url('../../../assets/img/cupcakeClick.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                backdrop-filter: blur(5px);
+            }
+
+            /*.contenedor {*/
+                /* display: flex; */
+                /* flex-direction: column; */
+                /* margin: auto; */
+                /* justify-content: center;*/
+                /*align-items: center; */
+           /* }*/
+
+            .logo-login {
+                /* position: absolute;
+      top: 20px; */
+                /* margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      text-align: center; */
+                width: 300px;
+            }
+        }
+
+        /* Vista telefono */
+        @media (width <=430px) {
+            .fondo {
+                background-image: url('../../../assets/img/cupcakeClick.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                backdrop-filter: blur(5px);
+            }
+
+            .logo-login {
+                position: absolute;
+                left: 130px;
+                top: 20px;
+                width: 200px;
+            }
+
+            .tarjeta-login {
+                transform: scale(0.8);
+            }
+        }
+    </style>
 </head>
-<br>
-<br>
-
-<body>
-    <main class="pt-4">
-        <div class="container align-items-center col-12 col-md-4">
-            <div class="modal-header bg-black text-white d-flex justify-content-center">
-                <h5 class="modal-title text-center" id="exampleModalLabel">Login</h5>
-            </div>
-
-            <form class=" bg-dark container py4 pb-4 rounded  align-content-center was-validated">
-                <div class="mb-3 pt-4">
-                    <label for="user" class="form-label text-white"><i class="fas fa-user"></i>  Usuario:</label>
-                    <input type="text" autocomplete ="off" class="form-control" name="email" id="inputEmail" required>
-                </div>
-
+<body class="fondo">
+    <div class="contenedor">
+        <img src="../../../assets/img/logo_empresa2.png" alt="" width="300px" class="logo-login">
+        <main class="d-flex justify-content-center align-items-center tarjeta-login" style="height: 100vh;">
+            <div class="container rounded p-4" style="width: 50vh; border: solid 3px #ffc7de; font-weight: bold;">
+                <h2 class="text-center mb-4 titulo" style="color: #fb74a2;">INICIAR SESIÓN</h2>
                 <div class="mb-3">
-                    <label for="pass" class="form-label text-white"><i class="fas fa-unlock-alt"></i>   Contraseña:</label>
-                    <input type="password" autocomplete ="off" class="form-control" name="password" id="inputPassword"required>
+                    <label for="email" class="form-label verde"><i class="fas fa-unlock-alt"></i>Email</label>
+                    <input class="form-control" type="email" placeholder="Ingrese su email"
+                        style="background-color: #ffc7de; border: 3px solid #fb74a2;" id="email"  name="email" #email="ngModel" 
+                        [(ngModel)]="usuarioModel.email" required autocomplete="off">
                 </div>
-
-                <input type="hidden" name="accion" value="validar">
-                <div class="modal-footer d-flex justify-content-center">
-                    <button type="submit" class="btn btn-danger py-3 rounded-pill">Iniciar Sesion</button>
-                </div>
--->
-
-                <!--
-                <div class="d-flex align-items-center justify-content-center pb-4">
-
-                  <p class="mb-0 me-2 text-light"> ¿No tienes una cuenta? <a id="registrar"
-                      routerLink="/registrar">Registrate aquí</a></p>
-                </div>
-
-                -->
-
-<!--
-            </form>
-        </div>
-
-    </main>
-
-</body>
-
-</html>-->
-
-
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-</head>
-<br>
-<br>
-
-<body>
-    <main class="pt-4">
-        <div class="container align-items-center col-12 col-md-4">
-            <div class="modal-header bg-black text-white d-flex justify-content-center">
-                <h5 class="modal-title text-center" id="exampleModalLabel">Login</h5>
-            </div>
-
-            <form class=" bg-dark container py4 pb-4 rounded  align-content-center was-validated">
-                <div class="mb-3 pt-4">
-                    <label for="user" class="form-label text-white"><i class="fas fa-user"></i>  Email:</label>
-                    <input type="text" autocomplete ="off" class="form-control" id="email"  name="email" #email="ngModel" 
-                    [(ngModel)]="usuarioModel.email" required>
-                </div>
-
                 <div class="mb-3">
-                    <label for="pass" class="form-label text-white"><i class="fas fa-unlock-alt"></i>   Pasword:</label>
-                    <input type="password" autocomplete ="off" class="form-control" name="password" id="password" #password="ngModel" 
-                    [(ngModel)]="usuarioModel.password" required>
-
+                    <label for="password" class="form-label verde"><i class="fas fa-unlock-alt"></i>Contraseña</label>
+                    <input class="form-control " type="password" id="password" placeholder="Ingrese su contraseña"
+                        style="background-color: #ffc7de; border: 3px solid #fb74a2;" id="password" #password="ngModel"[(ngModel)]="usuarioModel.password" required autocomplete="off">
                 </div>
-
-                <input type="hidden" name="accion" value="validar">
-                <div class="modal-footer d-flex justify-content-center">
-                    <button type="submit" class="btn btn-danger py-3 rounded-pill"(click)="login()">Iniciar Sesion</button>
+                <div class="text-center"><button class="rounded-pill text-black" type="submit"(click)="login()">Iniciar Sesion</button>
                 </div>
+                <hr>
+                <div class="verde">¿No tienes cuenta? ¡puedes crear una!</div>
+                <div class="text-center"><a href="crear_cuenta.html"><button class="rounded-pill mt-3 text-black">Crear
+                            Cuenta Nueva</button></a></div>
+            </div>
+        </main>
+    </div>
 
 
-                <!--
-                <div class="d-flex align-items-center justify-content-center pb-4">
-
-                  <p class="mb-0 me-2 text-light"> ¿No tienes una cuenta? <a id="registrar"
-                      routerLink="/registrar">Registrate aquí</a></p>
-                </div>
-
-                -->
-
-
-            </form>
-        </div>
-
-    </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
