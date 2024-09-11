@@ -1,0 +1,89 @@
+<div class="container">
+    <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarCategoria">
+        Agregar categoría
+    </button>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-12 col-md-4" *ngFor="let category of CategoriasModelGet">
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    {{ category.nombreCategoria }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">ID: {{category._id}}</h5>
+                    <h5 class="card-title">Descripción: {{category.descripcionCategoria}}</h5>
+                    <h5 class="card-title">ID Usuario: {{category.idUsuario}}</h5>
+
+                    <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
+                        data-bs-target="#editarCategoriasApp" aria-controls="offcanvasExample"
+                        (click)="getCategoriaId(category._id)">Editar</button>
+                    <button type="button" class="btn btn-danger"
+                        (click)="deleteCategorias(category._id)">Eliminar</button>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    2 days ago
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Agregar-->
+    <div class="modal fade" id="modalAgregarCategoria" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" #modal>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar categoría</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label">Nombre:</label>
+                            <input type="text" id="inputNombre" class="form-control" autocomplete="off"
+                                placeholder="Ingrese el nombre de la categoría" name="nombre" #nombre="ngModel"
+                                [(ngModel)]="CategoriasModelPost.nombreCategoria">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputDescripcion" class="form-label">Descripción:</label>
+                            <input type="text" id="inputDescripcion" class="form-control" autocomplete="off"
+                                placeholder="Ingrese una descripción" name="descripcion" #descripcion="ngModel"
+                                [(ngModel)]="CategoriasModelPost.descripcionCategoria">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="postCategorias()">Agregar categoría</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Editar-->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="editarCategoriasApp"
+        aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar categoría</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form>
+                <div class="mb-3">
+                    <label for="editarNombre" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="editarNombre" name="nombre" #nombre="ngModel"
+                        [(ngModel)]="CategoriasModelGetId.nombreCategoria" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label for="editarDescripcion" class="form-label">Descripción:</label>
+                    <input type="text" class="form-control" id="editarDescripcion" name="descripcion"
+                        #descripcion="ngModel" [(ngModel)]="CategoriasModelGetId.descripcionCategoria"
+                        autocomplete="off">
+                </div>
+                <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putCategorias()">Editar</button>
+            </form>
+        </div>
+    </div>
+</div>

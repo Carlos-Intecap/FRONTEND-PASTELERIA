@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/models/productos.model';
-import { ProductosService } from 'src/app/services/productos.service';
 import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-ejemplo',

@@ -20,6 +20,7 @@ import { RoladminsucursalesComponent } from './components/roladminsucursales/rol
 import { RoladminempresasComponent } from './components/roladminempresas/roladminempresas.component';
 import { ChartsModule } from '@rinminase/ng-charts';
 import { RoladminfinalsucursalesComponent } from './components/roladminfinalsucursales/roladminfinalsucursales.component';
+import { RolgestorcategoriasComponent } from './components/rolgestorcategorias/rolgestorcategorias.component';
 
 
 
@@ -38,7 +39,8 @@ import { RoladminfinalsucursalesComponent } from './components/roladminfinalsucu
     RoladminclientesComponent,
     RoladminsucursalesComponent,
     RoladminempresasComponent,
-    RoladminfinalsucursalesComponent
+    RoladminfinalsucursalesComponent,
+    RolgestorcategoriasComponent
   ],
   imports: [
     BrowserModule,
