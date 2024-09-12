@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Usuario } from '../models/usuarios.model';
 import { Empresa } from '../models/empresa.model';
 import { Sucursal } from '../models/sucursal.model';
+import { Categoria } from '../models/categoria.model';
 
 @Injectable({
   providedIn: 'root'
@@ -285,6 +286,39 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
     return this._http.post(this.url + '/agregarSucursalPor/' + idEmpresa + '/' + idUsuario, parametros, { headers: headersToken });
 }
 
+  /* --------------- ADMINISTRACION DE CATEGORIAS ----------------- */
+
+  //VER CATEGORIAS
+  obtenerCategoriasRolAdmin(token): Observable <any> {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.get(this.url + '/getCategoriaAdmin', { headers: headersToken });
+  }
+
+  //AGREGAR CATEGORIAS
+  agregarCategoriaRolAdmin(modeloCategoria: Categoria, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    let parametros = JSON.stringify(modeloCategoria);
+    return this._http.post(this.url + '/agregarCategoriaAdmin', parametros, { headers: headersToken });
+  }
+
+  //ELIMINAR CATEGORIAS
+  eliminarCategoriaRolAdmin(idCategoria,token){
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.delete(this.url + '/eliminarCategoriaAdmin/' + idCategoria, { headers: headersToken });
+  }
+
+  //OBTENER CATEGORIA POR ID
+  obtenerCategoriaIdRolAdmin(idCategoria,token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.get(this.url + '/getCategoriasIDRolAdmin/' + idCategoria, { headers: headersToken });
+  }
+
+  //EDITAR CATEGORIA
+  editarCategoriaRolAdmin(modeloCategoria: Categoria, token): Observable<any> {
+    let parametros = JSON.stringify(modeloCategoria);
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.put(this.url + '/editarCategoriaAdmin/' + modeloCategoria._id, parametros, { headers: headersToken });
+  }
 
 
 }
