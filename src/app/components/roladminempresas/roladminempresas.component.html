@@ -1,15 +1,20 @@
 <div class="container">
-  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresas">
-    Agregar
-  </button>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+     <button class="btn btn-outline  rounded-pill mt-3 verde" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresas">
+      <img  src="../../../assets/img/agregarpersona.svg" class="m-2" id="imagen-usuario" id= "icono-editar">
+    </button>
     <br>
     <br>
     <div class="row">
       <div class="col-12 col-md-4" *ngFor="let empresa of EmpresaModelGet">
         <div class="card text-center mb-3">
-          <div class="card-header">
+          <div class="card-header pink-header">
             {{empresa.nombreEmpresa}}
           </div>
+          <img  src="../../../assets/img/empresas.png" id="imagen-usuario">
+
           <div class="card-body">
             <h5 class="card-title">ID: {{empresa._id}}</h5>
 
@@ -26,14 +31,20 @@
             <h5 class="card-title">  Id usuario: {{empresa.idUsuario}}  </h5>
 
 
-            <button type="button" class="btn btn-danger" (click)="deleteEmpresasRolAdmin(empresa._id)">Eliminar</button>
+            <button type="button" class="btn btn-outline-danger me-3" (click)="deleteEmpresasRolAdmin(empresa._id)"> <img src="../../../assets/img/trash.svg" alt=""   id="icono-editar"></button>
 
-            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editarEmpresaApp"
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="offcanvas" data-bs-target="#editarEmpresaApp"
             aria-controls="offcanvasExample" (click)="getEmpresaId(empresa._id)">
-              Editar
+            <img src="../../../assets/img/editaricono.png" alt=""  id="icono-editar" class="">
             </button>
             <br>
-            <button type="button" class="btn btn-primary" (click)="getEmpresaId(empresa._id)" [routerLink]="['/roladminsucursales', empresa._id]">Administrar sucursales</button>
+            <button type="button" class="btn btn-outline-primary mt-3"   (click)="getEmpresaId(empresa._id)" [routerLink]="['/roladminsucursales', empresa._id]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building-add empresa" viewBox="0 0 16 16" id="icono">
+                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
+                <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6.5a.5.5 0 0 1-1 0V1H3v14h3v-2.5a.5.5 0 0 1 .5-.5H8v4H3a1 1 0 0 1-1-1z"/>
+                <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+              </svg>
+            </button>
            
             <!--
                         <button type="button" class="btn btn btn-info" (click)="getEmpresaId(empresa._id)" [routerLink]="['/roladminsucursales', empresa._id]">Administrar sucursales</button>

@@ -1,7 +1,12 @@
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+
 * {
 	box-sizing: border-box;
-
-      
+    font-family: "Raleway", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: weight;
+	font-style: normal;
 }
 
 
@@ -15,6 +20,10 @@
     margin: auto;
    
     
+}
+
+.verde {
+	background-color: #b0d45b;
 }
 
 
