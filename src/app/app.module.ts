@@ -25,6 +25,9 @@ import { RoladminusuariosComponent } from './components/roladminusuarios/roladmi
 import { RoladmincategoriasyproductosComponent } from './components/roladmincategoriasyproductos/roladmincategoriasyproductos.component';
 import { RoladmincateComponent } from './components/roladmincate/roladmincate.component';
 import { RolgestorempresasComponent } from './components/rolgestorempresas/rolgestorempresas.component';
+import { RolgestorsucursalesComponent } from './components/rolgestorsucursales/rolgestorsucursales.component';
+import { RolgestorproductosComponent } from './components/rolgestorproductos/rolgestorproductos.component';
+import { VerGananciasComponent } from './components/ver-ganancias/ver-ganancias.component';
 
 
 
@@ -48,7 +51,10 @@ import { RolgestorempresasComponent } from './components/rolgestorempresas/rolge
     RoladminusuariosComponent,
     RoladmincategoriasyproductosComponent,
     RoladmincateComponent,
-    RolgestorempresasComponent
+    RolgestorempresasComponent,
+    RolgestorsucursalesComponent,
+    RolgestorproductosComponent,
+    VerGananciasComponent
   ],
   imports: [
     BrowserModule,

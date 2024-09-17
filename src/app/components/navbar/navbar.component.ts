@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
@@ -27,6 +28,12 @@ export class NavbarComponent implements OnInit {
   }
   clearToken(){
     localStorage.clear();
+    Swal.fire({
+        title: '¡Éxito!',
+        text: 'Has cerrado sesión correctamente.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+    });
   }
 
 }

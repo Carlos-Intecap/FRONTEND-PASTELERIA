@@ -18,6 +18,9 @@ import { RoladminusuariosComponent } from './components/roladminusuarios/roladmi
 import { RoladmincategoriasyproductosComponent } from './components/roladmincategoriasyproductos/roladmincategoriasyproductos.component';
 import { RoladmincateComponent } from './components/roladmincate/roladmincate.component';
 import { RolgestorempresasComponent } from './components/rolgestorempresas/rolgestorempresas.component';
+import { RolgestorsucursalesComponent } from './components/rolgestorsucursales/rolgestorsucursales.component';
+import { RolgestorproductosComponent } from './components/rolgestorproductos/rolgestorproductos.component';
+import { VerGananciasComponent } from './components/ver-ganancias/ver-ganancias.component';
 
 const routes: Routes = [
 
@@ -47,10 +50,14 @@ const routes: Routes = [
 
 
 
-  { path: 'rolgestorcategorias', component: RolgestorcategoriasComponent},
-
-  { path: 'rolgestorempresas', component: RolgestorempresasComponent}
-
+  // VISTAS DEL ROL GESTOR
+  { path: 'rolgestorempresas', component: RolgestorempresasComponent},
+  // para agregar productos
+  { path: 'rolgestorsucursales', component: RolgestorsucursalesComponent},
+  { path: 'rolgestorcategorias/:idSucursal', component: RolgestorcategoriasComponent},
+  { path: 'rolgestorproductos/:idCategoria', component: RolgestorproductosComponent},
+  // para ver la grafica de ganancias
+  { path: 'verganancias', component: VerGananciasComponent}
 ];
 
 

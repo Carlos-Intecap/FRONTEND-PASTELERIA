@@ -1,5 +1,6 @@
 export class Producto {
   constructor(
+    
     public _id: String,
     public nombreProducto: String,
     public marca: String,
@@ -7,7 +8,19 @@ export class Producto {
     public stock: Number,
     public precio: Number,
     public vendido: Number,
-    public idCategoria: String
+
+    public descripcionCategoria: [{
+      idCategoria: String,
+      nombreCategoria: String,
+    }],
+
+    public datosSucursal: [{
+      idSucursal: String,
+      nombreSucursal: String,
+      direccionSucursal: String,
+      telefonoSucursal: Number,
+    }]
+
   ) {
 
   }

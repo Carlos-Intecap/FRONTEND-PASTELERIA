@@ -1,0 +1,28 @@
+<div class="container">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+      </style>
+    <div class="row">
+      <h1> VISTA DE SUCURSALES </h1>
+
+        <div class="col-12 col-md-4" *ngFor="let sucursales of SucursalModelGet">
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    {{sucursales.nombreSucursal}}
+                </div>
+                <div class="card-body">
+
+                    <h5 class="card-title"> Dirección: {{sucursales.direccionSucursal}} </h5>
+
+                    <h5 class="card-title"> Télefono: {{sucursales.telefonoSucursal}} </h5>
+                    <h5 class="card-title">Nombre Empresa: {{ sucursales.datosEmpresa[0].nombreEmpresa }}</h5>
+
+
+                    <!-- BOTON PARA TRAERSE EL ID DE LA SUCURSAL -->
+                    <button type="button" class="btn btn-outline-primary mt-3" [routerLink]="['/rolgestorcategorias', sucursales._id]">
+                        Ver Categorias
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
