@@ -114,7 +114,7 @@ export class GestorUsuarioService {
   /*------------------------ADMINISTRACION DE SUCURSALES------------------------*/
   obtenerSucursalesGestor(token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
-    return this._http.get(this.url + '/verSucursalRolGestor', {
+    return this._http.get(this.url + '/verSucursalGestorRegistrado', {
       headers: headersToken,
     });
   }
