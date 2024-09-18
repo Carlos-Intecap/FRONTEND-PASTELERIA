@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuarios.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import Swal from 'sweetalert2';
 
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   //Llamar al servicio en el constructor
   constructor(
     private _usuariosService: UsuarioService,
-    private _router: Router
+    private _router: Router,
+    private titleService: Title,
 
   ) {
     //Llamar a los datos del modelo
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
       "", "", "", "", "", "", 0, "", "", "",
 
     );
+    this.titleService.setTitle('Login');
 
   }
 
