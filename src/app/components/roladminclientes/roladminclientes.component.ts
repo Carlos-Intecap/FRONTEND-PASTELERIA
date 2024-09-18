@@ -25,7 +25,7 @@ export class RoladminclientesComponent implements OnInit {
   //Ver por ID
   public UsuarioModelGetId:Usuario;
   constructor(
-    
+
     private titleService: Title,
     private _adminUsuariosService:AdminUsuariosService,
     private _usuarioService:UsuarioService
@@ -34,10 +34,10 @@ export class RoladminclientesComponent implements OnInit {
     //token
     this.titleService.setTitle('Rol admin cliente');
     this.token=this._usuarioService.obtenerToken();
-    //AGREGAR 
-    this.UsuarioModelPost = new Usuario("", "", "", "", "", "", 0, "", "", "");
- //VER POR ID
-    this.UsuarioModelGetId=new Usuario("", "", "", "", "", "", 0, "", "", "");
+    //AGREGAR
+    this.UsuarioModelPost = new Usuario("", "", "", "", "", "", 0, "", "", "", "");
+    //VER POR ID
+    this.UsuarioModelGetId=new Usuario("", "", "", "", "", "", 0, "", "", "", "");
   }
   //Crear funcines para CRUDs
   //Ver Usuarios
@@ -51,7 +51,7 @@ export class RoladminclientesComponent implements OnInit {
       }
     )
   }
-  
+
   //Agregar Usuarios
   postUsuariosRolCliente(){
     this._adminUsuariosService.agregarUsuarioRolCliente(this.UsuarioModelPost, this._usuarioService.obtenerToken()).subscribe(
@@ -123,17 +123,17 @@ export class RoladminclientesComponent implements OnInit {
   getUsuarioId(idUsuario){
 
     this._adminUsuariosService.obtenerRolClienteId(idUsuario, this.token).subscribe(
-  
+
       (response)=>{
         console.log(response);
-  
+
         this.UsuarioModelGetId = response.usuario;
-  
+
       },
-  
+
       (error)=>{
         console.log(error)
-  
+
       }
     )
   }

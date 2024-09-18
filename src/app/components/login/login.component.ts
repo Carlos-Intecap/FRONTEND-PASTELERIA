@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   ) {
     //Llamar a los datos del modelo
     this.usuarioModel = new Usuario(
-      "", "", "", "", "", "", 0, "", "", "",
+      "", "", "", "", "", "", 0, "", "", "", "",
 
     );
     this.titleService.setTitle('Login');

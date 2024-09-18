@@ -4,7 +4,10 @@ export class Sucursal{
     public nombreSucursal: String,
     public direccionSucursal: String,
     public telefonoSucursal: Number,
-
+    public departamento: String,
+    public municipio: String,
+    public imagen: String,
+    
     public datosEmpresa: [{
       idEmpresa: String,
       nombreEmpresa: String,
@@ -19,7 +22,7 @@ export class Sucursal{
       email: String,
       rol: String
     }],
-    
+
 
 
 

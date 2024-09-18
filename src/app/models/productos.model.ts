@@ -1,6 +1,6 @@
 export class Producto {
   constructor(
-    
+
     public _id: String,
     public nombreProducto: String,
     public marca: String,
@@ -8,6 +8,8 @@ export class Producto {
     public stock: Number,
     public precio: Number,
     public vendido: Number,
+    public imagen: String,
+    public size: String,
 
     public descripcionCategoria: [{
       idCategoria: String,

@@ -9,6 +9,8 @@ export class Usuario{
         public telefono: Number,
         public direccion: String,
         public departamento: String,
-        public municipio: String
+        public municipio: String,
+        public imagen: String
+
     ){}
 }

@@ -36,9 +36,9 @@ export class RoladmingestoresComponent implements OnInit {
     this.titleService.setTitle('Rol admin gestor');
     this.token=this._usuarioService.obtenerToken();
     //AGREGAR
-    this.UsuarioModelPost = new Usuario("", "", "", "", "", "", 0, "", "", "");
+    this.UsuarioModelPost = new Usuario("", "", "", "", "", "", 0, "", "", "", "");
  //VER POR ID
-    this.UsuarioModelGetId=new Usuario("", "", "", "", "", "", 0, "", "", "");
+    this.UsuarioModelGetId=new Usuario("", "", "", "", "", "", 0, "", "", "", "");
    }
    //Crar funciones para CRUDs
    //Ver Usuarios
@@ -59,7 +59,7 @@ export class RoladmingestoresComponent implements OnInit {
       (response) => {
         console.log(response);
         this.getUsuariosRolGestor();
-  
+
         // Aquí debe ir Swal.fire dentro del bloque de respuesta
         Swal.fire({
           icon: 'success',

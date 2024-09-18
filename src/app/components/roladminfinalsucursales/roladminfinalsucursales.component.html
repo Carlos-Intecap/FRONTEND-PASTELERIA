@@ -23,18 +23,20 @@
               <h5 class="card-title">ID: {{sucursal._id}}</h5>
               <h5 class="card-title">ID Empresa: {{sucursal.idEmpresa}}</h5>
               <h5 class="card-title"> Direccion: {{sucursal.direccionSucursal}} </h5>
-  
+              <h5 class="card-title"> Departamento: {{sucursal.departamento}} </h5>
+              <h5 class="card-title"> Municipio: {{sucursal.municipio}} </h5>
+
               <h5 class="card-title">Télefono: {{sucursal.telefonoSucursal}} </h5>
               <h5 class="card-title">Nombre: {{ sucursal.gestorSucursales[0].nombre }}</h5>
               <h5 class="card-title">Apellido: {{ sucursal.gestorSucursales[0].apellido }}</h5>
               <h5 class="card-title">Email: {{ sucursal.gestorSucursales[0].email }}</h5>
               <h5 class="card-title">Rol: {{ sucursal.gestorSucursales[0].rol }}</h5>
-  
+
             </div>
           </div>
         </div>
       </div>
-  
+
 
         <!--Agregar-->
      <div class="modal fade" id="modalAgregarSucursales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
@@ -51,7 +53,7 @@
                   <input type="text" class="form-control" id="inputNombreSucursal" name="nombre" #nombre="ngModel" [(ngModel)]="SucursalModelPost.nombreSucursal"
                    autocomplete="off">
                 </div>
-  
+
                 <div class="mb-3">
                   <label for="inputDireccion" class="form-label">Direccion sucursal:</label>
                   <input type="text" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel" [(ngModel)]="SucursalModelPost.direccionSucursal"
@@ -62,8 +64,18 @@
                   <input type="number" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel" [(ngModel)]="SucursalModelPost.telefonoSucursal"
                    autocomplete="off">
                 </div>
-  
-                
+                <div class="mb-3">
+                  <label for="inputDepartamento" class="form-label">Departamento</label>
+                  <input type="text" class="form-control" id="inputDepartamento" name="departamento" #departamento="ngModel" [(ngModel)]="SucursalModelPost.departamento"
+                   autocomplete="off">
+                </div>
+                <div class="mb-3">
+                  <label for="inputMunicipio" class="form-label">Municipio</label>
+                  <input type="text" class="form-control" id="inputMunicipio" name="municipio" #municipio="ngModel" [(ngModel)]="SucursalModelPost.municipio"
+                   autocomplete="off">
+                </div>
+
+
               </form>
             </div>
             <div class="modal-footer">

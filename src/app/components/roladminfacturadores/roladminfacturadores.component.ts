@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 
 //LLamando al modelo
 import { Usuario }  from  'src/app/models/usuarios.model';
-//Llamando al servicio 
+//Llamando al servicio
 import { AdminUsuariosService} from 'src/app/services/admin-usuarios.service';
 //Llamando al token
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -33,8 +33,8 @@ export class RoladminfacturadoresComponent implements OnInit {
     //token
     this.titleService.setTitle('Rol admin facturador');
     this.token=this._usuarioService.obtenerToken();
-    this.UsuarioModelPost= new Usuario("","","","","","",0,"","","");
-    this.UsuarioModelGetId = new Usuario("","","","","","",0,"","","");
+    this.UsuarioModelPost= new Usuario("","","","","","",0,"","","","");
+    this.UsuarioModelGetId = new Usuario("","","","","","",0,"","","","");
 
   }
   //Crear funciones para CRUDs
@@ -127,7 +127,7 @@ getUsuarioId(idUsuario){
 
     }
   )
-  
+
 }
 
 putUsuarios(){

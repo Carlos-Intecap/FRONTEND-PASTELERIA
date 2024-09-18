@@ -36,6 +36,8 @@ export class RolgestorproductosComponent implements OnInit {
       0,
       0,
       0,
+      '',
+      '',
       [{
         idCategoria: '',
         nombreCategoria: '',
@@ -55,14 +57,14 @@ export class RolgestorproductosComponent implements OnInit {
     this._activatedRoute.paramMap.subscribe((dataRuta) => {
       this.idCategoria = dataRuta.get('idCategoria'); // Asignar el idCategoria a la propiedad de la clase
       this.idSucursal = localStorage.getItem('idSucursal'); // Asignar correctamente
-  
+
       if (this.idCategoria) {
         this.getProductosPorCategoria(this.idCategoria); // Usar la propiedad
       }
-      
+
       console.log(this.idCategoria); // Deberías ver el idUsuario correcto aquí
       console.log(this.idSucursal);  // Deberías ver el idSucursal correcto aquí
-     
+
     });
   }
 

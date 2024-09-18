@@ -35,6 +35,9 @@ export class RoladminfinalsucursalesComponent implements OnInit {
       '',
       '',
       0,
+      '',
+      '',
+      '',
       [
         {
           idEmpresa: '',
@@ -59,11 +62,11 @@ export class RoladminfinalsucursalesComponent implements OnInit {
     this._activatedRoute.paramMap.subscribe((dataRuta) => {
       this.idUsuario = dataRuta.get('idUsuario'); // Asignar el idUsuario a la propiedad de la clase
       this.idEmpresa = localStorage.getItem('idEmpresa'); // Asignar correctamente
-  
+
       if (this.idUsuario) {
         this.getSucursalesPorGestor(this.idUsuario); // Usar la propiedad
       }
-      
+
       console.log(this.idUsuario); // Deberías ver el idUsuario correcto aquí
       console.log(this.idEmpresa);  // Deberías ver el idEmpresa correcto aquí
     });

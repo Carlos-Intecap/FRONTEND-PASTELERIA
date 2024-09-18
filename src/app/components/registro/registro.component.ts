@@ -16,7 +16,7 @@ export class RegistroComponent implements OnInit {
     private _tareasLibresService: TareaslibresService,
     private _router: Router
   ) {
-    this.UsuarioModelPost = new Usuario('', '', '', '', '', '', 0, '', '', '');
+    this.UsuarioModelPost = new Usuario('', '', '', '', '', '', 0, '', '', '', '');
   }
 
   clasificacion = [
@@ -66,7 +66,7 @@ export class RegistroComponent implements OnInit {
           "San Miguel Tucurú"
         ];
         break; // <-- Agregado aquí
-  
+
       case 'Baja Verapaz':
         this.municipios = [
           "Salamá",
@@ -77,7 +77,7 @@ export class RegistroComponent implements OnInit {
           "Purulhá"
         ];
         break; // <-- Agregado aquí
-  
+
       case 'Chimaltenango':
         this.municipios = [
           "Chimaltenango",
@@ -90,7 +90,7 @@ export class RegistroComponent implements OnInit {
           "Sumpango"
         ];
         break; // <-- Aquí también
-        
+
         case 'Chiquimula':
           this.municipios = [
             "Chiquimula",
@@ -106,7 +106,7 @@ export class RegistroComponent implements OnInit {
       break;
       case 'El progreso':
         this.municipios = [
-          "El Progreso", 
+          "El Progreso",
           "Guastatoya",
           "San Antonio La Paz",
           "Sanarate",
@@ -118,7 +118,7 @@ export class RegistroComponent implements OnInit {
     break;
     case 'Escuintla':
       this.municipios = [
-        "Escuintla", 
+        "Escuintla",
         "Santa Lucía Cotzumalguapa",
         "La Democracia",
         "San José",

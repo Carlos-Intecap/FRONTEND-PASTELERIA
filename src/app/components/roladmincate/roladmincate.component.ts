@@ -24,8 +24,8 @@ export class RoladmincateComponent implements OnInit {
   ) {
     this.titleService.setTitle('Rol admin categorias');
     this.token = this._usuarioService.obtenerToken();
-    this.CategoriasModelPost = new Categoria("","","","");
-    this.CategoriasModelGetId = new Categoria("","","","");
+    this.CategoriasModelPost = new Categoria("","","","","");
+    this.CategoriasModelGetId = new Categoria("","","","", "");
   }
 
   //VER CATEGORIAS

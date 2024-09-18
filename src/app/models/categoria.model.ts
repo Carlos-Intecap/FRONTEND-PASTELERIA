@@ -3,6 +3,7 @@ export class Categoria{
         public _id: String,
         public nombreCategoria: String,
         public descripcionCategoria: String,
+        public imagen: String,
         public idUsuario: String
 
     ){}

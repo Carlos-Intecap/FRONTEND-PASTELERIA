@@ -32,7 +32,7 @@ export class RoladminsucursalesComponent implements OnInit {
 
 
   constructor(
-    
+
     public _activatedRoute: ActivatedRoute,
     private titleService: Title,
     private _adminUsuariosService:AdminUsuariosService,
@@ -44,7 +44,7 @@ export class RoladminsucursalesComponent implements OnInit {
     this.titleService.setTitle('Rol admin sucursales');
     this.token=this._usuarioService.obtenerToken();
     // traerme el id del gestor
-    this.UsuarioModelGetId = new Usuario("", "", "", "", "", "", 0, "", "", "");
+    this.UsuarioModelGetId = new Usuario("", "", "", "", "", "", 0, "", "", "", "");
 
     // cambiando el array que no se usara xd
     this.SucursalModelPost = new Sucursal(
@@ -52,6 +52,9 @@ export class RoladminsucursalesComponent implements OnInit {
       "",
       "",
       0,
+      "",
+      "",
+      "",
       [{
 
         idEmpresa: "",
@@ -77,10 +80,10 @@ export class RoladminsucursalesComponent implements OnInit {
       if (idEmpresa) {
         localStorage.setItem('idEmpresa', idEmpresa);
       }
-      
+
 
       console.log(idEmpresa);
-      
+
       this.getUsuariosRolGestor();
     });
   }
@@ -129,7 +132,7 @@ export class RoladminsucursalesComponent implements OnInit {
     )
   }
 
-  
+
 
   /* postSucursalPorEmpresa(){
     this._adminUsuariosService.agregarSucursalesIdEmpresa(this.SucursalModelPost, this._usuarioService.obtenerToken()).subscribe(
@@ -145,7 +148,7 @@ export class RoladminsucursalesComponent implements OnInit {
       }
     )
    }*/
-  
+
 
    // Eliminar Sucursales
    /*deleteSucursalesRolAdmin(idSucursal){
@@ -162,7 +165,7 @@ export class RoladminsucursalesComponent implements OnInit {
     )
    }*/
 
- 
+
 
     /*getSucursalIdRolAdmin(idSucursal){
       this._adminUsuariosService.obtenerSucursalRolId(idSucursal, this.token).subscribe(
@@ -187,5 +190,5 @@ export class RoladminsucursalesComponent implements OnInit {
       )
     }*/
 
-  
+
 }
