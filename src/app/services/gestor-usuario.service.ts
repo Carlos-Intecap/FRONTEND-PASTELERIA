@@ -129,6 +129,15 @@ export class GestorUsuarioService {
     );
   }
 
+  obtenerProductosPorRolGestor(idSucursal: string, idCategoria: string, token: string): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.get(
+      this.url + '/verProductosRolGestor/' + idSucursal + '/' + idCategoria, 
+      { headers: headersToken }
+    );
+  }
+
   AgregarNuevoProducto(
     modeloProducto: Producto,
     token: string,

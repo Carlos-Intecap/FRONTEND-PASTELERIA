@@ -77,23 +77,22 @@ export class RolgestorproductosComponent implements OnInit {
     );
    }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((dataRuta) => {
-      this.idCategoria = dataRuta.get('idCategoria'); // Asignar el idCategoria a la propiedad de la clase
-      this.idSucursal = localStorage.getItem('idSucursal'); // Asignar correctamente
+      this.idCategoria = dataRuta.get('idCategoria'); // Asignar el idCategoria
+      this.idSucursal = localStorage.getItem('idSucursal'); // Obtener el idSucursal
 
-      if (this.idCategoria) {
-        this.getProductosPorCategoria(this.idCategoria); // Usar la propiedad
+      if (this.idCategoria && this.idSucursal) {
+        this.getProductosPorRolGestor(this.idSucursal, this.idCategoria, this.token); // Llamar al nuevo método
       }
 
-      console.log(this.idCategoria); // Deberías ver el idUsuario correcto aquí
-      console.log(this.idSucursal);  // Deberías ver el idSucursal correcto aquí
-
+      console.log(this.idCategoria); // Verificar el idCategoria
+      console.log(this.idSucursal);  // Verificar el idSucursal
     });
   }
 
 
-  getProductosPorCategoria(idCategoria) {
+  /* getProductosPorCategoria(idCategoria) {
     this._gestorUsuarioService
       .obtenerProductosIdCategoria(idCategoria, this.token)
       .subscribe(
@@ -105,7 +104,21 @@ export class RolgestorproductosComponent implements OnInit {
           console.log(<any>error);
         }
       );
-  }
+  } */
+
+      getProductosPorRolGestor(idSucursal: string, idCategoria: string, token: string) {
+        this._gestorUsuarioService
+          .obtenerProductosPorRolGestor(idSucursal, idCategoria, token)
+          .subscribe(
+            (response) => {
+              this.ProductoModelGet = response.productos; // Asignar los productos a la variable
+              console.log(this.ProductoModelGet); // Verifica la respuesta
+            },
+            (error) => {
+              console.log(<any>error); // Manejo de errores
+            }
+          );
+      }
 
 
   // post sucursal
