@@ -40,4 +40,21 @@ export class ClienteUsuarioService {
   }
 
 
+  agregarProductoAlCarrito(modeloCarrito: Producto, token): Observable<any> {
+    let parametros = JSON.stringify(modeloCarrito);
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.put(this.url + '/registrarCarritoPorId/' + modeloCarrito._id, parametros, { headers: headersToken });
+
+  }
+
+  
+  obtenerProductoid(idProducto, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.get(this.url + '/verProductoPorIdRolCliente/' + idProducto, { headers: headersToken });
+
+  }
+
+
 }

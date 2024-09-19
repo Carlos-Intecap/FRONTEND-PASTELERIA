@@ -22,8 +22,10 @@
                     <h5 class="card-title"> Categoria: {{ productos.descripcionCategoria[0].nombreCategoria }}</h5>
 
 
-                   <button>Agregar al carrito</button>
-                    
+                    <button type="button" class="btn btn-outline-warning " 
+                    (click)="getProductoid(productos._id)">
+                    <img src="../../../assets/img/editaricono.png" alt=""  id="icono-editar" class="">
+                  </button>                    
 
                 </div>
             </div>

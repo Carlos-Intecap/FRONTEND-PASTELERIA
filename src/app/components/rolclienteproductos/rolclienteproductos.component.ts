@@ -14,6 +14,7 @@ export class RolclienteproductosComponent implements OnInit {
 
   public token;
   public ProductosModelGet: Producto;
+  public ProductosModelGetId: Producto;
 
   constructor(
     public _activatedRoute: ActivatedRoute,
@@ -24,6 +25,21 @@ export class RolclienteproductosComponent implements OnInit {
   ) { 
     this.titleService.setTitle('Rol cliente productos');
     this.token = this._usuarioService.obtenerToken();
+    this.ProductosModelGetId = new Producto("", "", "", "", 0, 0, 0, "", "",
+      [{
+        idCategoria: "",
+        nombreCategoria: "",
+      }],
+
+      [{
+        idSucursal: "",
+        nombreSucursal: "",
+        direccionSucursal: "",
+        telefonoSucursal: 0,
+      }]
+      
+    );
+
   }
 
   ngOnInit(): void {
@@ -50,6 +66,20 @@ export class RolclienteproductosComponent implements OnInit {
         }
       );
   }
+
+
+  getProductoid(idProducto){
+    this._clienteUsuarioService.obtenerProductoid(idProducto, this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        this.ProductosModelGetId = response.productos;
+      },(error)=>{
+        console.log(error)
+      }
+    )
+  }
+
+  
 
 
 }
