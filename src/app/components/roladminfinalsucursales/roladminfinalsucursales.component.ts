@@ -18,6 +18,7 @@ export class RoladminfinalsucursalesComponent implements OnInit {
   public token;
   public SucursalModelGet: Sucursal;
   public SucursalModelPost: Sucursal;
+  public SucursalModelGetId: Sucursal;
   public idEmpresa;
   public idUsuario;
 
@@ -31,6 +32,32 @@ export class RoladminfinalsucursalesComponent implements OnInit {
     this.token = this._usuarioService.obtenerToken();
     // cambiando el array que no se usara xd
     this.SucursalModelPost = new Sucursal(
+      '',
+      '',
+      '',
+      0,
+      '',
+      '',
+      '',
+      [
+        {
+          idEmpresa: '',
+          nombreEmpresa: '',
+          direccion: '',
+          telefono: 0,
+        },
+      ],
+      [
+        {
+          idUsuario: '',
+          nombre: '',
+          apellido: '',
+          email: '',
+          rol: '',
+        },
+      ]
+    );
+    this.SucursalModelGetId = new Sucursal(
       '',
       '',
       '',
@@ -106,5 +133,37 @@ export class RoladminfinalsucursalesComponent implements OnInit {
           console.log(<any>error);
         }
       });
+  }
+
+  // eliminar sucursales
+  deleteSucursal(idSucursal) {
+    this._adminUsuariosService.eliminarSucursalesRolAdmin(idSucursal,this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        window.location.reload();
+      },(error)=>{
+        console.log(<any>error);
+      }
+    )
+  }
+
+  getSucursalIdRolAdmin(idSucursal){
+    this._adminUsuariosService.obtenerSucursalRolId(idSucursal, this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        this.SucursalModelGetId = response.sucursales;
+      },(error)=>{
+        console.log(error)
+      }
+    )
+  }
+  // editar sucursal
+  putSucursal(){
+    this._adminUsuariosService.editarSucursalRolAdmin(this.SucursalModelGetId,this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        window.location.reload();
+      }
+    )
   }
 }

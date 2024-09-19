@@ -153,4 +153,20 @@ export class GestorUsuarioService {
       headers: headersToken,
     });
   }
+
+  eliminarProductos(idProducto,token){
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.delete(this.url + '/eliminarProductosRolGestor/' + idProducto, { headers: headersToken });
+  }
+
+  obtenerProductoId(idProducto,token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.get(this.url + '/verProductosPorId/' + idProducto, { headers: headersToken });
+  }
+
+  editarProducto(modeloProducto: Producto, token): Observable<any> {
+    let parametros = JSON.stringify(modeloProducto);
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.put(this.url + '/editarProductosRolGestor/' + modeloProducto._id, parametros, { headers: headersToken });
+  }
 }

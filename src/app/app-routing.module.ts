@@ -21,6 +21,9 @@ import { RolgestorempresasComponent } from './components/rolgestorempresas/rolge
 import { RolgestorsucursalesComponent } from './components/rolgestorsucursales/rolgestorsucursales.component';
 import { RolgestorproductosComponent } from './components/rolgestorproductos/rolgestorproductos.component';
 import { VerGananciasComponent } from './components/ver-ganancias/ver-ganancias.component';
+import { VistarolclienteComponent } from './components/vistarolcliente/vistarolcliente.component';
+import { RolclientesucursalesComponent } from './components/rolclientesucursales/rolclientesucursales.component';
+import { RolclienteproductosComponent } from './components/rolclienteproductos/rolclienteproductos.component';
 
 const routes: Routes = [
 
@@ -29,7 +32,7 @@ const routes: Routes = [
   { path: 'vistarolgestor', component: VistarolgestorComponent},
   { path: 'vistaroladmin', component: VistaroladminComponent },
   { path: 'vistarolfacturador', component: VistarolfacturadorComponent },
-
+  { path: 'vistarolcliente', component: VistarolclienteComponent},
 
   { path: 'login', component: LoginComponent},
   { path: 'registro', component: RegistroComponent},
@@ -57,7 +60,11 @@ const routes: Routes = [
   { path: 'rolgestorcategorias/:idSucursal', component: RolgestorcategoriasComponent},
   { path: 'rolgestorproductos/:idCategoria', component: RolgestorproductosComponent},
   // para ver la grafica de ganancias
-  { path: 'verganancias', component: VerGananciasComponent}
+  { path: 'verganancias', component: VerGananciasComponent},
+
+  // VISTAS DEL ROL CLIENTE
+  { path: 'rolclientesucursales', component: RolclientesucursalesComponent},
+  { path: 'rolclienteproductos/:idSucursal', component: RolclienteproductosComponent},
 ];
 
 

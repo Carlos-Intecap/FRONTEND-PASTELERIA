@@ -26,6 +26,14 @@
                 <h5 class="card-title">Tamaño: {{producto.size}} </h5>
                 <h5 class="card-title">Vendido: {{producto.vendido}} </h5>
 
+                <button type="button" class="btn btn-outline-warning " data-bs-toggle="offcanvas"
+                        data-bs-target="#editarProductosApp" aria-controls="offcanvasExample"
+                        (click)="getProductoId(producto._id)">
+                        <img src="../../../assets/img/editaricono.png" alt=""  id="icono-editar" class="">
+                </button>
+                <button type="button" class="btn btn-outline-danger ms-3" (click)="deleteProducto(producto._id)">
+                  <img src="../../../assets/img/trash.svg" alt=""   id="icono-editar">
+                </button>
               </div>
             </div>
           </div>
@@ -72,8 +80,8 @@
               </div>
 
               <div class="mb-3">
-                <label for="inputTamaño" class="form-label">Tamaño:</label>
-                <input type="text" class="form-control" id="inputTamaño" name="size" #size="ngModel" [(ngModel)]="ProductoModelPost.size"
+                <label for="inputTamano" class="form-label">Tamaño:</label>
+                <input type="text" class="form-control" id="inputTamano" name="size" #size="ngModel" [(ngModel)]="ProductoModelPost.size"
                  autocomplete="off">
               </div>
             </form>
@@ -83,5 +91,55 @@
             <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" (click)="postProducto(idSucursal, idCategoria)">Agregar</button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!--Editar-->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="editarProductosApp" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Gestores</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <form>
+
+          <div class="mb-3">
+            <label for="editarNombreProducto" class="form-label">Nombre Producto:</label>
+            <input type="text" class="form-control" id="editarNombreProducto" name="nombre" #nombre="ngModel" [(ngModel)]="ProductoModelGetId.nombreProducto"
+             autocomplete="off">
+          </div>
+
+          <div class="mb-3">
+            <label for="editarMarca" class="form-label">Marca:</label>
+            <input type="text" class="form-control" id="editarMarca" name="marca" #marca="ngModel" [(ngModel)]="ProductoModelGetId.marca"
+             autocomplete="off">
+          </div>
+          <div class="mb-3">
+            <label for="editarDescripcion" class="form-label">Descripción:</label>
+            <input type="text" class="form-control" id="editarDescripcion" name="descripcion" #descripcion="ngModel" [(ngModel)]="ProductoModelGetId.descripcion"
+             autocomplete="off">
+          </div>
+          <div class="mb-3">
+            <label for="editarStock" class="form-label">Stock:</label>
+            <input type="number" class="form-control" id="editarStock" name="stock" #stock="ngModel" [(ngModel)]="ProductoModelGetId.stock"
+             autocomplete="off">
+          </div>
+
+          <div class="mb-3">
+            <label for="editarPrecio" class="form-label">Precio:</label>
+            <input type="number" class="form-control" id="editarPrecio" name="precio" #precio="ngModel" [(ngModel)]="ProductoModelGetId.precio"
+             autocomplete="off">
+          </div>
+
+          <div class="mb-3">
+            <label for="editarTamano" class="form-label">Tamaño:</label>
+            <input type="text" class="form-control" id="editarTamano" name="size" #size="ngModel" [(ngModel)]="ProductoModelGetId.size"
+             autocomplete="off">
+          </div>
+          <br>
+          <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putProducto()">Editar producto</button>
+        
+        </form>
       </div>
     </div>

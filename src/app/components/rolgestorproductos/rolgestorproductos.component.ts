@@ -15,6 +15,7 @@ export class RolgestorproductosComponent implements OnInit {
   public token;
   public ProductoModelGet: Producto;
   public ProductoModelPost: Producto;
+  public ProductoModelGetId: Producto;
 
   public idSucursal;
   public idCategoria;
@@ -29,6 +30,29 @@ export class RolgestorproductosComponent implements OnInit {
     this.token = this._usuarioService.obtenerToken();
 
     this.ProductoModelPost = new Producto(
+      '',
+      '',
+      '',
+      '',
+      0,
+      0,
+      0,
+      '',
+      '',
+      [{
+        idCategoria: '',
+        nombreCategoria: '',
+      }],
+      [{
+        idSucursal: '',
+        nombreSucursal: '',
+        direccionSucursal: '',
+        telefonoSucursal: 0,
+      }]
+
+
+    );
+    this.ProductoModelGetId = new Producto(
       '',
       '',
       '',
@@ -104,5 +128,37 @@ export class RolgestorproductosComponent implements OnInit {
       });
   }
 
+  // eliminar producto
+  deleteProducto(idProducto){
+    this._gestorUsuarioService.eliminarProductos(idProducto,this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        window.location.reload();
+      },(error)=>{
+        console.log(<any>error);
+      }
+    )
+  }
 
+  // ver producto por id
+  getProductoId(idProducto){
+    this._gestorUsuarioService.obtenerProductoId(idProducto,this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        this.ProductoModelGetId = response.productos;
+      },(error)=>{
+        console.log(error)
+      }
+    )
+  }
+
+  // editar producto
+  putProducto(){
+    this._gestorUsuarioService.editarProducto(this.ProductoModelGetId,this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        window.location.reload();
+      }
+    )
+  }
 }

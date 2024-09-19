@@ -1,0 +1,31 @@
+
+<div class="container">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+      </style>
+    <div class="row">
+      <h1> VISTA DE PRODUCTOS </h1>
+
+        <div class="col-12 col-md-4" *ngFor="let productos of ProductosModelGet">
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    {{productos.nombreProducto}}
+                </div>
+                <div class="card-body">
+
+                    <h5 class="card-title"> Marca: {{productos.marca}} </h5>
+
+                    <h5 class="card-title"> Descripción: {{productos.descripcion}} </h5>
+                    <h5 class="card-title"> Precio: {{productos.precio}} </h5>
+
+
+                    <h5 class="card-title"> Categoria: {{ productos.descripcionCategoria[0].nombreCategoria }}</h5>
+
+
+                   <button>Agregar al carrito</button>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
