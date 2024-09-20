@@ -4,6 +4,8 @@ import { Title } from '@angular/platform-browser';
 import { Producto } from 'src/app/models/productos.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ClienteUsuarioService } from 'src/app/services/cliente-usuario.service';
+import { Carrito } from 'src/app/models/carrito.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rolclienteproductos',
@@ -15,6 +17,7 @@ export class RolclienteproductosComponent implements OnInit {
   public token;
   public ProductosModelGet: Producto;
   public ProductosModelGetId: Producto;
+  public CarritoModelPost: Carrito;
 
   constructor(
     public _activatedRoute: ActivatedRoute,
@@ -25,6 +28,35 @@ export class RolclienteproductosComponent implements OnInit {
   ) { 
     this.titleService.setTitle('Rol cliente productos');
     this.token = this._usuarioService.obtenerToken();
+
+    this.CarritoModelPost = new Carrito(
+      "",
+      [{
+        idUsuario: "",
+        nombre: "",
+        apellido: "",
+        email: ""
+      }],
+      [{
+        idProducto: "",
+        nombreProducto: "",
+        cantidad: 0,
+        precio: 0,
+        subTotal: 0,
+        descripcionCategoria: [{
+          idCategoria: "",
+          nombreCategoria: ""
+        }],
+        datosSucursal:[{
+          idSucursal:"",
+          nombreSucursal: "",
+          direccionSucursal: "",
+          telefonoSucursal: ""
+      }]
+      }],
+       0
+    );
+
     this.ProductosModelGetId = new Producto("", "", "", "", 0, 0, 0, "", "",
       [{
         idCategoria: "",
@@ -39,6 +71,7 @@ export class RolclienteproductosComponent implements OnInit {
       }]
       
     );
+    
 
   }
 
@@ -68,18 +101,35 @@ export class RolclienteproductosComponent implements OnInit {
   }
 
 
-  getProductoid(idProducto){
+  getProductoid(idProducto) {
     this._clienteUsuarioService.obtenerProductoid(idProducto, this.token).subscribe(
-      (response)=>{
-        console.log(response);
-        this.ProductosModelGetId = response.productos;
-      },(error)=>{
-        console.log(error)
-      }
-    )
-  }
+        (response) => {
+            console.log(response);
+            this.ProductosModelGetId = response.productos;
+          
+        }, 
+        (error) => {
+            console.log(error);
+        }
+    );
+}
 
   
-
+  putCarrito(idProducto: String, cantidad: Number) {
+    this._clienteUsuarioService.putProductoCarrito(
+        idProducto,   // Envía el idProducto
+        cantidad,     // Envía la cantidad
+        this.token    // Verifica que el token no sea nulo o indefinido
+    ).subscribe(
+        (response) => {
+            console.log('Producto agregado al carrito:', response);
+            window.location.reload(); // Recargar la página si es necesario
+        },
+        (error) => {
+            console.error('Error al agregar el producto:', error);
+        }
+    );
+}
+  
 
 }

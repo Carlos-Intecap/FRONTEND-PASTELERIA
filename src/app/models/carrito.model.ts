@@ -17,6 +17,7 @@ export class Carrito{
                 idCategoria: String,
                 nombreCategoria: String
             }],
+            
             datosSucursal:[{
                 idSucursal:String,
                 nombreSucursal: String,

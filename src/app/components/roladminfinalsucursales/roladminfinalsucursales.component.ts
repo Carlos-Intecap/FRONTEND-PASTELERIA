@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AdminUsuariosService } from 'src/app/services/admin-usuarios.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { Empresa } from 'src/app/models/empresa.model';
-import { Usuario } from 'src/app/models/usuarios.model';
+// import { Empresa } from 'src/app/models/empresa.model';
+// import { Usuario } from 'src/app/models/usuarios.model';
 import { Sucursal } from 'src/app/models/sucursal.model';
 import { ActivatedRoute } from '@angular/router';
 

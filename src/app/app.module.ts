@@ -31,6 +31,7 @@ import { VerGananciasComponent } from './components/ver-ganancias/ver-ganancias.
 import { VistarolclienteComponent } from './components/vistarolcliente/vistarolcliente.component';
 import { RolclientesucursalesComponent } from './components/rolclientesucursales/rolclientesucursales.component';
 import { RolclienteproductosComponent } from './components/rolclienteproductos/rolclienteproductos.component';
+import { RolclientecarritoComponent } from './components/rolclientecarrito/rolclientecarrito.component';
 
 
 
@@ -60,7 +61,8 @@ import { RolclienteproductosComponent } from './components/rolclienteproductos/r
     VerGananciasComponent,
     VistarolclienteComponent,
     RolclientesucursalesComponent,
-    RolclienteproductosComponent
+    RolclienteproductosComponent,
+    RolclientecarritoComponent
   ],
   imports: [
     BrowserModule,

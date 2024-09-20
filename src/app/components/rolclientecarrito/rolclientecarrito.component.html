@@ -1,0 +1,72 @@
+<div class="container">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+
+    <button class="btn btn-outline-primary mt-3 " type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarCarrito">
+        Agregar
+    </button>
+    <div class="row">
+        <h1> PRODUCTOS DE SU CARRITO </h1>
+
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
+                        <th>Categoria</th>
+                        <th>Sucursal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let carritos of CarritosModelGet">
+                        <td colspan="6">
+                            <table class="table">
+                                <tbody>
+                                    <tr *ngFor="let compra of carritos.compras">
+                                        <td>{{ compra.nombreProducto }}</td>
+                                        <td>{{ compra.cantidad }}</td>
+                                        <td>{{ compra.precio | currency }}</td>
+                                        <td>{{ compra.subTotal | currency }}</td>
+                                        <td>{{ compra.descripcionCategoria[0]?.nombreCategoria }}</td>
+                                        <td>{{ compra.datosSucursal[0]?.nombreSucursal }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+        <!--Agregar-->
+        <div class="modal fade" id="modalAgregarCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
+            <div class="modal-dialog">
+              <div class="modal-content bk-form">
+                <div class="modal-header pink-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Producto al carrito</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                        <label for="inputCantidad" class="form-label">Cantidad</label>
+                        <input type="number" class="form-control" id="inputCantidad" name="cantidad" #cantidad="ngModel" [(ngModel)]="CarritoModelPost.compras[0].cantidad"
+                         autocomplete="off">
+                      </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" >Cerrar</button>
+                  <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" (click)="putCarrito(idProducto)">Agregar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    
