@@ -1,12 +1,7 @@
 export class Carrito{
     constructor(
         public _id: String,
-        public datosUsuario:[{
-            idUsuario: String,
-            nombre: String,
-            apellido: String,
-            email: String
-        }],
+        public idUsuario: String,
         public compras:[{
             idProducto: String,
             nombreProducto: String,

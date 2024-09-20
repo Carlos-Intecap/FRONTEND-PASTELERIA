@@ -31,12 +31,7 @@ export class RolclienteproductosComponent implements OnInit {
 
     this.CarritoModelPost = new Carrito(
       "",
-      [{
-        idUsuario: "",
-        nombre: "",
-        apellido: "",
-        email: ""
-      }],
+      "",
       [{
         idProducto: "",
         nombreProducto: "",
