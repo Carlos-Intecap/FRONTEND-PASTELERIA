@@ -320,5 +320,33 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
     return this._http.put(this.url + '/editarCategoriaAdmin/' + modeloCategoria._id, parametros, { headers: headersToken });
   }
 
+  /*--------------- ADMINISTRACION DEL ROL REPARTIDOR---------------------- */
 
+  obtenerUsuariosRolRepartidor(token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.get(this.url + '/getUsuarioRolRepartidor', { headers: headersToken });
+  }
+
+  agregarUsuarioRolRepartidor(modeloUsuario: Usuario, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    let parametros = JSON.stringify(modeloUsuario);
+    return this._http.post(this.url + '/agregarRolRepartidor', parametros, { headers: headersToken });
+  }
+  
+  eliminarUsuarioRolRepartidor(idUsuario,token) {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.delete(this.url + '/eliminarRolRepartidor/' + idUsuario, { headers: headersToken });
+  }
+
+  obteneUsuarioRolRepartidorId(idUsuario,token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.get(this.url + '/getUsuarioIdRolRepartidor/' + idUsuario, { headers: headersToken });
+  }
+  
+  editarRolRepartidor(modeloUsuario: Usuario, token): Observable<any> {
+    let parametros = JSON.stringify(modeloUsuario);
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.put(this.url + '/editarRolRepartidor/' + modeloUsuario._id, parametros, { headers: headersToken });
+  }
+  
 }

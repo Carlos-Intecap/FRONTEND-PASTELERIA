@@ -25,6 +25,7 @@ import { VistarolclienteComponent } from './components/vistarolcliente/vistarolc
 import { RolclientesucursalesComponent } from './components/rolclientesucursales/rolclientesucursales.component';
 import { RolclienteproductosComponent } from './components/rolclienteproductos/rolclienteproductos.component';
 import { RolclientecarritoComponent } from './components/rolclientecarrito/rolclientecarrito.component';
+import { RoladminrepartidoresComponent } from './components/roladminrepartidores/roladminrepartidores.component';
 
 const routes: Routes = [
 
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: 'roladminfacturadores', component: RoladminfacturadoresComponent},
   { path: 'roladminclientes', component: RoladminclientesComponent},
   { path: 'roladminempresas', component: RoladminempresasComponent},
+  { path: 'roladminrepartidores', component: RoladminrepartidoresComponent},
   /* VISTAS EXCLUSIVAMENTE PARA ADMINISTRAR SUCURSALES Y AGREGARLAS */
   { path: 'roladminsucursales/:idEmpresa', component: RoladminsucursalesComponent},
   { path: 'roladminfinalsucursales/:idUsuario', component: RoladminfinalsucursalesComponent},

@@ -32,6 +32,7 @@ import { VistarolclienteComponent } from './components/vistarolcliente/vistarolc
 import { RolclientesucursalesComponent } from './components/rolclientesucursales/rolclientesucursales.component';
 import { RolclienteproductosComponent } from './components/rolclienteproductos/rolclienteproductos.component';
 import { RolclientecarritoComponent } from './components/rolclientecarrito/rolclientecarrito.component';
+import { RoladminrepartidoresComponent } from './components/roladminrepartidores/roladminrepartidores.component';
 
 
 
@@ -62,7 +63,8 @@ import { RolclientecarritoComponent } from './components/rolclientecarrito/rolcl
     VistarolclienteComponent,
     RolclientesucursalesComponent,
     RolclienteproductosComponent,
-    RolclientecarritoComponent
+    RolclientecarritoComponent,
+    RoladminrepartidoresComponent
   ],
   imports: [
     BrowserModule,
