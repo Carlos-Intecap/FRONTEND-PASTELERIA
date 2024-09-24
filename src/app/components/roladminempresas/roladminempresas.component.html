@@ -2,7 +2,10 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
-     <button class="btn btn-outline  rounded-pill mt-3 verde" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresas">
+    <img src="../../../assets/img/flecha2.png" routerLink="/vistaroladmin" routerLinkActive="active" alt="retroceder" width="50px" class="mt-3">
+
+    <h2 class="text-center" >Administrar Empresas</h2>
+    <button class="btn btn-outline  rounded-pill mt-3 verde" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresas">
       <img  src="../../../assets/img/agregarpersona.svg" class="m-2" id="imagen-usuario" id= "icono-editar">
     </button>
     <br>
@@ -38,23 +41,14 @@
             <img src="../../../assets/img/editaricono.png" alt=""  id="icono-editar" class="">
             </button>
             <br>
-            <button type="button" class="btn btn-outline-primary mt-3"   (click)="getEmpresaId(empresa._id)" [routerLink]="['/roladminsucursales', empresa._id]">
+            <button type="button" class="btn btn-outline-agregar mt-3" (click)="getEmpresaId(empresa._id)" [routerLink]="['/roladminsucursales', empresa._id]">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building-add empresa" viewBox="0 0 16 16" id="icono">
                 <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
                 <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6.5a.5.5 0 0 1-1 0V1H3v14h3v-2.5a.5.5 0 0 1 .5-.5H8v4H3a1 1 0 0 1-1-1z"/>
                 <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
               </svg>
             </button>
-           
-            <!--
-                        <button type="button" class="btn btn btn-info" (click)="getEmpresaId(empresa._id)" [routerLink]="['/roladminsucursales', empresa._id]">Administrar sucursales</button>
-
-            -->
-
-
-
           </div>
-
         </div>
       </div>
     </div>
@@ -63,8 +57,8 @@
     <!-- AGREGAR EMPRESAS -->
     <div class="modal fade" id="modalAgregarEmpresas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
+        <div class="modal-content bk-form">
+          <div class="modal-header pink-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Empresas</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
@@ -108,82 +102,56 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postEmpresaRolAdmin()">Agregar</button>
+            <button type="button" class="btn btn-outline-cancelar" data-bs-dismiss="modal" >Cerrar</button>
+            <button type="button" class="btn btn-outline-aceptar" data-bs-dismiss="modal" (click)="postEmpresaRolAdmin()">Agregar</button>
           </div>
         </div>
       </div>
     </div>
 
-
-
       <!--Editar-->
 
       <div class="offcanvas offcanvas-start" tabindex="-1" id="editarEmpresaApp" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Empresas</h5>
+        <div class="offcanvas-header pink-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar empresa</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body">
+        <div class="offcanvas-body bk-form">
           <form>
 
             <div class="mb-3">
               <label for="editarNombreEmpresa" class="form-label">Nombre Empresa</label>
               <input type="text" class="form-control" id="editarNombreEmpresa" name="nombre" #nombre="ngModel" [(ngModel)]="EmpresaModelGetId.nombreEmpresa"
                autocomplete="off">
-
             </div>
-
             <div class="mb-3">
               <label for="editarDireccion" class="form-label">Dirección Empresa</label>
               <input type="text" class="form-control" id="editarDireccion" name="direccion" #direccion="ngModel" [(ngModel)]="EmpresaModelGetId.direccion"
                autocomplete="off">
-
             </div>
-
-
             <div class="mb-3">
               <label for="editarTelefono" class="form-label">Télefono Empresa</label>
               <input type="text" class="form-control" id="editarTelefono" name="telefono" #telefono="ngModel" [(ngModel)]="EmpresaModelGetId.telefono"
                autocomplete="off">
-
             </div>
-
-
             <div class="mb-3">
-
-
               <label for="editarMision" class="form-label">Télefono Empresa</label>
               <input type="text" class="form-control" id="editarMision" name="mision" #mision="ngModel" [(ngModel)]="EmpresaModelGetId.mision"
                autocomplete="off">
-
             </div>
-
-
             <div class="mb-3">
-
-
               <label for="editarVision" class="form-label">Visión Empresa</label>
               <input type="text" class="form-control" id="editarVision" name="vision" #vision="ngModel" [(ngModel)]="EmpresaModelGetId.vision"
                autocomplete="off">
-
             </div>
-
-
-
             <div class="mb-3">
-
-
               <label for="editarHistoria" class="form-label">Historia Empresa</label>
               <input type="text" class="form-control" id="editarHistoria" name="historia" #historia="ngModel" [(ngModel)]="EmpresaModelGetId.historia"
                autocomplete="off">
-
             </div>
-
-                <br>
-
-                <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putEmpresas()">Editar Empresas</button>
-
+            
+            <br>
+            <button class="btn btn-outline-aceptar" data-bs-dismiss="offcanvas" (click)="putEmpresas()">Editar empresa</button>
 
           </form>
         </div>

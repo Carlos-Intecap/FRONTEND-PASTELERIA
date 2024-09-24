@@ -3,6 +3,8 @@ import { Title } from '@angular/platform-browser';
 import { AdminUsuariosService} from 'src/app/services/admin-usuarios.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Empresa} from 'src/app/models/empresa.model';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-roladminempresas',
   templateUrl: './roladminempresas.component.html',
@@ -13,12 +15,11 @@ import { Empresa} from 'src/app/models/empresa.model';
 export class RoladminempresasComponent implements OnInit {
 
   public token;
-  //Ver
+  //VER
   public EmpresaModelGet:Empresa;
-  //Agregar
+  //AGREGAR
   public EmpresaModelPost: Empresa;
-
-  // ver por id
+  //VER POR ID
   public EmpresaModelGetId: Empresa;
 
   constructor(
@@ -35,8 +36,7 @@ export class RoladminempresasComponent implements OnInit {
     this.EmpresaModelGetId = new Empresa("", "", "", 0, "", "", "", "");
   }
 
-
-  //Ver Usuarios
+  //VER EMPRESAS
   getEmpresasRolAdmin(){
     this._adminUsuariosService.getEmpresasRolAdmin(this.token).subscribe(
       (response)=>{
@@ -46,77 +46,109 @@ export class RoladminempresasComponent implements OnInit {
         console.log(<any>error);
       }
     )
-   }
+  }
 
+  //AGREGAR EMRPESA
+  postEmpresaRolAdmin(){
+    this._adminUsuariosService.agregarEmpresasRolAdmin(this.EmpresaModelPost, this._usuarioService.obtenerToken()).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getEmpresasRolAdmin();
+        Swal.fire({
+          icon: 'success',
+          title: 'Exito!',
+          text: 'Empresa agregada exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },(error)=>{
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: "Datos incompletos o nombre existente",
+          footer: '*Ingrese los datos de nuevo*',
+          showConfirmButton: false,
+          timer: 2500
+        });
+      }
+    );
+  }
 
-    //Agregar Usuarios
-    postEmpresaRolAdmin(){
-      this._adminUsuariosService.agregarEmpresasRolAdmin(this.EmpresaModelPost, this._usuarioService.obtenerToken()).subscribe(
-        (response)=>{
-          console.log(response);
-          this.getEmpresasRolAdmin();
-        },
-        (error)=>{
-          console.log(<any>error);
-        }
-      )
-     }
+  //ELIMINAR EMRPESA
+  deleteEmpresasRolAdmin(idEmpresa){
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario confirma, se llama al servicio para eliminar
+        this._adminUsuariosService.eliminarEmpresasRolAdmin(idEmpresa,this.token).subscribe(
+          (response) => {
+            console.log(response);
+            this.getEmpresasRolAdmin();
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminado',
+              text: 'La empresa ha sido eliminada exitosamente.',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          },(error) => {
+            console.log(<any>error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo eliminar la empresa.',
+              showConfirmButton: false,
+              timer: 2500
+            });
+          }
+        );
+      }
+    });
+  }
 
+  //VER EMPRESA POR ID
+  getEmpresaId(idEmpresa){
+    this._adminUsuariosService.obtenerEmpresaRolId(idEmpresa, this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        this.EmpresaModelGetId = response.empresas;
+      },(error)=>{
+        console.log(error)
+      }
+    )
+  }
 
-
-     // Eliminar Empresas
-     deleteEmpresasRolAdmin(idEmpresa){
-
-      this._adminUsuariosService.eliminarEmpresasRolAdmin(idEmpresa,this.token).subscribe(
-        (response)=>{
-          console.log(response);
-
-          this.getEmpresasRolAdmin();
-        },
-        (error)=>{
-          console.log(<any>error);
-        }
-      )
-     }
-
-     // ver empresas rol id empresa
-     getEmpresaId(idEmpresa){
-
-      this._adminUsuariosService.obtenerEmpresaRolId(idEmpresa, this.token).subscribe(
-
-        (response)=>{
-          console.log(response);
-
-          this.EmpresaModelGetId = response.empresas;
-
-        },
-
-        (error)=>{
-          console.log(error)
-
-        }
-      )
-    }
-
-
-    // editar empresas
-
-    putEmpresas(){
-
-      this._adminUsuariosService.editarEmpresaRolAdmin(this.EmpresaModelGetId, this.token).subscribe(
-
-        (response)=>{
-
-          console.log(response);
-
-          this.getEmpresasRolAdmin();
-
-        },
-
-
-      )
-    }
-
+  //EDITAR EMPRESA
+  putEmpresas(){
+    this._adminUsuariosService.editarEmpresaRolAdmin(this.EmpresaModelGetId, this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getEmpresasRolAdmin();
+        Swal.fire({
+          icon: 'success',
+          title: 'Exito!',
+          text: 'Empresa editada correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },(error) => {
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: "Nombre existente",
+          footer: '*Ingrese uno nuevo*',
+          showConfirmButton: false,
+          timer: 2500
+        });
+      }
+    )
+  }
 
   ngOnInit(): void {
     this.getEmpresasRolAdmin();

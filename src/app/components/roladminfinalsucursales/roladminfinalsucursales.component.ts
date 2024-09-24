@@ -6,6 +6,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 // import { Usuario } from 'src/app/models/usuarios.model';
 import { Sucursal } from 'src/app/models/sucursal.model';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-roladminfinalsucursales',
@@ -126,25 +127,70 @@ export class RoladminfinalsucursalesComponent implements OnInit {
       )
       .subscribe({
         next: (response: any) => {
-          // Recarga la página
-          window.location.reload();
+          Swal.fire({
+            icon: 'success',
+            title: 'Exito!',
+            text: 'Sucursal agregada exitosamente',
+            showConfirmButton: false,
+            timer: 1500,
+            willClose: () => {
+              // Recarga la página después de que el Swal se cierre
+              window.location.reload();
+            }
+          });
         },
         error: (error) => {
           console.log(<any>error);
+          Swal.fire({
+            icon: 'error',
+            title: "Datos incompletos o nombre existente",
+            footer: '*Ingrese los datos de nuevo*',
+            showConfirmButton: false,
+            timer: 2500
+          });
         }
       });
   }
 
   // eliminar sucursales
   deleteSucursal(idSucursal) {
-    this._adminUsuariosService.eliminarSucursalesRolAdmin(idSucursal,this.token).subscribe(
-      (response)=>{
-        console.log(response);
-        window.location.reload();
-      },(error)=>{
-        console.log(<any>error);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario confirma, se llama al servicio para eliminar
+        this._adminUsuariosService.eliminarSucursalesRolAdmin(idSucursal,this.token).subscribe(
+          (response)=>{
+            console.log(response);
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminado',
+              text: 'La sucursal ha sido eliminada exitosamente.',
+              showConfirmButton: false,
+              timer: 1500,
+              willClose: () => {
+                window.location.reload();
+              }
+            });
+          },
+          (error) => {
+            console.log(<any>error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo eliminar la sucursal.',
+              showConfirmButton: false,
+              timer: 2500
+            });
+          }
+        );
       }
-    )
+    });
   }
 
   getSucursalIdRolAdmin(idSucursal){
@@ -157,12 +203,31 @@ export class RoladminfinalsucursalesComponent implements OnInit {
       }
     )
   }
+
   // editar sucursal
   putSucursal(){
     this._adminUsuariosService.editarSucursalRolAdmin(this.SucursalModelGetId,this.token).subscribe(
       (response)=>{
         console.log(response);
-        window.location.reload();
+       Swal.fire({
+          icon: 'success',
+          title: 'Exito!',
+          text: 'Sucursal editada correctamente',
+          showConfirmButton: false,
+          timer: 1500,
+          willClose: () => {
+            window.location.reload();
+          }
+        });
+      },(error) => {
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: "Nombre existente",
+          footer: '*Ingrese uno nuevo*',
+          showConfirmButton: false,
+          timer: 2500
+        });
       }
     )
   }

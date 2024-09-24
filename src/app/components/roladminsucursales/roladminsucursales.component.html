@@ -1,77 +1,37 @@
-      <div class="container">
-        <style>
-          @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-          </style>
-        <div class="row">
-          <h1> ROL GESTORES VISTA </h1>
-
-            <div class="col-12 col-md-4" *ngFor="let gestor of UsuarioModelGet">
-                <div class="card text-center mb-3">
-                    <div class="card-header">
-                        {{gestor.nombre}} {{ gestor.apellido}}
-                    </div>
-                    <div class="card-body">
-
-                        <h5 class="card-title"> email: {{gestor.email}} </h5>
-
-                        <h5 class="card-title"> rol: {{gestor.rol}} </h5>
-
-                        <h5 class="card-title"> telefono: {{gestor.telefono}} </h5>
-
-                        <h5 class="card-title"> direccion: {{gestor.direccion}} </h5>
-
-                        <h5 class="card-title"> departamento: {{gestor.departamento}} </h5>
-
-                        <h5 class="card-title"> municipio: {{gestor.municipio}} </h5>
-
-                        <button type="button" class="btn btn-primary" (click)="getUsuarioId(gestor._id)" [routerLink]="['/roladminfinalsucursales', gestor._id]">Agregar sucursal</button>
-                    </div>
-                </div>
-            </div>
+<div class="container">
+  <img src="../../../assets/img/flecha2.png" routerLink="/roladminempresas" routerLinkActive="active" alt="retroceder"
+    width="50px" class="mt-3">
+  <h2 class="text-center mt-3">Administrar Sucursales por Gestor</h2>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
+  <div class="row">
+    <div class="col-12 col-md-4" *ngFor="let gestor of UsuarioModelGet">
+      <div class="card text-center mb-3">
+        <div class="card-header pink-header">
+          {{gestor.nombre}} {{ gestor.apellido}}
         </div>
-  
-       
-      <!--
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="editarEmpresaApp" aria-labelledby="offcanvasExampleLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Empresas</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <form>
-  
-              <div class="mb-3">
-                <label for="editarNombreEmpresa" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="editarNombreEmpresa" name="nombreSucursal" #nombreSucursal="ngModel" [(ngModel)]="SucursalModelGetId.nombreSucursal"
-                 autocomplete="off">
-              </div>
-  
-              <div class="mb-3">
-                <label for="editarDireccion" class="form-label">Dirección</label>
-                <input type="text" class="form-control" id="editarDireccion" name="direccion" #direccion="ngModel" [(ngModel)]="SucursalModelGetId.direccionSucursal"
-                 autocomplete="off">
-              </div>
-  
-              <div class="mb-3">
-                <label for="editarTelefono" class="form-label">Télefono</label>
-                <input type="text" class="form-control" id="editarTelefono" name="telefono" #telefono="ngModel" [(ngModel)]="SucursalModelGetId.telefonoSucursal"
-                 autocomplete="off">
-              </div>
-  
-              <div class="mb-3">
-                <label for="editarIdEmpresa" class="form-label">ID Empresa</label>
-                <input type="text" class="form-control" id="editarIdEmpresa" name="mision" #mision="ngModel" [(ngModel)]="SucursalModelGetId.idEmpresa"
-                 autocomplete="off">
-              </div>
+        <img src="../../../assets/img/usuarioclick&cake.png" id="imagen-usuario">
+        <div class="card-body">
 
-              <div class="mb-3">
-                <label for="editarGestorSucursales" class="form-label">Gestor de sucursales</label>
-                <input type="text" class="form-control" id="editarGestorSucursales" name="vision" #vision="ngModel" [(ngModel)]="SucursalModelGetId.gestorSucursales"
-                 autocomplete="off">
-              </div>
-              <br>
-              <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putSucursales()">Editar sucursal</button>
-  
-            </form>
-          </div>
-        </div>-->
+          <h5 class="card-title"> ID: {{gestor._id}}</h5>
+          <h5 class="card-title"> Email: {{gestor.email}} </h5>
+          <h5 class="card-title"> Rol: {{gestor.rol}} </h5>
+          <h5 class="card-title"> Télefono: {{gestor.telefono}} </h5>
+          <h5 class="card-title"> Dirección: {{gestor.direccion}} </h5>
+          <h5 class="card-title"> Departamento: {{gestor.departamento}} </h5>
+          <h5 class="card-title"> Municipio: {{gestor.municipio}} </h5>
+
+          <button type="button" class="btn btn-outline-agregar" title="Agregar sucursal"
+            (click)="getUsuarioId(gestor._id)" [routerLink]="['/roladminfinalsucursales', gestor._id]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building-add empresa" viewBox="0 0 16 16" id="icono">
+              <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
+              <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6.5a.5.5 0 0 1-1 0V1H3v14h3v-2.5a.5.5 0 0 1 .5-.5H8v4H3a1 1 0 0 1-1-1z"/>
+              <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

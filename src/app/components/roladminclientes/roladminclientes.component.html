@@ -19,19 +19,14 @@
                 <img  src="../../../assets/img/usuarioclick&cake.png" id="imagen-usuario">
 
                 <div class="card-body">
+                    
                     <h5 class="card-title">ID: {{cliente._id}}</h5>
-
-                    <h5 class="card-title"> email: {{cliente.email}} </h5>
-
-                    <h5 class="card-title"> rol: {{cliente.rol}} </h5>
-
-                    <h5 class="card-title"> telefono: {{cliente.telefono}} </h5>
-
-                    <h5 class="card-title"> direccion: {{cliente.direccion}} </h5>
-
-                    <h5 class="card-title"> departamento: {{cliente.departamento}} </h5>
-
-                    <h5 class="card-title"> municipio: {{cliente.municipio}} </h5>
+                    <h5 class="card-title"> Email: {{cliente.email}} </h5>
+                    <h5 class="card-title"> Rol: {{cliente.rol}} </h5>
+                    <h5 class="card-title"> Télefono: {{cliente.telefono}} </h5>
+                    <h5 class="card-title"> Direccion: {{cliente.direccion}} </h5>
+                    <h5 class="card-title"> Departamento: {{cliente.departamento}} </h5>
+                    <h5 class="card-title"> Municipio: {{cliente.municipio}} </h5>
 
                     <button type="button" class="btn btn-outline-warning" data-bs-toggle="offcanvas" data-bs-target="#editarClientesApp"
                     aria-controls="offcanvasExample" (click)="getUsuarioId(cliente._id)">
@@ -54,66 +49,60 @@
     <div class="modal fade " id="modalAgregarCliente" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true" #modal>
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content bk-form">
                 <div class="modal-header pink-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Rol Cliente</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
+
                         <div class="mb-3">
                             <label for="inputNombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
-                                [(ngModel)]="UsuarioModelPost.nombre" autocomplete="off" placeholder="Ingrese su Nombre">
-
-                        </div>
-                        <div class="mb-3">
+                            <input type="text" id="inputNombre" class="form-control" autocomplete="off"
+                            placeholder="Ingrese el nombre" name="nombre" #nombre="ngModel" [(ngModel)]="UsuarioModelPost.nombre">
+                          </div>
+                          <div class="mb-3">
                             <label for="inputApellido" class="form-label">Apellido:</label>
                             <input type="text" id="inputApellido" class="form-control" autocomplete="off"
-                                placeholder="Ingrese el Apellido" name="apellido" #apellido="ngModel"
-                                [(ngModel)]="UsuarioModelPost.apellido">
-                        </div>
-                        <div class="mb-3">
+                              placeholder="Ingrese el apellido" name="apellido" #apellido="ngModel" [(ngModel)]="UsuarioModelPost.apellido">
+                          </div>
+                          <div class="mb-3">
                             <label for="inputEmail" class="form-label">Email:</label>
-                            <input type="email" id="inputEmail" class="form-control" autocomplete="off"
-                                placeholder="Ingrese el correo electrónico" name="email" #email="ngModel"
-                                [(ngModel)]="UsuarioModelPost.email">
-                        </div>
-                        <div class="mb-3">
+                            <input type="email" id="inputEmail"class="form-control" autocomplete="off"
+                              placeholder="Ingrese el email" name="email" #email="ngModel" [(ngModel)]="UsuarioModelPost.email">
+                          </div>
+                          <div class="mb-3">
                             <label for="inputPassword" class="form-label">Contraseña:</label>
-                            <input type="password" id="inputPassword" class="form-control" autocomplete="off"
-                                placeholder="Ingrese su Contraseña" name="password" #password="ngModel"
-                                [(ngModel)]="UsuarioModelPost.password">
-                        </div>
-                        <div class="mb-3">
+                            <input type="password" id="inputPassword"  class="form-control" autocomplete="off"
+                              placeholder="Ingrese la constraseña" name="password" #password="ngModel" [(ngModel)]="UsuarioModelPost.password" >
+                          </div>
+                          <div class="mb-3">
                             <label for="inputTelefono" class="form-label">Télefono:</label>
                             <input type="number" id="inputTelefono" class="form-control" autocomplete="off"
-                                placeholder="" name="telefono" #telefono="ngModel"
-                                [(ngModel)]="UsuarioModelPost.telefono">
-                        </div>
-                        <div class="mb-3">
+                              placeholder="Ingrese número de télefono" name="telefono" #telefono="ngModel" [(ngModel)]="UsuarioModelPost.telefono">
+                          </div>
+                          <div class="mb-3">
                             <label for="inputDireccion" class="form-label">Dirección:</label>
-                            <input type="text" id="inputDireccion" class="form-control" autocomplete="off"
-                                placeholder="Ingrese su dirección" name="direccion" #direccion="ngModel"
-                                [(ngModel)]="UsuarioModelPost.direccion">
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputDepartamento" class="form-label">departamento:</label>
-                            <input type="text" id="inputDepartamento" class="form-control" autocomplete="off"
-                                placeholder="Ingrese el departamento" name="departamento" #departamento="ngModel"
-                                [(ngModel)]="UsuarioModelPost.departamento">
-                        </div>
-                        <div class="mb-3">
+                            <input type="text" id="inputDireccion"  class="form-control" autocomplete="off"
+                              placeholder="Ingrese la dirección" name="direccion" #direccion="ngModel" [(ngModel)]="UsuarioModelPost.direccion">
+                          </div>
+                          <div class="mb-3">
+                            <label for="inputDepartamento" class="form-label">Departamento:</label>
+                            <input type="text" id="inputDepartamento"  class="form-control" autocomplete="off"
+                              placeholder="Ingrese el nombre del departamento" name="departamento" #departamento="ngModel" [(ngModel)]="UsuarioModelPost.departamento">
+                          </div>
+                          <div class="mb-3">
                             <label for="inputMunicipio" class="form-label">Municipio:</label>
                             <input type="text" id="inputMunicipio" class="form-control" autocomplete="off"
-                                placeholder="Ingrese el municipio" name="municipio" #municipio="ngModel"
-                                [(ngModel)]="UsuarioModelPost.municipio">
-                        </div>
+                              placeholder="Ingrese el nombre del municipio" name="municipio" #municipio="ngModel" [(ngModel)]="UsuarioModelPost.municipio">
+                          </div>
+
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    <button type="button" class="btn btn-outline-cancelar" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-outline-aceptar" data-bs-dismiss="modal"
                         (click)="postUsuariosRolCliente()">Agregar</button>
                 </div>
             </div>
@@ -123,53 +112,51 @@
      <!--Editar-->
 
      <div class="offcanvas offcanvas-start" tabindex="-1" id="editarClientesApp" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Clientes</h5>
+        <div class="offcanvas-header pink-header ">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar cliente</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body">
+        <div class="offcanvas-body bk-form">
           <form>
           
             <div class="mb-3">
-              <label for="editarNombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="editarNombre" name="nombre" #nombre="ngModel" [(ngModel)]="UsuarioModelGetId.nombre"
-               autocomplete="off">
-  
-            </div>
-            <div class="mb-3">
-              <label for="editarApellido" class="form-label">Apellido:</label>
-              <input type="text" id="editarApellido" class="form-control" autocomplete="off"
-                placeholder="Ingrese la cantidad" name="apellido" #apellido="ngModel" [(ngModel)]="UsuarioModelGetId.apellido">
-            </div>
-            <div class="mb-3">
-              <label for="editarEmail" class="form-label">Email:</label>
-              <input type="email" id="editarEmail"class="form-control" autocomplete="off"
-                placeholder="Ingrese el precio del producto" name="email" #email="ngModel" [(ngModel)]="UsuarioModelGetId.email">
-            </div>
-            
-            <div class="mb-3">
-              <label for="editarTelefono" class="form-label">Télefono:</label>
-              <input type="number" id="editarTelefono" class="form-control" autocomplete="off"
-                placeholder="Ingrese el precio del producto" name="telefono" #telefono="ngModel" [(ngModel)]="UsuarioModelGetId.telefono">
-            </div>
-            <div class="mb-3">
-              <label for="editarDireccion" class="form-label">Dirección:</label>
-              <input type="text" id="editarDireccion"  class="form-control" autocomplete="off"
-                placeholder="Ingrese el precio del producto" name="direccion" #direccion="ngModel" [(ngModel)]="UsuarioModelGetId.direccion">
-            </div>
-            <div class="mb-3">
-              <label for="editarDepartamento" class="form-label">departamento:</label>
-              <input type="text" id="editarDepartamento"  class="form-control" autocomplete="off"
-                placeholder="Ingrese el precio del producto" name="departamento" #departamento="ngModel" [(ngModel)]="UsuarioModelGetId.departamento">
-            </div>
-            <div class="mb-3">
-              <label for="editarMunicipio" class="form-label">Municipio:</label>
-              <input type="text" id="editarMunicipio" class="form-control" autocomplete="off"
-                placeholder="Ingrese el precio del producto" name="municipio" #municipio="ngModel" [(ngModel)]="UsuarioModelGetId.municipio">
-            </div>
+                <label for="editarNombre" class="form-label">Nombre</label>
+                <input type="text" id="editarNombre" class="form-control" autocomplete="off"
+                  placeholder="Ingrese el nombre" name="nombre" #nombre="ngModel" [(ngModel)]="UsuarioModelGetId.nombre">
+              </div>
+              <div class="mb-3">
+                <label for="editarApellido" class="form-label">Apellido:</label>
+                <input type="text" id="editarApellido" class="form-control" autocomplete="off"
+                  placeholder="Ingrese el apellido" name="apellido" #apellido="ngModel" [(ngModel)]="UsuarioModelGetId.apellido">
+              </div>
+              <div class="mb-3">
+                <label for="editarEmail" class="form-label">Email:</label>
+                <input type="email" id="editarEmail"class="form-control" autocomplete="off"
+                  placeholder="Ingrese el email" name="email" #email="ngModel" [(ngModel)]="UsuarioModelGetId.email">
+              </div>
+              <div class="mb-3">
+                <label for="editarTelefono" class="form-label">Télefono:</label>
+                <input type="number" id="editarTelefono" class="form-control" autocomplete="off"
+                  placeholder="Ingrese el número de télefono" name="telefono" #telefono="ngModel" [(ngModel)]="UsuarioModelGetId.telefono">
+              </div>
+              <div class="mb-3">
+                <label for="editarDireccion" class="form-label">Dirección:</label>
+                <input type="text" id="editarDireccion"  class="form-control" autocomplete="off"
+                  placeholder="Ingrese la dirección" name="direccion" #direccion="ngModel" [(ngModel)]="UsuarioModelGetId.direccion">
+              </div>
+              <div class="mb-3">
+                <label for="editarDepartamento" class="form-label">Departamento:</label>
+                <input type="text" id="editarDepartamento"  class="form-control" autocomplete="off"
+                  placeholder="Ingrese el nombre del departamento" name="departamento" #departamento="ngModel" [(ngModel)]="UsuarioModelGetId.departamento">
+              </div>
+              <div class="mb-3">
+                <label for="editarMunicipio" class="form-label">Municipio:</label>
+                <input type="text" id="editarMunicipio" class="form-control" autocomplete="off"
+                  placeholder="Ingrese el nombre del municipio" name="municipio" #municipio="ngModel" [(ngModel)]="UsuarioModelGetId.municipio">
+              </div>
                 <br>
       
-                <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putUsuarios()">Editar Clientes</button>
+                <button class="btn btn-outline-aceptar" data-bs-dismiss="offcanvas" (click)="putUsuarios()">Editar cliente</button>
       
           
           </form>
