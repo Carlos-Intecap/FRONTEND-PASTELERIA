@@ -40,6 +40,7 @@ export class RolgestorproductosComponent implements OnInit {
       0,
       '',
       '',
+      '',
       [{
         idCategoria: '',
         nombreCategoria: '',
@@ -61,6 +62,7 @@ export class RolgestorproductosComponent implements OnInit {
       0,
       0,
       0,
+      '',
       '',
       '',
       [{

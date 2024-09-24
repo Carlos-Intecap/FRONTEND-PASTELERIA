@@ -24,7 +24,7 @@ export class RolclientecarritoComponent implements OnInit {
     private _usuarioService: UsuarioService,
     private _clienteUsuarioService: ClienteUsuarioService,
 
-  ) { 
+  ) {
     this.titleService.setTitle('Carrito');
     this.token = this._usuarioService.obtenerToken();
 
@@ -34,6 +34,7 @@ export class RolclientecarritoComponent implements OnInit {
       [{
         idProducto: "",
         nombreProducto: "",
+        marca: "",
         cantidad: 0,
         precio: 0,
         subTotal: 0,

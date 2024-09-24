@@ -25,7 +25,7 @@ export class RolclienteproductosComponent implements OnInit {
     // llamando a los servicios
     private _clienteUsuarioService: ClienteUsuarioService,
     private _usuarioService: UsuarioService
-  ) { 
+  ) {
     this.titleService.setTitle('Rol cliente productos');
     this.token = this._usuarioService.obtenerToken();
 
@@ -35,6 +35,7 @@ export class RolclienteproductosComponent implements OnInit {
       [{
         idProducto: "",
         nombreProducto: "",
+        marca: "",
         cantidad: 0,
         precio: 0,
         subTotal: 0,
@@ -52,7 +53,7 @@ export class RolclienteproductosComponent implements OnInit {
        0
     );
 
-    this.ProductosModelGetId = new Producto("", "", "", "", 0, 0, 0, "", "",
+    this.ProductosModelGetId = new Producto("", "", "", "", 0, 0, 0, "", "", "",
       [{
         idCategoria: "",
         nombreCategoria: "",
@@ -64,9 +65,9 @@ export class RolclienteproductosComponent implements OnInit {
         direccionSucursal: "",
         telefonoSucursal: 0,
       }]
-      
+
     );
-    
+
 
   }
 
@@ -101,15 +102,15 @@ export class RolclienteproductosComponent implements OnInit {
         (response) => {
             console.log(response);
             this.ProductosModelGetId = response.productos;
-          
-        }, 
+
+        },
         (error) => {
             console.log(error);
         }
     );
 }
 
-  
+
   putCarrito(idProducto: String, cantidad: Number) {
     this._clienteUsuarioService.putProductoCarrito(
         idProducto,   // Envía el idProducto
@@ -125,6 +126,6 @@ export class RolclienteproductosComponent implements OnInit {
         }
     );
 }
-  
+
 
 }

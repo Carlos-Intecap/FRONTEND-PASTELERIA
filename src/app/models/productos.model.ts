@@ -10,6 +10,8 @@ export class Producto {
     public vendido: Number,
     public imagen: String,
     public size: String,
+    public estado: String,
+
 
     public descripcionCategoria: [{
       idCategoria: String,

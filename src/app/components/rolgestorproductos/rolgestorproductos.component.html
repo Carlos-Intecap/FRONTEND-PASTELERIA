@@ -25,6 +25,7 @@
                 <h5 class="card-title">Precio: {{producto.precio}} </h5>
                 <h5 class="card-title">Tamaño: {{producto.size}} </h5>
                 <h5 class="card-title">Vendido: {{producto.vendido}} </h5>
+                <h5 class="card-title">Estado: {{producto.estado}} </h5>
 
                 <button type="button" class="btn btn-outline-warning " data-bs-toggle="offcanvas"
                         data-bs-target="#editarProductosApp" aria-controls="offcanvasExample"
@@ -139,7 +140,7 @@
           </div>
           <br>
           <button class="btn btn-outline-aceptar" data-bs-dismiss="offcanvas" (click)="putProducto()">Editar producto</button>
-        
+
         </form>
       </div>
     </div>

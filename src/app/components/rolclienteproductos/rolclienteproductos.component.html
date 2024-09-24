@@ -1,54 +1,61 @@
 <div class="container">
   <style>
-      @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
   </style>
   <div class="row">
-      <h1> VISTA DE PRODUCTOS </h1>
+    <h1> VISTA DE PRODUCTOS </h1>
 
-      <div class="col-12 col-md-4" *ngFor="let productos of ProductosModelGet">
-          <div class="card text-center mb-3">
-              <div class="card-header">
-                  {{ productos.nombreProducto }}
-              </div>
-              <div class="card-body">
-                  <h5 class="card-title"> Marca: {{ productos.marca }} </h5>
-                  <h5 class="card-title"> Descripción: {{ productos.descripcion }} </h5>
-                  <h5 class="card-title"> Precio: {{ productos.precio }} </h5>
-                  <h5 class="card-title"> Categoria: {{ productos.descripcionCategoria[0].nombreCategoria }}</h5>
+    <div class="col-12 col-md-4" *ngFor="let productos of ProductosModelGet">
+      <div class="card text-center mb-3">
+        <div class="card-header">
+          {{ productos.nombreProducto }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> Marca: {{ productos.marca }} </h5>
+          <h5 class="card-title"> Descripción: {{ productos.descripcion }} </h5>
+          <h5 class="card-title"> Precio: {{ productos.precio }} </h5>
+          <h5 class="card-title"> Categoria: {{ productos.descripcionCategoria[0].nombreCategoria }}</h5>
 
-                  <button type="button" class="btn btn-outline-primary" data-bs-toggle="offcanvas"
-                      data-bs-target="#editarProductosApp" aria-controls="offcanvasExample"
-                      (click)="getProductoid(productos._id)">
-                      Agregar carrito 2
-                  </button>
-              </div>
-          </div>
+          <button type="button" class="btn btn-outline-success"
+             [routerLink]="['/rolclientecarrito', productos._id]">
+
+             Ver su carrito
+          </button>
+
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="offcanvas"
+            data-bs-target="#editarProductosApp" aria-controls="offcanvasExample"
+            (click)="getProductoid(productos._id)">
+            Agregar carrito 2
+          </button>
+        </div>
       </div>
+    </div>
   </div>
 
   <!--Editar-->
   <div class="offcanvas offcanvas-start" tabindex="-1" id="editarProductosApp" aria-labelledby="offcanvasExampleLabel">
-      <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Agregar producto al carrito</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-          <form>
-              <div class="mb-3">
-                  <label for="editarNombre" class="form-label">Nombre producto</label>
-                  <input type="text" class="form-control" id="editarNombre" name="nombre" 
-                      [(ngModel)]="ProductosModelGetId.nombreProducto" autocomplete="off" disabled>
-              </div>
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Agregar producto al carrito</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form>
+        <div class="mb-3">
+          <label for="editarNombre" class="form-label">Nombre producto</label>
+          <input type="text" class="form-control" id="editarNombre" name="nombre"
+            [(ngModel)]="ProductosModelGetId.nombreProducto" autocomplete="off" disabled>
+        </div>
 
-              <div class="mb-3">
-                  <label for="inputCantidad" class="form-label">Cantidad</label>
-                  <input type="number" class="form-control" id="inputCantidad" name="cantidad" 
-                      [(ngModel)]="CarritoModelPost.compras[0].cantidad" min="1" required autocomplete="off">
-              </div>
+        <div class="mb-3">
+          <label for="inputCantidad" class="form-label">Cantidad</label>
+          <input type="number" class="form-control" id="inputCantidad" name="cantidad"
+            [(ngModel)]="CarritoModelPost.compras[0].cantidad" min="1" required autocomplete="off">
+        </div>
 
-              <button class="btn btn-success" data-bs-dismiss="offcanvas" 
-                  (click)="putCarrito(ProductosModelGetId._id, CarritoModelPost.compras[0].cantidad)">Agregar al carrito</button>
-          </form>
-      </div>
+        <button class="btn btn-success" data-bs-dismiss="offcanvas"
+          (click)="putCarrito(ProductosModelGetId._id, CarritoModelPost.compras[0].cantidad)">Agregar al
+          carrito</button>
+      </form>
+    </div>
   </div>
 </div>
