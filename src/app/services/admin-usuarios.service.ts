@@ -320,7 +320,7 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
     return this._http.put(this.url + '/editarCategoriaAdmin/' + modeloCategoria._id, parametros, { headers: headersToken });
   }
 
-  /*--------------- ADMINISTRACION DEL ROL REPARTIDOR---------------------- */
+  /*--------------- ADMINISTRACION DEL ROL REPARTIDOR ---------------------- */
 
   obtenerUsuariosRolRepartidor(token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization',token);
@@ -347,6 +347,35 @@ editarRolFacturador(modeloUsuario: Usuario, token): Observable<any> {
     let parametros = JSON.stringify(modeloUsuario);
     let headersToken = this.headersVariable.set('Authorization',token);
     return this._http.put(this.url + '/editarRolRepartidor/' + modeloUsuario._id, parametros, { headers: headersToken });
+  }
+
+  /*--------------- ADMINISTRACION DEL ROL CAJERO ---------------------- */
+
+  obtenerUsuariosRolCajero(token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.get(this.url + '/getRolCajero', { headers: headersToken });
+  }
+
+  agregarUsuarioRolCajero(modeloUsuario: Usuario, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    let parametros = JSON.stringify(modeloUsuario);
+    return this._http.post(this.url + '/agregarRolCajero', parametros, { headers: headersToken });
+  }
+  
+  eliminarUsuarioRolCajero(idUsuario,token) {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.delete(this.url + '/eliminarRolCajero/' + idUsuario, { headers: headersToken });
+  }
+
+  obtenerUsuarioRolCajeroId(idUsuario,token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.get(this.url + '/getRolIdCajero/' + idUsuario, { headers: headersToken });
+  }
+  
+  editarRolCajero(modeloUsuario: Usuario, token): Observable<any> {
+    let parametros = JSON.stringify(modeloUsuario);
+    let headersToken = this.headersVariable.set('Authorization',token);
+    return this._http.put(this.url + '/editarRolCajero/' + modeloUsuario._id, parametros, { headers: headersToken });
   }
   
 }

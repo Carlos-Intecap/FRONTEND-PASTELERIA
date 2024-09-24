@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { GestorUsuarioService } from 'src/app/services/gestor-usuario.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Producto } from 'src/app/models/productos.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rolgestorproductos',
@@ -132,25 +133,68 @@ export class RolgestorproductosComponent implements OnInit {
       )
       .subscribe({
         next: (response: any) => {
-          // Recarga la página
-          window.location.reload();
+          Swal.fire({
+            icon: 'success',
+            title: 'Exito!',
+            text: 'Producto agregado exitosamente',
+            showConfirmButton: false,
+            timer: 1500,
+            willClose: () => {
+              window.location.reload();
+            }
+          });
         },
         error: (error) => {
           console.log(<any>error);
+          Swal.fire({
+            icon: 'error',
+            title: "Datos incompletos o nombre existente",
+            footer: '*Ingrese los datos de nuevo*',
+            showConfirmButton: false,
+            timer: 2500
+          });
         }
       });
   }
 
   // eliminar producto
   deleteProducto(idProducto){
-    this._gestorUsuarioService.eliminarProductos(idProducto,this.token).subscribe(
-      (response)=>{
-        console.log(response);
-        window.location.reload();
-      },(error)=>{
-        console.log(<any>error);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario confirma, se llama al servicio para eliminar
+        this._gestorUsuarioService.eliminarProductos(idProducto,this.token).subscribe(
+          (response) => {
+            console.log(response);
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminado',
+              text: 'El producto ha sido eliminado exitosamente.',
+              showConfirmButton: false,
+              timer: 1500,
+              willClose: () => {
+                window.location.reload();
+              }
+            });
+          },(error) => {
+            console.log(<any>error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo eliminar el producto.',
+              showConfirmButton: false,
+              timer: 2500
+            });
+          }
+        );
       }
-    )
+    });
   }
 
   // ver producto por id
@@ -170,7 +214,25 @@ export class RolgestorproductosComponent implements OnInit {
     this._gestorUsuarioService.editarProducto(this.ProductoModelGetId,this.token).subscribe(
       (response)=>{
         console.log(response);
-        window.location.reload();
+        Swal.fire({
+          icon: 'success',
+          title: 'Exito!',
+          text: 'Producto editado correctamente',
+          showConfirmButton: false,
+          timer: 1500,
+          willClose: () => {
+            window.location.reload();
+          }
+        });
+      },(error) => {
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: "Nombre existente",
+          footer: '*Ingrese uno nuevo*',
+          showConfirmButton: false,
+          timer: 2500
+        });
       }
     )
   }

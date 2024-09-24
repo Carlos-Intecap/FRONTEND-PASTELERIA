@@ -1,26 +1,20 @@
 <div class="container">
-
-
+    <img src="../../../assets/img/flecha2.png" routerLink="/rolgestorsucursales" routerLinkActive="active" alt="retroceder" width="50px" class="mt-3">
+    <h2 class="text-center">Categorías Generales</h2>
     <div class="row">
-        <h1> CATEGORIAS GENERALES </h1>
-
         <div class="col-12 col-md-4" *ngFor="let category of CategoriasModelGet">
             <div class="card text-center mb-3">
-                <div class="card-header">
+                <div class="card-header pink-header">
                     {{ category.nombreCategoria }}
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Descripción: {{category.descripcionCategoria}}</h5>
                     <!-- BOTON PARA TRAERSE EL ID DE LA CATEGORIA -->
-                    <button type="button" class="btn btn-outline-primary mt-3" [routerLink]="['/rolgestorproductos', category._id]">
+                    <button type="button" class="btn btn-outline-aceptar mt-3"
+                        [routerLink]="['/rolgestorproductos', category._id]">
                         Agregar productos
                     </button>
-
                 </div>
-
-
-
-
             </div>
         </div>
     </div>

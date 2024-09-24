@@ -1,38 +1,35 @@
 <div class="container">
-    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresas">
+    <img src="../../../assets/img/flecha2.png" routerLink="/vistarolgestor" routerLinkActive="active" alt="retroceder" width="50px" class="mt-3">
+
+    <h2 class="text-center" >Administrar Empresas</h2>
+    <!--<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresas">
         Agregar
-    </button>
+    </button>-->
     <br>
     <br>
     <div class="row">
         <div class="col-12 col-md-4" *ngFor="let empresa of EmpresaModelGet">
             <div class="card text-center mb-3">
-                <div class="card-header">
+                <div class="card-header pink-header">
                     {{empresa.nombreEmpresa}}
                 </div>
+                <img  src="../../../assets/img/empresas.png" id="imagen-usuario">
                 <div class="card-body">
                     <h5 class="card-title">ID: {{empresa._id}}</h5>
-
                     <h5 class="card-title"> Direccion: {{empresa.direccion}} </h5>
-
                     <h5 class="card-title"> Télefono: {{empresa.telefono}} </h5>
-
                     <h5 class="card-title"> Misión: {{empresa.mision}} </h5>
-
                     <h5 class="card-title"> Visión: {{empresa.vision}} </h5>
-
                     <h5 class="card-title"> Historia: {{empresa.historia}} </h5>
-
                     <h5 class="card-title"> Id usuario: {{empresa.idUsuario}} </h5>
 
-
-                    <button type="button" class="btn btn-danger" (click)="deleteEmpresas(empresa._id)">Eliminar</button>
+                    <!--<button type="button" class="btn btn-danger" (click)="deleteEmpresas(empresa._id)">Eliminar</button>
 
                     <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
                         data-bs-target="#editarEmpresaApp" aria-controls="offcanvasExample"
                         (click)="getEmpresaId(empresa._id)">
                         Editar
-                    </button>
+                    </button>-->
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Empresa } from 'src/app/models/empresa.model';
 import { GestorUsuarioService } from 'src/app/services/gestor-usuario.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rolgestorempresas',
@@ -45,22 +46,62 @@ export class RolgestorempresasComponent implements OnInit {
       (response)=>{
         console.log(response);
         this.getEmpresas();
+        Swal.fire({
+          icon: 'success',
+          title: 'Exito!',
+          text: 'Empresa agregada exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
       },(error)=>{
         console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: "Datos incompletos o nombre existente",
+          footer: '*Ingrese los datos de nuevo*',
+          showConfirmButton: false,
+          timer: 2500
+        });
       }
     )
   }
   
   //ELIMINAR EMPRESAS
   deleteEmpresas(idEmpresa){
-    this._gestorUsuariosService.eliminarEmpresas(idEmpresa,this.token).subscribe(
-      (response)=>{
-        console.log(response);
-        this.getEmpresas();
-      },(error)=>{
-        console.log(<any>error);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario confirma, se llama al servicio para eliminar
+        this._gestorUsuariosService.eliminarEmpresas(idEmpresa,this.token).subscribe(
+          (response) => {
+            console.log(response);
+            this.getEmpresas();
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminado',
+              text: 'La empresa ha sido eliminada exitosamente.',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          },(error) => {
+            console.log(<any>error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo eliminar la empresa.',
+              showConfirmButton: false,
+              timer: 2500
+            });
+          }
+        );
       }
-    )
+    });
   }
   
   //OBTENER EMRPESA POR ID
@@ -78,9 +119,25 @@ export class RolgestorempresasComponent implements OnInit {
   //EDITAR EMPRESA
   putEmpresas(){
     this._gestorUsuariosService.editarEmpresa(this.EmpresaModelGetId, this.token).subscribe(
-      (response)=>{
+      (response) => {
         console.log(response);
         this.getEmpresas();
+        Swal.fire({
+          icon: 'success',
+          title: 'Exito!',
+          text: 'Empresa editada correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },(error) => {
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: "Nombre existente",
+          footer: '*Ingrese uno nuevo*',
+          showConfirmButton: false,
+          timer: 2500
+        });
       }
     )
   }

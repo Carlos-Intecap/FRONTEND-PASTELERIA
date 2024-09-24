@@ -1,19 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
-    box-sizing: border-box;
-    font-family: "Raleway", sans-serif;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
 	font-optical-sizing: auto;
 	font-weight: weight;
 	font-style: normal;
 }
 
 #icono {
-    width: 50px;
+  width: 50px;
 	height: 30px;
 }
 
 #icono-editar{
-    width:35px; 
+  width:35px; 
 }
 
 .empresa{
@@ -84,7 +86,7 @@
 $colors: (
   cancelar: #921A40,
   aceptar: #C75B7A,
-  agregar: #c22593
+  agregar: #d83256
 );
 
 // Mixin para botones outline

@@ -30,7 +30,7 @@
             backdrop-filter: blur(5px);
         }
 
-        .verde {
+        .contorno {
             color: #375b06;
             font-family: "Josefin Sans", sans-serif;
             font-optical-sizing: auto;
@@ -165,20 +165,20 @@
             <div class="container rounded p-4" style="width: 50vh; border: solid 3px #ffc7de; font-weight: bold;">
                 <h2 class="text-center mb-4 titulo" style="color: #fb74a2;">INICIAR SESIÓN</h2>
                 <div class="mb-3">
-                    <label for="email" class="form-label verde"><i class="fas fa-unlock-alt"></i>Email</label>
+                    <label for="email" class="form-label contorno"><i class="fas fa-unlock-alt"></i>Email</label>
                     <input class="form-control" type="email" placeholder="Ingrese su email"
                         style="background-color: #ffc7de; border: 3px solid #fb74a2;" id="email"  name="email" #email="ngModel" 
                         [(ngModel)]="usuarioModel.email" required autocomplete="off">
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label verde"><i class="fas fa-unlock-alt"></i>Contraseña</label>
+                    <label for="password" class="form-label contorno"><i class="fas fa-unlock-alt"></i>Contraseña</label>
                     <input class="form-control " type="password" id="password" placeholder="Ingrese su contraseña"
                         style="background-color: #ffc7de; border: 3px solid #fb74a2;" id="password" #password="ngModel"[(ngModel)]="usuarioModel.password" required autocomplete="off" >
                 </div>
                 <div class="text-center"><button class="rounded-pill text-black" type="submit"(click)="login()">Iniciar Sesion</button>
                 </div>
                 <hr>
-                <div class="verde">¿No tienes cuenta? ¡puedes crear una!</div>
+                <div class="contorno">¿No tienes cuenta? ¡puedes crear una!</div>
                 <div class="text-center">
                     <a id="registrar" routerLink="/registro">
                         <button class="rounded-pill mt-3 text-black">

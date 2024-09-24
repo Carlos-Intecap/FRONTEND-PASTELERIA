@@ -33,6 +33,7 @@ import { RolclientesucursalesComponent } from './components/rolclientesucursales
 import { RolclienteproductosComponent } from './components/rolclienteproductos/rolclienteproductos.component';
 import { RolclientecarritoComponent } from './components/rolclientecarrito/rolclientecarrito.component';
 import { RoladminrepartidoresComponent } from './components/roladminrepartidores/roladminrepartidores.component';
+import { RoladmincajerosComponent } from './components/roladmincajeros/roladmincajeros.component';
 
 
 
@@ -64,7 +65,8 @@ import { RoladminrepartidoresComponent } from './components/roladminrepartidores
     RolclientesucursalesComponent,
     RolclienteproductosComponent,
     RolclientecarritoComponent,
-    RoladminrepartidoresComponent
+    RoladminrepartidoresComponent,
+    RoladmincajerosComponent
   ],
   imports: [
     BrowserModule,

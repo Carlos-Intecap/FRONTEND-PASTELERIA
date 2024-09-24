@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Categoria } from 'src/app/models/categoria.model';
 import { AdminUsuariosService} from 'src/app/services/admin-usuarios.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-roladmincate',
@@ -43,25 +44,66 @@ export class RoladmincateComponent implements OnInit {
   //AGREGAR CATEGORIAS
   postCategorias(){
     this._adminUsuariosService.agregarCategoriaRolAdmin(this.CategoriasModelPost,this._usuarioService.obtenerToken()).subscribe(
-      (response)=>{
+      (response) => {
         console.log(response);
         this.getCategorias();
-      },(error)=>{
+        Swal.fire({
+          icon: 'success',
+          title: 'Exito!',
+          text: 'Categoria agregada exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },(error) => {
         console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: "Datos incompletos o nombre existente",
+          footer: '*Ingrese los datos de nuevo*',
+          showConfirmButton: false,
+          timer: 2500
+        });
       }
     )
   }
 
   //ELIMINAR CAEGORIAS
   deleteCategorias(idCategoria){
-    this._adminUsuariosService.eliminarCategoriaRolAdmin(idCategoria,this.token).subscribe(
-      (response)=>{
-        console.log(response);
-        this.getCategorias();
-      },(error)=>{
-        console.log(<any>error);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario confirma, se llama al servicio para eliminar
+        this._adminUsuariosService.eliminarCategoriaRolAdmin(idCategoria,this.token).subscribe(
+          (response) => {
+            console.log(response);
+            this.getCategorias();
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminado',
+              text: 'La categoria ha sido eliminada exitosamente.',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          },
+          (error) => {
+            console.log(<any>error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo eliminar la categoria.',
+              showConfirmButton: false,
+              timer: 2500
+            });
+          }
+        );
       }
-    )
+    });
   }
 
   //OBTENER CATEGORIA POR ID
@@ -79,9 +121,25 @@ export class RoladmincateComponent implements OnInit {
   //EDITAR CATEGORIA
   putCategorias(){
     this._adminUsuariosService.editarCategoriaRolAdmin(this.CategoriasModelGetId,this.token).subscribe(
-      (response)=>{
+      (response) => {
         console.log(response);
         this.getCategorias();
+        Swal.fire({
+          icon: 'success',
+          title: 'Exito!',
+          text: 'Categoria editada correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },(error) => {
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: "Nombre existente",
+          footer: '*Ingrese uno nuevo*',
+          showConfirmButton: false,
+          timer: 2500
+        });
       }
     )
   }
