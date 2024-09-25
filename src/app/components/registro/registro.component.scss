@@ -1,0 +1,292 @@
+.titulo {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .contenedor-columnas {
+    width: 65vh;
+    margin: auto;
+  }
+  
+  .login {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .fondo {
+    background-image: url('../../../assets/img/cupcakeClick.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backdrop-filter: blur(5px);
+  }
+  
+  .contorno {
+    color: #375b06;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-size: 20px;
+    font-style: oblique;
+  }
+  
+  .botonRegistro {
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.7em 2em;
+    border: 3px solid #fb74a2;
+    border-radius: 50px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+    color: #fb74a2;
+    text-decoration: none;
+    transition: 0.3s ease all;
+    z-index: 1;
+  }
+  
+  .botonRegistro:before {
+    transition: 0.5s all ease;
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    background-color: #ffc7de;
+    z-index: -1;
+  }
+  
+  .botonRegistro:hover,
+  .botonRegistro:focus {
+    color: #FF0072;
+  }
+  
+  .botonRegistro:hover:before,
+  .botonRegistro:focus:before {
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+  }
+  
+  .botonRegistro:active {
+    transform: scale(0.9);
+  }
+  
+  
+  .tarjeta-login {
+    width: 65vh;
+    transform: scale(0.9);
+    height: auto;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  /* Estilos generales */
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .logo-login {
+    width: 200px;
+  }
+  
+  /* Vista laptop / desktop */
+  @media (min-width: 1301px) {
+    .logo-container {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: auto;
+      justify-content: flex-start;
+    }
+  
+    .logo-login {
+      width: 150px;
+    }
+  
+    .contenedor {
+      position: relative;
+    }
+  }
+  
+  /* Vista laptop / tablet horizontal */
+  @media (min-width: 860px) and (max-width: 1300px) {
+    .logo-container {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: auto;
+      justify-content: flex-start;
+    }
+  
+    .logo-login {
+      width: 130px;
+    }
+  
+    .contenedor {
+      position: relative;
+    }
+  
+    .tarjeta-login {
+      width: 65vh;
+      transform: scale(0.8);
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  /* Vista Tablet vertical */
+  @media (min-width: 440px) and (max-width: 854px) {
+    .contenedor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: auto;
+      min-height: 100vh;
+      padding: 20px 0;
+      overflow-x: hidden;
+    }
+  
+    .logo-container {
+      margin-bottom: 20px;
+    }
+  
+    .logo-login {
+      width: 250px;
+    }
+  
+    .tarjeta-login {
+      width: 90%;
+      max-width: 100%;
+      /* Cambiado de 65vh a 100% */
+      transform: scale(1.1);
+      padding: 20px;
+    }
+    .contenedor-columnas {
+      width: 40vh;
+      margin: auto;
+    }
+  
+    .login {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    input.form-control {
+      width: 100%;
+    }
+    .login>div {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    .contenedor-columnas {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .columna1,
+    .columna2 {
+      width: 100%;
+    }
+  }
+  
+  /* Vista teléfono */
+  @media (max-width: 430px) {
+    .fondo {
+      background-image: url('../../../assets/img/cupcakeClickVertical.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      backdrop-filter: blur(5px);
+    }
+  
+    .contenedor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: auto;
+      min-height: 100vh;
+      padding: 20px 0;
+      overflow-x: hidden;
+      /* Previene el desplazamiento horizontal */
+    }
+  
+    .logo-container {
+      margin-bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .logo-login {
+      width: 170px;
+    }
+  
+    .tarjeta-login {
+      width: 90%;
+      max-width: 100%;
+      /* Cambiado de 65vh a 100% */
+      transform: scale(1);
+      padding: 20px;
+      overflow-x: hidden;
+      /* Previene el desplazamiento horizontal dentro de la tarjeta */
+    }
+  
+    .login {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+  
+    .login>div {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    .contenedor-columnas {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .columna1,
+    .columna2 {
+      width: 100%;
+    }
+  
+    .mb-3 {
+      margin-bottom: 15px !important;
+    }
+  
+    input.form-control {
+      width: 100%;
+    }
+  }

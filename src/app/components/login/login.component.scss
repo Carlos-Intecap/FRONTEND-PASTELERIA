@@ -1,0 +1,147 @@
+.titulo {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+.tarjeta-login {
+    height: 100vh;
+}
+
+.fondo {
+    background-image: url('../../../assets/img/cupcakeClick.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backdrop-filter: blur(5px);
+}
+
+.verde {
+    color: #375b06;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-size: 20px;
+    font-style: oblique;
+}
+
+.botonLogin {
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.7em 2em;
+    border: 3px solid #fb74a2;
+    border-radius: 50px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+    color: #fb74a2;
+    text-decoration: none;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+.botonLogin:before {
+    transition: 0.5s all ease;
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    background-color: #ffc7de;
+    z-index: -1;
+}
+
+.botonLogin:hover,
+.botonLogin:focus {
+    color: #FF0072;
+}
+
+.botonLogin:hover:before,
+.botonLogin:focus:before {
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+
+.botonLogin:active {
+    transform: scale(0.9);
+}
+
+.logo-login {
+    position: absolute;
+    left: 150px;
+    top: 100px;
+    width: 300px;
+}
+.borde-eye {
+    border-radius: 0px;
+}
+
+/*Vista laptop / tablet horizontal*/
+@media (width <=1280px) {
+    .logo-login {
+        position: absolute;
+        left: 50px;
+        top: 50px;
+        width: 300px;
+    }
+}
+
+/* Vista Tablet vertical */
+@media (width <=853px) {
+    .fondo {
+        background-image: url('../../../assets/img/cupcakeClick.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        backdrop-filter: blur(5px);
+    }
+
+    /*.contenedor {*/
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* margin: auto; */
+        /* justify-content: center;*/
+        /*align-items: center; */
+   /* }*/
+
+    .logo-login {
+        /* position: absolute;
+top: 20px; */
+        /* margin: auto;
+display: flex;
+justify-content: center;
+align-items: center; 
+text-align: center; */
+        width: 300px;
+    }
+}
+
+/* Vista telefono */
+@media (width <=430px) {
+    .fondo {
+        background-image: url('../../../assets/img/cupcakeClick.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        backdrop-filter: blur(5px);
+    }
+
+    .logo-login {
+        position: absolute;
+        left: 130px;
+        top: 20px;
+        width: 200px;
+    }
+
+    .tarjeta-login {
+        transform: scale(0.9);
+    }
+}

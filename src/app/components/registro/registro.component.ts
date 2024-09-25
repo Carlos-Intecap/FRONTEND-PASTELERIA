@@ -11,6 +11,10 @@ import { Usuario } from 'src/app/models/usuarios.model';
 export class RegistroComponent implements OnInit {
   public UsuarioModelPost: Usuario;
   public municipios: String[] = [];
+  password: string = '';
+  passwordStrengthMessage: string = '';
+  passwordStrengthColor: string = '#e74c3c'; // Color por defecto (rojo)
+  passwordVisible: boolean = false; // Para mostrar/ocultar la contraseña
 
   constructor(
     private _tareasLibresService: TareaslibresService,
@@ -45,6 +49,60 @@ export class RegistroComponent implements OnInit {
   ];
 
   ngOnInit(): void {}
+
+  // Método para actualizar la fortaleza de la contraseña
+  updatePasswordStrength(): void {
+    const minLength = 5;
+    const hasUppercase = /[A-Z]/.test(this.password);
+    const hasLowercase = /[a-z]/.test(this.password);
+    const hasNumber = /\d/.test(this.password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>-]/.test(this.password);
+    
+    if (this.password.length >= minLength && hasUppercase && hasLowercase && hasNumber && hasSpecialChar) {
+      this.passwordStrengthMessage = 'Contraseña válida';
+      this.passwordStrengthColor = '#2ecc71'; // Verde
+    } else {
+      this.passwordStrengthMessage = 'La contraseña debe tener:';
+      if (this.password.length < minLength) {
+        this.passwordStrengthMessage += ' al menos 5 caracteres';
+      }
+      if (!hasUppercase) {
+        this.passwordStrengthMessage += (this.password.length < minLength ? ' ,' : '') + ' una letra mayúscula';
+      }
+      if (!hasLowercase) {
+        this.passwordStrengthMessage += (this.password.length < minLength ? ' ,' : '') + ' una letra minúscula';
+      }
+      if (!hasNumber) {
+        this.passwordStrengthMessage += (this.password.length < minLength ? ' ,' : '') + ' un número';
+      }
+      if (!hasSpecialChar) {
+        this.passwordStrengthMessage += (this.password.length < minLength ? ' ,' : '') + ' un carácter especial';
+      }
+      this.passwordStrengthColor = '#e74c3c'; // Rojo
+    }
+  }
+
+  // Método para mostrar/ocultar la contraseña
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
+  // Método para enviar el formulario
+  onSubmit(event: Event): void {
+    event.preventDefault();
+    const minLength = 5;
+    const hasUppercase = /[A-Z]/.test(this.password);
+    const hasLowercase = /[a-z]/.test(this.password);
+    const hasNumber = /\d/.test(this.password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>-]/.test(this.password);
+
+    if (this.password.length >= minLength && hasUppercase && hasLowercase && hasNumber && hasSpecialChar) {
+      this.UsuarioModelPost.password = this.password; // Asigna la contraseña al modelo
+      this.postUsuarios();
+    } else {
+      alert('Por favor, asegúrate de que la contraseña cumpla con los requisitos.');
+    }
+  }
 
   // listado de municipios
   actualizarMunicipio(departamento: string) {
@@ -346,7 +404,9 @@ break;
         this.municipios = [];
         break;
     }
-  }  postUsuarios() {
+  }  
+  
+  postUsuarios() {
     this._tareasLibresService.agregarUsuario(this.UsuarioModelPost).subscribe(
       (res) => {
         console.log(res);
