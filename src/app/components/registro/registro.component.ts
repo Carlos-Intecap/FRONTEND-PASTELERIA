@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TareaslibresService } from 'src/app/services/tareaslibres.service';
 import { Usuario } from 'src/app/models/usuarios.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -410,10 +411,26 @@ break;
     this._tareasLibresService.agregarUsuario(this.UsuarioModelPost).subscribe(
       (res) => {
         console.log(res);
-        this._router.navigate(['login']);
+        Swal.fire({
+          icon: 'success',
+          title: 'Exito!',
+          text: 'Haz sido registrado(a) exitosamente',
+          showConfirmButton: false,
+          timer: 1500,
+          willClose: () => {
+            this._router.navigate(['login']);
+          }
+        });
       },
       (error) => {
         console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: "Datos incompletos o email existente",
+          footer: '*Ingrese los datos de nuevo*',
+          showConfirmButton: false,
+          timer: 2500
+        });
       }
     );
   }

@@ -87,15 +87,20 @@
                             <input type="text" id="inputDireccion"  class="form-control" autocomplete="off"
                               placeholder="Ingrese la dirección" name="direccion" #direccion="ngModel" [(ngModel)]="UsuarioModelPost.direccion">
                           </div>
-                          <div class="mb-3">
-                            <label for="inputDepartamento" class="form-label">Departamento:</label>
-                            <input type="text" id="inputDepartamento"  class="form-control" autocomplete="off"
-                              placeholder="Ingrese el nombre del departamento" name="departamento" #departamento="ngModel" [(ngModel)]="UsuarioModelPost.departamento">
+                          <div class="mb-3 pt-4">
+                            <label for="inputDepartamento" class="form-label"><i class="fas fa-user"></i>Departamento:</label>
+                            <select class="form-select" aria-label="Default select example" id="inputDepartamento" name="departamento"
+                                #departamento="ngModel" [(ngModel)]="UsuarioModelPost.departamento" (change)="actualizarMunicipio(departamento.value)" required>
+                                <option *ngFor="let clasificacion of clasificacion" [value]="clasificacion.tipo">{{clasificacion.tipo}}</option>
+                            </select>
                           </div>
-                          <div class="mb-3">
-                            <label for="inputMunicipio" class="form-label">Municipio:</label>
-                            <input type="text" id="inputMunicipio" class="form-control" autocomplete="off"
-                              placeholder="Ingrese el nombre del municipio" name="municipio" #municipio="ngModel" [(ngModel)]="UsuarioModelPost.municipio">
+              
+                          <div class="mb-3 pt-4">
+                            <label for="inputMunicipio" class="form-label"><i class="fas fa-user"></i>Municipio:</label>
+                            <select class="form-select" aria-label="Municipio select" id="inputMunicipio" name="municipio"
+                                #municipio="ngModel" [(ngModel)]="UsuarioModelPost.municipio" required>
+                                <option *ngFor="let numero of municipios" [value]="numero">{{numero}}</option>
+                            </select>
                           </div>
 
                     </form>
