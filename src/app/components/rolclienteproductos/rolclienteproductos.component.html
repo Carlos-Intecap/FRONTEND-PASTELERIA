@@ -19,7 +19,7 @@
             Ver su carrito
           </button>
 
-          <button type="button" class="btn btn-outline-aceptar" data-bs-toggle="offcanvas"
+          <button type="button" class="btn btn-aceptar" data-bs-toggle="offcanvas"
             data-bs-target="#editarProductosApp" aria-controls="offcanvasExample"
             (click)="getProductoid(productos._id)">
             Agregar al carrito
@@ -49,7 +49,7 @@
             [(ngModel)]="CarritoModelPost.compras[0].cantidad" min="1" required autocomplete="off">
         </div>
 
-        <button class="btn btn-outline-aceptar" data-bs-dismiss="offcanvas"
+        <button class="btn btn-aceptar" data-bs-dismiss="offcanvas"
           (click)="putCarrito(ProductosModelGetId._id, CarritoModelPost.compras[0].cantidad)">Agregar al
           carrito</button>
       </form>
