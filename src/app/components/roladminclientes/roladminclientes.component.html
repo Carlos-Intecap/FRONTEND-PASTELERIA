@@ -7,9 +7,9 @@
 
     <h2 class="text-center" >Administrar Usuarios ROL_CLIENTES</h2>
 
-    <button class="btn btn-outline rounded-pill my-3 verde" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarCliente">
-        <img  src="../../../assets/img/agregarpersona.svg" class="m-2" id="imagen-usuario"  id="icono-editar">
-      </button>
+    <button class="btn btn-agregar-usuario rounded-pill" type="button" title="Agregar usuario" data-bs-toggle="modal" data-bs-target="#modalAgregarCliente">
+      <i class="bi bi-person-plus"></i>
+    </button>
     <div class="row">
         <div class="col-12 col-md-4 " *ngFor="let cliente of UsuarioModelGet">
             <div class="card text-center mb-3 ">
@@ -30,16 +30,13 @@
 
                     <button type="button" class="btn btn-outline-warning" data-bs-toggle="offcanvas" data-bs-target="#editarClientesApp"
                     aria-controls="offcanvasExample" (click)="getUsuarioId(cliente._id)">
-                    <img src="../../../assets/img/editaricono.png" alt=""  id="icono-editar" class="">
+                    <img src="../../../assets/img/editaricono.png" alt="" class="icono">
 
                     </button>
                     <button type="button" class="btn btn-outline-danger ms-3" (click)="deleteUsuariosRolCliente(cliente._id)">           
-                          <img src="../../../assets/img/trash.svg" alt=""   id="icono-editar">
+                          <img src="../../../assets/img/trash.svg" alt="" class="icono">
                     </button>
-
                 </div>
-
-        
             </div>
         </div>
     </div>
@@ -106,8 +103,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-cancelar" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-outline-aceptar" data-bs-dismiss="modal"
+                    <button type="button" class="btn btn-cancelar" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-aceptar" data-bs-dismiss="modal"
                         (click)="postUsuariosRolCliente()">Agregar</button>
                 </div>
             </div>
@@ -161,7 +158,7 @@
               </div>
                 <br>
       
-                <button class="btn btn-outline-aceptar" data-bs-dismiss="offcanvas" (click)="putUsuarios()">Editar cliente</button>
+                <button class="btn btn-aceptar" data-bs-dismiss="offcanvas" (click)="putUsuarios()">Editar cliente</button>
       
           
           </form>

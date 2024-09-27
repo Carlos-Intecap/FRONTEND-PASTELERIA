@@ -1,8 +1,8 @@
 <div class="container">
   <img src="../../../assets/img/flecha2.png" routerLink="/roladminusuarios" routerLinkActive="active" alt="retroceder" width="50px" class="mt-3">
   <h2 class="text-center mt-3">Administrar Usuarios Rol_Gestor</h2>
-  <button class="btn btn-outline rounded-pill verde" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarGestor">
-    <img  src="../../../assets/img/agregarpersona.svg" class="m-2" id="imagen-usuario"  id="icono-editar" >
+  <button class="btn btn-agregar-usuario rounded-pill" type="button" title="Agregar usuario" data-bs-toggle="modal" data-bs-target="#modalAgregarGestor">
+    <i class="bi bi-person-plus"></i>
   </button>
 
   <!-- CONTENEDORES -->
@@ -26,12 +26,11 @@
           <h5 class="card-title"> Municipio: {{gestor.municipio}}  </h5>
 
           <button type="button" class="btn btn-outline-warning mx-3 my-2 w-25" data-bs-toggle="offcanvas" data-bs-target="#editarGestoresApp"
-          aria-controls="offcanvasExample" (click)="getUsuarioId(gestor._id)"   >
-            
-          <img src="../../../assets/img/editaricono.png" alt=""  id="icono-editar" class="">
+          aria-controls="offcanvasExample" (click)="getUsuarioId(gestor._id)">
+          <img src="../../../assets/img/editaricono.png" alt="" class="icono">
           </button>
-          <button type="button" class="btn btn-outline-danger w-25" (click)="deleteUsuariosRolGestor(gestor._id)" >
-           <img src="../../../assets/img/trash.svg" alt=""   id="icono-editar">
+          <button type="button" class="btn btn-outline-danger w-25" (click)="deleteUsuariosRolGestor(gestor._id)">
+            <img src="../../../assets/img/trash.svg" alt="" class="icono">
           </button>
         </div>
         
@@ -100,8 +99,8 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-cancelar" data-bs-dismiss="modal" >Cerrar</button>
-          <button type="button" class="btn btn-outline-aceptar" data-bs-dismiss="modal" (click)="postUsuariosRolGestor()">Agregar</button>
+          <button type="button" class="btn btn-cancelar" data-bs-dismiss="modal" >Cerrar</button>
+          <button type="button" class="btn btn-aceptar" data-bs-dismiss="modal" (click)="postUsuariosRolGestor()">Agregar</button>
         </div>
       </div>
     </div>
@@ -152,7 +151,7 @@
             placeholder="Ingrese el nombre del municipio" name="municipio" #municipio="ngModel" [(ngModel)]="UsuarioModelGetId.municipio">
         </div>
         <br>
-        <button class="btn btn-outline-aceptar" data-bs-dismiss="offcanvas" (click)="putUsuarios()">Editar gestor</button>
+        <button class="btn btn-aceptar" data-bs-dismiss="offcanvas" (click)="putUsuarios()">Editar gestor</button>
 
       </form>
     </div>

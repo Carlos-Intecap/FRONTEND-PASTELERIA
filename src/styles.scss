@@ -10,18 +10,14 @@
 	font-style: normal;
 }
 
-#icono {
-  width: 50px;
-	height: 30px;
-}
-
-#icono-editar{
-  width:35px; 
+.icono {
+  width: 35px;
 }
 
 .empresa{
     height: 30px; 
 }
+
 #imagen-usuario{
     width: 130px;
     height: 120px;
@@ -33,10 +29,6 @@
     color: #d30a49; /* Color de texto en hover (opcional) */
 }
 
-.verde {
-	background-color: #b0d45b;
-}
-
 .bk-form {
 	background-color: #F4D9D0;
 }
@@ -45,8 +37,6 @@
 	border-radius: 4px;
 	box-shadow: 0 -1px 1px 0 rgb(246, 192, 248), 0 1px 2px 0 rgb(246, 192, 248);
 	transition: all .2s ease;
-  /*background: linear-gradient(77deg, rgba(33,20,45,1) 13%, rgba(28,27,60,1) 100%, rgba(0,0,0,1) 100%);*/
-
 	position: relative;
 	overflow: hidden;
 
@@ -87,12 +77,13 @@
 $colors: (
   cancelar: #921A40,
   aceptar: #C75B7A,
-  agregar: #d83256
+  agregar-sucursal: #d83256,
+  agregar-usuario: #b0d45b
 );
 
 // Mixin para botones outline
 @mixin outline-button($color-name, $color-value) {
-  .btn-outline-#{$color-name} {
+  .btn-#{$color-name} {
     color: $color-value;
     border: 1px solid $color-value;
     background-color: transparent;
@@ -112,4 +103,17 @@ $colors: (
 // Generar botones outline para cada color
 @each $color-name, $color-value in $colors {
   @include outline-button($color-name, $color-value);
+}
+
+.btn-agregar-usuario i{
+  font-size: 30px;
+}
+
+.btn-agregar-usuario {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btn-agregar-sucursal i{
+  font-size: 23px;
 }

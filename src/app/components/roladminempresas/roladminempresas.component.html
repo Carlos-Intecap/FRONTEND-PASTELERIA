@@ -5,11 +5,8 @@
     <img src="../../../assets/img/flecha2.png" routerLink="/vistaroladmin" routerLinkActive="active" alt="retroceder" width="50px" class="mt-3">
 
     <h2 class="text-center" >Administrar Empresas</h2>
-    <button class="btn btn-outline-agregar mt-3" title="Agregar empresa" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresas">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16" id="icono">
-        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-      </svg>
+    <button class="btn btn-agregar-usuario mt-3" title="Agregar empresa" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresas">
+      <i class="bi bi-plus-circle"></i>
     </button>
     <br>
     <br>
@@ -37,19 +34,16 @@
             <h5 class="card-title">  Id usuario: {{empresa.idUsuario}}  </h5>
 
 
-            <button type="button" class="btn btn-outline-danger me-3" (click)="deleteEmpresasRolAdmin(empresa._id)"> <img src="../../../assets/img/trash.svg" alt=""   id="icono-editar"></button>
-
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="offcanvas" data-bs-target="#editarEmpresaApp"
+            <button type="button" class="btn btn-outline-warning mx-3 my-2 w-25" data-bs-toggle="offcanvas" data-bs-target="#editarEmpresaApp"
             aria-controls="offcanvasExample" (click)="getEmpresaId(empresa._id)">
-            <img src="../../../assets/img/editaricono.png" alt=""  id="icono-editar" class="">
+              <img src="../../../assets/img/editaricono.png" alt="" class="icono">
+            </button>
+            <button type="button" class="btn btn-outline-danger w-25" (click)="deleteEmpresasRolAdmin(empresa._id)">
+              <img src="../../../assets/img/trash.svg" alt="" class="icono">
             </button>
             <br>
-            <button type="button" class="btn btn-outline-agregar mt-3" (click)="getEmpresaId(empresa._id)" [routerLink]="['/roladminsucursales', empresa._id]">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building-add empresa" viewBox="0 0 16 16" id="icono">
-                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
-                <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6.5a.5.5 0 0 1-1 0V1H3v14h3v-2.5a.5.5 0 0 1 .5-.5H8v4H3a1 1 0 0 1-1-1z"/>
-                <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
-              </svg>
+            <button type="button" class="btn btn-agregar-sucursal my-2 w-25" (click)="getEmpresaId(empresa._id)" [routerLink]="['/roladminsucursales', empresa._id]">
+              <i class="bi bi-building-add"></i>
             </button>
           </div>
         </div>
